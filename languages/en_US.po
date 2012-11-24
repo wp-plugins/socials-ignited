@@ -1,0 +1,427 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Socials Ignited\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-11-22 20:47+0200\n"
+"PO-Revision-Date: 2012-11-22 20:47+0200\n"
+"Last-Translator: Anastis Sourgoutsidis <anastis@cssigniter.com>\n"
+"Language-Team: CSSIgniter LLC <info@cssigniter.com>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;"
+"esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-Basepath: .\n"
+"X-Textdomain-Support: yes\n"
+"X-Generator: Poedit 1.5.4\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ..\n"
+
+#: ../includes/admin-page.php:9
+msgctxt "website name"
+msgid "AddThis"
+msgstr ""
+
+#: ../includes/admin-page.php:10
+msgctxt "website name"
+msgid "Amazon"
+msgstr ""
+
+#: ../includes/admin-page.php:11
+msgctxt "website name"
+msgid "Amazon (alternative icon)"
+msgstr ""
+
+#: ../includes/admin-page.php:12
+msgctxt "website name"
+msgid "Apple"
+msgstr ""
+
+#: ../includes/admin-page.php:13
+msgctxt "website name"
+msgid "Apple (alternative icon)"
+msgstr ""
+
+#: ../includes/admin-page.php:14
+msgctxt "website name"
+msgid "Blogger"
+msgstr ""
+
+#: ../includes/admin-page.php:15
+msgctxt "website name"
+msgid "Behance"
+msgstr ""
+
+#: ../includes/admin-page.php:16
+msgctxt "website name"
+msgid "Delicious"
+msgstr ""
+
+#: ../includes/admin-page.php:17
+msgctxt "website name"
+msgid "Design Float"
+msgstr ""
+
+#: ../includes/admin-page.php:18
+msgctxt "website name"
+msgid "Design Bump"
+msgstr ""
+
+#: ../includes/admin-page.php:19
+msgctxt "website name"
+msgid "DeviantArt"
+msgstr ""
+
+#: ../includes/admin-page.php:20
+msgctxt "website name"
+msgid "Digg"
+msgstr ""
+
+#: ../includes/admin-page.php:21
+msgctxt "website name"
+msgid "Dopplr"
+msgstr ""
+
+#: ../includes/admin-page.php:22
+msgctxt "website name"
+msgid "Dribbble"
+msgstr ""
+
+#: ../includes/admin-page.php:23
+msgctxt "website name"
+msgid "Email"
+msgstr ""
+
+#: ../includes/admin-page.php:24
+msgctxt "website name"
+msgid "Evernote"
+msgstr ""
+
+#: ../includes/admin-page.php:25
+msgctxt "website name"
+msgid "Facebook"
+msgstr ""
+
+#: ../includes/admin-page.php:26
+msgctxt "website name"
+msgid "Flickr"
+msgstr ""
+
+#: ../includes/admin-page.php:27
+msgctxt "website name"
+msgid "Forrst"
+msgstr ""
+
+#: ../includes/admin-page.php:28
+msgctxt "website name"
+msgid "FriendFeed"
+msgstr ""
+
+#: ../includes/admin-page.php:29
+msgctxt "website name"
+msgid "GitHub"
+msgstr ""
+
+#: ../includes/admin-page.php:30
+msgctxt "website name"
+msgid "GitHub (alternative icon)"
+msgstr ""
+
+#: ../includes/admin-page.php:31
+msgctxt "website name"
+msgid "Google+"
+msgstr ""
+
+#: ../includes/admin-page.php:32
+msgctxt "website name"
+msgid "Grooveshark"
+msgstr ""
+
+#: ../includes/admin-page.php:33
+msgctxt "website name"
+msgid "Gtalk"
+msgstr ""
+
+#: ../includes/admin-page.php:34
+msgctxt "website name"
+msgid "Instagram"
+msgstr ""
+
+#: ../includes/admin-page.php:35
+msgctxt "website name"
+msgid "LastFM"
+msgstr ""
+
+#: ../includes/admin-page.php:36
+msgctxt "website name"
+msgid "LinkedIn"
+msgstr ""
+
+#: ../includes/admin-page.php:37
+msgctxt "website name"
+msgid "MySpace"
+msgstr ""
+
+#: ../includes/admin-page.php:38
+msgctxt "website name"
+msgid "Netvibes"
+msgstr ""
+
+#: ../includes/admin-page.php:39
+msgctxt "website name"
+msgid "Newsvine"
+msgstr ""
+
+#: ../includes/admin-page.php:40
+msgctxt "website name"
+msgid "Orkut"
+msgstr ""
+
+#: ../includes/admin-page.php:41
+msgctxt "website name"
+msgid "Paypal"
+msgstr ""
+
+#: ../includes/admin-page.php:42
+msgctxt "website name"
+msgid "Picasa"
+msgstr ""
+
+#: ../includes/admin-page.php:43
+msgctxt "website name"
+msgid "Pinterest"
+msgstr ""
+
+#: ../includes/admin-page.php:44
+msgctxt "website name"
+msgid "Posterous"
+msgstr ""
+
+#: ../includes/admin-page.php:45
+msgctxt "website name"
+msgid "Reddit"
+msgstr ""
+
+#: ../includes/admin-page.php:46
+msgctxt "website name"
+msgid "RSS"
+msgstr ""
+
+#: ../includes/admin-page.php:47
+msgctxt "website name"
+msgid "ShareThis"
+msgstr ""
+
+#: ../includes/admin-page.php:48
+msgctxt "website name"
+msgid "Skype"
+msgstr ""
+
+#: ../includes/admin-page.php:49
+msgctxt "website name"
+msgid "SoundCloud"
+msgstr ""
+
+#: ../includes/admin-page.php:50
+msgctxt "website name"
+msgid "Spotify"
+msgstr ""
+
+#: ../includes/admin-page.php:51
+msgctxt "website name"
+msgid "StumbleUpon"
+msgstr ""
+
+#: ../includes/admin-page.php:52
+msgctxt "website name"
+msgid "Technorati"
+msgstr ""
+
+#: ../includes/admin-page.php:53
+msgctxt "website name"
+msgid "Tumblr"
+msgstr ""
+
+#: ../includes/admin-page.php:54
+msgctxt "website name"
+msgid "Twitter"
+msgstr ""
+
+#: ../includes/admin-page.php:55
+msgctxt "website name"
+msgid "Twitter (alternative icon)"
+msgstr ""
+
+#: ../includes/admin-page.php:56
+msgctxt "website name"
+msgid "Viddler"
+msgstr ""
+
+#: ../includes/admin-page.php:57
+msgctxt "website name"
+msgid "Vimeo"
+msgstr ""
+
+#: ../includes/admin-page.php:58
+msgctxt "website name"
+msgid "Virb"
+msgstr ""
+
+#: ../includes/admin-page.php:59
+msgctxt "website name"
+msgid "Virb (alternative icon)"
+msgstr ""
+
+#: ../includes/admin-page.php:60
+msgctxt "website name"
+msgid "Yahoo"
+msgstr ""
+
+#: ../includes/admin-page.php:61
+msgctxt "website name"
+msgid "Yahoo (alternative icon)"
+msgstr ""
+
+#: ../includes/admin-page.php:62
+msgctxt "website name"
+msgid "YouTube"
+msgstr ""
+
+#: ../includes/admin-page.php:63
+msgctxt "website name"
+msgid "YouTube (alternative icon)"
+msgstr ""
+
+#: ../includes/admin-page.php:64
+msgctxt "website name"
+msgid "Windows"
+msgstr ""
+
+#: ../includes/admin-page.php:65
+msgctxt "website name"
+msgid "WordPress"
+msgstr ""
+
+#: ../includes/admin-page.php:66
+msgctxt "website name"
+msgid "Zerply"
+msgstr ""
+
+#: ../includes/admin-page.php:99
+msgid ""
+"Just enter the URL for each social service you want to display. Then go to "
+"Widgets and drag the Socials Ignited widget to the sidebar(s) that you want. "
+"You will be able to select the icon set and sizes for each instance. Please "
+"note that not all icons are available in each set."
+msgstr ""
+
+#: ../includes/admin-page.php:100
+msgid ""
+"You may rearrange the services by grabbing a row from its empty area and "
+"dragging it to the desired position. Services without a URL will not be "
+"displayed."
+msgstr ""
+
+#: ../includes/admin-page.php:107
+msgid "Open links in a new window?"
+msgstr ""
+
+#: ../includes/admin-page.php:119 ../includes/widget.php:90
+msgctxt "icons set name"
+msgid "Square"
+msgstr ""
+
+#: ../includes/admin-page.php:120 ../includes/widget.php:91
+msgctxt "icons set name"
+msgid "Round"
+msgstr ""
+
+#: ../includes/admin-page.php:121
+msgctxt "social service name"
+msgid "Service name"
+msgstr ""
+
+#: ../includes/admin-page.php:122
+msgctxt "social service url value"
+msgid "Value"
+msgstr ""
+
+#: ../includes/admin-page.php:164
+#, php-format
+msgid "Enter your %s URL <em>(Include http://</em>)"
+msgstr ""
+
+#: ../includes/admin-page.php:169 ../includes/admin-page.php:171
+msgid "Recommended value:"
+msgstr ""
+
+#: ../includes/admin-page.php:182
+msgid "Save Options"
+msgstr ""
+
+#: ../includes/admin-page.php:198
+msgid "Socials Ignited Widget Options"
+msgstr ""
+
+#: ../includes/admin-page.php:198
+msgctxt "plugin name"
+msgid "Socials Ignited"
+msgstr ""
+
+#: ../includes/widget.php:6
+msgid "Social Icons widget placeholder"
+msgstr ""
+
+#: ../includes/widget.php:78
+msgid ""
+"This widget is a placeholder for Social Media icons. You may configure those "
+"icons from <strong>Settings</strong> menu, <strong>Socials Ignited</strong> "
+"sub-menu, ."
+msgstr ""
+
+#: ../includes/widget.php:79
+msgid "Title:"
+msgstr ""
+
+#: ../includes/widget.php:88
+msgid "Icon set:"
+msgstr ""
+
+#: ../includes/widget.php:96
+msgid "Color Variation:"
+msgstr ""
+
+#: ../includes/widget.php:98
+msgctxt "color variation name"
+msgid "Default"
+msgstr ""
+
+#: ../includes/widget.php:99
+msgctxt "color variation name"
+msgid "Dark"
+msgstr ""
+
+#: ../includes/widget.php:100
+msgctxt "color variation name"
+msgid "Light"
+msgstr ""
+
+#: ../includes/widget.php:105
+msgid "Icon Size:"
+msgstr ""
+
+#: ../includes/widget.php:107
+msgid "32x32"
+msgstr ""
+
+#: ../includes/widget.php:108
+msgid "48x48"
+msgstr ""
+
+#: ../includes/widget.php:109
+msgid "64x64"
+msgstr ""
