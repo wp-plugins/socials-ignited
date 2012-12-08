@@ -117,7 +117,7 @@ class CI_Socials_Ignited extends WP_Widget {
 			});
 		</script>
 
-		<?
+		<?php
 		
 	} // form
 
