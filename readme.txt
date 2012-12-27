@@ -3,12 +3,12 @@ Plugin Name: Socials Ignited
 Plugin URI: http://www.cssigniter.com/ignite/socials-ignited/
 Author URI: http://www.cssigniter.com/
 Author: The CSSigniter Team
-Contributors: tsiger, anastis, silencerius
+Contributors: anastis, tsiger, silencerius
 Tags: social, widget, icons, round, square, light, dark
 Requires at least: 3.3.3
-Tested up to: 3.4.2
-Stable tag: 1.0
-Version: 1.0
+Tested up to: 3.5
+Stable tag: 1.1
+Version: 1.1
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -59,15 +59,18 @@ As above. Let us know and we will consider it.
 3. Actual output
 
 == Upgrade Notice ==
-This version is recommended if you don't have it at all!
+This version is recommended for users having responsive themes, and those who want to add their own icons.
 
 == Changelog ==
+
+= 1.1 =
+* Fixed an issue where the icons looked huge in mobile devices.
+* Support for user-defined services, icons and icon sets.
 
 = 1.0 =
 * Initial release.
 
 == To do ==
 
-* Allow user-defined icons.
 * Allow CSS styling from within options (or widget?) so that CSS isn't lost between updates.
 * Set base margin - padding from options to apply to all widget instances.
