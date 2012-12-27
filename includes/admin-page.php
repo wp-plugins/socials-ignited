@@ -5,67 +5,7 @@ function cisiw_options_page() {
 	$cisiw_options = get_option('cisiw_settings');
 	$cisiw_options = $cisiw_options !== false ? $cisiw_options : array();
 
-	$services = apply_filters('cisiw_services', array(
-		'addthis'		=> _x('AddThis', 'website name', 'cisiw'),
-		'amazon'		=> _x('Amazon', 'website name', 'cisiw'),
-		'amazon_alt'	=> _x('Amazon (alternative icon)', 'website name', 'cisiw'),
-		'apple'			=> _x('Apple', 'website name', 'cisiw'),
-		'apple_alt'		=> _x('Apple (alternative icon)', 'website name', 'cisiw'),
-		'blogger'		=> _x('Blogger', 'website name', 'cisiw'),
-		'behance'		=> _x('Behance', 'website name', 'cisiw'),
-		'delicious'		=> _x('Delicious', 'website name', 'cisiw'),
-		'designfloat'	=> _x('Design Float', 'website name', 'cisiw'),
-		'designbump'	=> _x('Design Bump', 'website name', 'cisiw'),
-		'deviantart'	=> _x('DeviantArt', 'website name', 'cisiw'),
-		'digg'			=> _x('Digg', 'website name', 'cisiw'),
-		'dopplr'		=> _x('Dopplr', 'website name', 'cisiw'),
-		'dribbble' 		=> _x('Dribbble', 'website name', 'cisiw'),
-		'email'			=> _x('Email', 'website name', 'cisiw'),
-		'evernote'		=> _x('Evernote', 'website name', 'cisiw'),
-		'facebook' 		=> _x('Facebook', 'website name', 'cisiw'),
-		'flickr' 		=> _x('Flickr', 'website name', 'cisiw'),
-		'forrst'		=> _x('Forrst', 'website name', 'cisiw'),
-		'friendfeed'	=> _x('FriendFeed', 'website name', 'cisiw'),
-		'github'		=> _x('GitHub', 'website name', 'cisiw'),
-		'github_alt'	=> _x('GitHub (alternative icon)', 'website name', 'cisiw'),
-		'gplus' 		=> _x('Google+', 'website name', 'cisiw'),
-		'grooveshark'	=> _x('Grooveshark', 'website name', 'cisiw'),
-		'gtalk'			=> _x('Gtalk', 'website name', 'cisiw'),
-		'instagram'		=> _x('Instagram', 'website name', 'cisiw'),
-		'lastfm'		=> _x('LastFM', 'website name', 'cisiw'),
-		'linkedin' 		=> _x('LinkedIn', 'website name', 'cisiw'),
-		'myspace' 		=> _x('MySpace', 'website name', 'cisiw'),
-		'netvibes'		=> _x('Netvibes', 'website name', 'cisiw'),
-		'newsvine'		=> _x('Newsvine', 'website name', 'cisiw'),
-		'orkut'			=> _x('Orkut', 'website name', 'cisiw'),
-		'paypal'		=> _x('Paypal', 'website name', 'cisiw'),
-		'picasa' 		=> _x('Picasa', 'website name', 'cisiw'),
-		'pinterest' 	=> _x('Pinterest', 'website name', 'cisiw'),
-		'posterous'		=> _x('Posterous', 'website name', 'cisiw'),
-		'reddit'		=> _x('Reddit', 'website name', 'cisiw'),
-		'rss'			=> _x('RSS', 'website name', 'cisiw'),
-		'sharethis'		=> _x('ShareThis', 'website name', 'cisiw'),
-		'skype'			=> _x('Skype', 'website name', 'cisiw'),
-		'soundcloud'	=> _x('SoundCloud', 'website name', 'cisiw'),
-		'spotify'		=> _x('Spotify', 'website name', 'cisiw'),
-		'stumble'		=> _x('StumbleUpon', 'website name', 'cisiw'),
-		'technorati'	=> _x('Technorati', 'website name', 'cisiw'),
-		'tumblr'		=> _x('Tumblr', 'website name', 'cisiw'),
-		'twitter' 		=> _x('Twitter', 'website name', 'cisiw'),
-		'twitter_alt'	=> _x('Twitter (alternative icon)', 'website name', 'cisiw'),
-		'viddler'		=> _x('Viddler', 'website name', 'cisiw'),
-		'vimeo'			=> _x('Vimeo', 'website name', 'cisiw'),
-		'virb'			=> _x('Virb', 'website name', 'cisiw'),
-		'virb_alt'		=> _x('Virb (alternative icon)', 'website name', 'cisiw'),
-		'yahoo'			=> _x('Yahoo', 'website name', 'cisiw'),
-		'yahoo_alt'		=> _x('Yahoo (alternative icon)', 'website name', 'cisiw'),
-		'youtube' 		=> _x('YouTube', 'website name', 'cisiw'),
-		'youtube_alt' 	=> _x('YouTube (alternative icon)', 'website name', 'cisiw'),
-		'windows'		=> _x('Windows', 'website name', 'cisiw'),
-		'wordpress'		=> _x('WordPress', 'website name', 'cisiw'),
-		'zerply'		=> _x('Zerply', 'website name', 'cisiw')
-	));
-
+	$services = cisiw_get_services();
 
 	// Create default empty values for services.
 	// It will be used to preserve user-ordering.
@@ -116,8 +56,16 @@ function cisiw_options_page() {
 			<table class="form-table" id="cisiw-admin-table">
 				<thead>
 					<tr>
-						<th scope="col" class="icon"><?php _ex('Square', 'icons set name', 'cisiw'); ?></th>
-						<th scope="col" class="icon"><?php _ex('Round', 'icons set name', 'cisiw'); ?></th>
+						<?php 
+							$icon_sets = cisiw_get_icon_sets();
+							$icon_set_names = cisiw_get_icon_set_names();
+							$lookup_paths = cisiw_get_lookup_paths();
+							$icon_set_paths = cisiw_get_lookup_paths();
+						?>
+						
+						<?php foreach($icon_sets as $key => $val): ?>
+							<th scope="col" class="icon"><?php echo $icon_set_names[$key]; ?></th>
+						<?php endforeach; ?>
 						<th scope="col" class="iconname"><?php _ex('Service name', 'social service name', 'cisiw'); ?></th>
 						<th scope="col" class="url"><?php _ex('Value', 'social service url value', 'cisiw'); ?></th>
 					</tr>
@@ -128,33 +76,30 @@ function cisiw_options_page() {
 					<?php foreach($user_set as $key => $value): ?>
 						<?php $cisiw_url = $key . "_url"; ?>
 						<tr valign="top">
-							<td class="icon">
-								<?php 
-									//
-									// Square icon set
-									//
-									$icon = 'images/square/default/32/'.$key.'.png'; 
-									if( file_exists( CISIW_PLUGIN_PATH.$icon ) )
-										$icon_url = CISIW_PLUGIN_URL.$icon;
-									else
-										$icon_url = CISIW_PLUGIN_URL.'images/placeholder.png';
-								?>
-								<img align="middle" width="32" height="32" src="<?php echo esc_url($icon_url); ?>" /> 
-							</td>
+							<?php foreach($icon_sets as $set => $set_info): ?>
+								<td class="icon">
+									<?php 
+										// Let's get the first variation available so that we'll have
+										// something to show on the settings screen.
+										$first_variation = array_slice($set_info, 0, 1, true);
+										
+										// So, this will run only once per icon set.
+										foreach($first_variation as $variation => $var_sizes)
+										{
+											$icon = $set.'/'.$variation.'/'.$var_sizes[0].'/'.$key.'.png';
 
-							<td class="icon">
-								<?php 
-									//
-									// Round icon set
-									//
-									$icon = 'images/round/dark/32/'.$key.'.png'; 
-									if( file_exists( CISIW_PLUGIN_PATH.$icon ) )
-										$icon_url = CISIW_PLUGIN_URL.$icon;
-									else
-										$icon_url = CISIW_PLUGIN_URL.'images/placeholder.png';
-								?>
-								<img align="middle" width="32" height="32" src="<?php echo esc_url($icon_url); ?>" /> 
-							</td>
+											$icon_url = cisiw_get_icon_path($icon);
+
+											if($icon_url===false)
+											{
+												$icon_url = CISIW_PLUGIN_URL.'images/placeholder.png';
+											}
+
+										}
+									?>
+									<img align="middle" width="32" height="32" src="<?php echo esc_url($icon_url); ?>" /> 
+								</td>
+							<?php endforeach; ?>
 
 							<th scope="row" class="iconname"><strong><?php echo $services[$key]; ?></strong></th>
 

@@ -41,15 +41,15 @@ class CI_Socials_Ignited extends WP_Widget {
 
 				if(!empty($value))
 				{
-					$icon = 'images/'.$icon_set.'/'.$variation.'/'.$size.'/'.$key.'.png';
-					
-					if( file_exists( CISIW_PLUGIN_PATH.$icon ) )
+					$icon = $icon_set.'/'.$variation.'/'.$size.'/'.$key.'.png';
+
+					$icon_url = cisiw_get_icon_path($icon);
+	
+					if($icon_url!==false)
 					{
-						$icon_url = CISIW_PLUGIN_URL.$icon;
-						
 						echo '<a href="'. esc_url($value) .'" '. $target .'><img align="middle" src="' . $icon_url . '"/></a>'."\n";
 					}
-					
+
 				}
 			}
 		}
@@ -81,39 +81,50 @@ class CI_Socials_Ignited extends WP_Widget {
 		
 
 		<?php
-			// The classes om <option> elements, are needed for the chained dropdown effect, 
+			// The classes on <option> elements, are needed for the chained dropdown effect, 
 			// and they must match the value="" of the element they are chained to.
+
+			$icon_sets = cisiw_get_icon_sets();
+			$icon_set_names = cisiw_get_icon_set_names();
+			$icon_set_paths = cisiw_get_lookup_paths();
 		?>
 		<p>
 			<label><?php _e('Icon set:','cisiw'); ?></label>
 			<select name="<?php echo $this->get_field_name('icon_set'); ?>" class="widefat" id="<?php echo $this->get_field_id('icon_set'); ?>">
-				<option value="square" <?php selected('square', $icon_set); ?>><?php _ex('Square', 'icons set name', 'cisiw'); ?></option>
-				<option value="round" <?php selected('round', $icon_set); ?>><?php _ex('Round', 'icons set name', 'cisiw'); ?></option>
+				<?php foreach($icon_set_names as $set => $name): ?>
+					<option value="<?php echo $set; ?>" <?php selected($set, $icon_set); ?>><?php echo $name; ?></option>
+				<?php endforeach; ?>
 			</select>
 		</p>
 		
 		<p>
 			<label><?php _e('Color Variation:','cisiw'); ?></label>
 			<select name="<?php echo $this->get_field_name('variation'); ?>" class="widefat" id="<?php echo $this->get_field_id('variation'); ?>">
-				<option class="square" value="default" <?php selected('default', $variation); ?>><?php _ex('Default', 'color variation name', 'cisiw'); ?></option>
-				<option class="round" value="dark" <?php selected('dark', $variation); ?>><?php _ex('Dark', 'color variation name', 'cisiw'); ?></option>
-				<option class="round" value="light" <?php selected('light', $variation); ?>><?php _ex('Light', 'color variation name', 'cisiw'); ?></option>
+				<?php foreach($icon_sets as $set => $variations): ?>
+					<?php foreach($variations as $var => $sizes): ?>
+						<option class="<?php echo $set; ?>" value="<?php echo $var; ?>" <?php selected($var, $variation); ?>><?php echo $var; ?></option>
+					<?php endforeach; ?>
+				<?php endforeach; ?>
 			</select>
 		</p>
 		
 		<p>
 			<label><?php _e('Icon Size:','cisiw'); ?></label>
 			<select name="<?php echo $this->get_field_name('size'); ?>" class="widefat" id="<?php echo $this->get_field_id('size'); ?>">
-				<option class="square round" value="32" <?php selected('32', $size); ?>><?php _e('32x32', 'cisiw'); ?></option>
-				<option class="square" value="48" <?php selected('48', $size); ?>><?php _e('48x48', 'cisiw'); ?></option>
-				<option class="square" value="64" <?php selected('64', $size); ?>><?php _e('64x64', 'cisiw'); ?></option>
+				<?php foreach($icon_sets as $set => $variations): ?>
+					<?php foreach($variations as $var => $sizes): ?>
+						<?php foreach($sizes as $s): ?>
+							<option class="<?php echo $set.'\\'.$var; ?>" value="<?php echo $s; ?>" <?php selected($s, $size); ?>><?php echo $s.'x'.$s; ?></option>
+						<?php endforeach; ?>
+					<?php endforeach; ?>
+				<?php endforeach; ?>
 			</select>
 		</p>
 		
 		<script type="text/javascript">
 			jQuery(document).ready(function($) {
 				$("#<?php echo $this->get_field_id('variation'); ?>").chainedTo("#<?php echo $this->get_field_id('icon_set'); ?>");
-				$("#<?php echo $this->get_field_id('size'); ?>").chainedTo("#<?php echo $this->get_field_id('icon_set'); ?>");
+				$("#<?php echo $this->get_field_id('size'); ?>").chainedTo("#<?php echo $this->get_field_id('icon_set'); ?>, #<?php echo $this->get_field_id('variation'); ?>");
 			});
 		</script>
 
