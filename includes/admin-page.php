@@ -106,7 +106,7 @@ function cisiw_options_page() {
 							<td class="url">
 								<p>
 									<input id="cisiw_settings[<?php echo $cisiw_url; ?>]" name="cisiw_settings[<?php echo $cisiw_url; ?>]" type="text" value="<?php if (isset($cisiw_options[$cisiw_url])) { echo esc_attr($cisiw_options[$cisiw_url]); } ?>"/>
-									<label class="description" for="cisiw_settings[<?php echo $cisiw_url; ?>]"><?php echo sprintf(__('Enter your %s URL <em>(Include http://</em>)', 'cisiw'), $value); ?></label>
+									<label class="description" for="cisiw_settings[<?php echo $cisiw_url; ?>]"><?php _e('Enter your URL <em>(Include http://</em>)', 'cisiw'); ?></label>
 									<?php 
 										if($key=='rss')
 										{

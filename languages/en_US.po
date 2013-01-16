@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Socials Ignited\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-27 22:20+0200\n"
-"PO-Revision-Date: 2012-12-27 22:20+0200\n"
+"POT-Creation-Date: 2013-01-17 01:07+0200\n"
+"PO-Revision-Date: 2013-01-17 01:07+0200\n"
 "Last-Translator: Anastis Sourgoutsidis <anastis@cssigniter.com>\n"
 "Language-Team: CSSIgniter LLC <info@cssigniter.com>\n"
 "Language: en_US\n"
@@ -21,3 +21,379 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
 
+#: ../socials-ignited.php:57
+msgctxt "website name"
+msgid "AddThis"
+msgstr ""
+
+#: ../socials-ignited.php:58
+msgctxt "website name"
+msgid "Amazon"
+msgstr ""
+
+#: ../socials-ignited.php:59
+msgctxt "website name"
+msgid "Amazon (alternative icon)"
+msgstr ""
+
+#: ../socials-ignited.php:60
+msgctxt "website name"
+msgid "Apple"
+msgstr ""
+
+#: ../socials-ignited.php:61
+msgctxt "website name"
+msgid "Apple (alternative icon)"
+msgstr ""
+
+#: ../socials-ignited.php:62
+msgctxt "website name"
+msgid "Blogger"
+msgstr ""
+
+#: ../socials-ignited.php:63
+msgctxt "website name"
+msgid "Behance"
+msgstr ""
+
+#: ../socials-ignited.php:64
+msgctxt "website name"
+msgid "Delicious"
+msgstr ""
+
+#: ../socials-ignited.php:65
+msgctxt "website name"
+msgid "Design Float"
+msgstr ""
+
+#: ../socials-ignited.php:66
+msgctxt "website name"
+msgid "Design Bump"
+msgstr ""
+
+#: ../socials-ignited.php:67
+msgctxt "website name"
+msgid "DeviantArt"
+msgstr ""
+
+#: ../socials-ignited.php:68
+msgctxt "website name"
+msgid "Digg"
+msgstr ""
+
+#: ../socials-ignited.php:69
+msgctxt "website name"
+msgid "Dopplr"
+msgstr ""
+
+#: ../socials-ignited.php:70
+msgctxt "website name"
+msgid "Dribbble"
+msgstr ""
+
+#: ../socials-ignited.php:71
+msgctxt "website name"
+msgid "Email"
+msgstr ""
+
+#: ../socials-ignited.php:72
+msgctxt "website name"
+msgid "Evernote"
+msgstr ""
+
+#: ../socials-ignited.php:73
+msgctxt "website name"
+msgid "Facebook"
+msgstr ""
+
+#: ../socials-ignited.php:74
+msgctxt "website name"
+msgid "Flickr"
+msgstr ""
+
+#: ../socials-ignited.php:75
+msgctxt "website name"
+msgid "Forrst"
+msgstr ""
+
+#: ../socials-ignited.php:76
+msgctxt "website name"
+msgid "FriendFeed"
+msgstr ""
+
+#: ../socials-ignited.php:77
+msgctxt "website name"
+msgid "GitHub"
+msgstr ""
+
+#: ../socials-ignited.php:78
+msgctxt "website name"
+msgid "GitHub (alternative icon)"
+msgstr ""
+
+#: ../socials-ignited.php:79
+msgctxt "website name"
+msgid "Google+"
+msgstr ""
+
+#: ../socials-ignited.php:80
+msgctxt "website name"
+msgid "Grooveshark"
+msgstr ""
+
+#: ../socials-ignited.php:81
+msgctxt "website name"
+msgid "Gtalk"
+msgstr ""
+
+#: ../socials-ignited.php:82
+msgctxt "website name"
+msgid "Instagram"
+msgstr ""
+
+#: ../socials-ignited.php:83
+msgctxt "website name"
+msgid "LastFM"
+msgstr ""
+
+#: ../socials-ignited.php:84
+msgctxt "website name"
+msgid "LinkedIn"
+msgstr ""
+
+#: ../socials-ignited.php:85
+msgctxt "website name"
+msgid "MySpace"
+msgstr ""
+
+#: ../socials-ignited.php:86
+msgctxt "website name"
+msgid "Netvibes"
+msgstr ""
+
+#: ../socials-ignited.php:87
+msgctxt "website name"
+msgid "Newsvine"
+msgstr ""
+
+#: ../socials-ignited.php:88
+msgctxt "website name"
+msgid "Orkut"
+msgstr ""
+
+#: ../socials-ignited.php:89
+msgctxt "website name"
+msgid "Paypal"
+msgstr ""
+
+#: ../socials-ignited.php:90
+msgctxt "website name"
+msgid "Picasa"
+msgstr ""
+
+#: ../socials-ignited.php:91
+msgctxt "website name"
+msgid "Pinterest"
+msgstr ""
+
+#: ../socials-ignited.php:92
+msgctxt "website name"
+msgid "Posterous"
+msgstr ""
+
+#: ../socials-ignited.php:93
+msgctxt "website name"
+msgid "Reddit"
+msgstr ""
+
+#: ../socials-ignited.php:94
+msgctxt "website name"
+msgid "RSS"
+msgstr ""
+
+#: ../socials-ignited.php:95
+msgctxt "website name"
+msgid "ShareThis"
+msgstr ""
+
+#: ../socials-ignited.php:96
+msgctxt "website name"
+msgid "Skype"
+msgstr ""
+
+#: ../socials-ignited.php:97
+msgctxt "website name"
+msgid "SoundCloud"
+msgstr ""
+
+#: ../socials-ignited.php:98
+msgctxt "website name"
+msgid "Spotify"
+msgstr ""
+
+#: ../socials-ignited.php:99
+msgctxt "website name"
+msgid "StumbleUpon"
+msgstr ""
+
+#: ../socials-ignited.php:100
+msgctxt "website name"
+msgid "Technorati"
+msgstr ""
+
+#: ../socials-ignited.php:101
+msgctxt "website name"
+msgid "Tumblr"
+msgstr ""
+
+#: ../socials-ignited.php:102
+msgctxt "website name"
+msgid "Twitter"
+msgstr ""
+
+#: ../socials-ignited.php:103
+msgctxt "website name"
+msgid "Twitter (alternative icon)"
+msgstr ""
+
+#: ../socials-ignited.php:104
+msgctxt "website name"
+msgid "Viddler"
+msgstr ""
+
+#: ../socials-ignited.php:105
+msgctxt "website name"
+msgid "Vimeo"
+msgstr ""
+
+#: ../socials-ignited.php:106
+msgctxt "website name"
+msgid "Virb"
+msgstr ""
+
+#: ../socials-ignited.php:107
+msgctxt "website name"
+msgid "Virb (alternative icon)"
+msgstr ""
+
+#: ../socials-ignited.php:108
+msgctxt "website name"
+msgid "Yahoo"
+msgstr ""
+
+#: ../socials-ignited.php:109
+msgctxt "website name"
+msgid "Yahoo (alternative icon)"
+msgstr ""
+
+#: ../socials-ignited.php:110
+msgctxt "website name"
+msgid "YouTube"
+msgstr ""
+
+#: ../socials-ignited.php:111
+msgctxt "website name"
+msgid "YouTube (alternative icon)"
+msgstr ""
+
+#: ../socials-ignited.php:112
+msgctxt "website name"
+msgid "Windows"
+msgstr ""
+
+#: ../socials-ignited.php:113
+msgctxt "website name"
+msgid "WordPress"
+msgstr ""
+
+#: ../socials-ignited.php:114
+msgctxt "website name"
+msgid "Zerply"
+msgstr ""
+
+#: ../socials-ignited.php:146
+msgctxt "icons set name"
+msgid "Square"
+msgstr ""
+
+#: ../socials-ignited.php:147
+msgctxt "icons set name"
+msgid "Round"
+msgstr ""
+
+#: ../includes/admin-page.php:39
+msgid ""
+"Just enter the URL for each social service you want to display. Then go to "
+"Widgets and drag the Socials Ignited widget to the sidebar(s) that you want. "
+"You will be able to select the icon set and sizes for each instance. Please "
+"note that not all icons are available in each set."
+msgstr ""
+
+#: ../includes/admin-page.php:40
+msgid ""
+"You may rearrange the services by grabbing a row from its empty area and "
+"dragging it to the desired position. Services without a URL will not be "
+"displayed."
+msgstr ""
+
+#: ../includes/admin-page.php:47
+msgid "Open links in a new window?"
+msgstr ""
+
+#: ../includes/admin-page.php:69
+msgctxt "social service name"
+msgid "Service name"
+msgstr ""
+
+#: ../includes/admin-page.php:70
+msgctxt "social service url value"
+msgid "Value"
+msgstr ""
+
+#: ../includes/admin-page.php:109
+msgid "Enter your URL <em>(Include http://</em>)"
+msgstr ""
+
+#: ../includes/admin-page.php:114 ../includes/admin-page.php:116
+msgid "Recommended value:"
+msgstr ""
+
+#: ../includes/admin-page.php:127
+msgid "Save Options"
+msgstr ""
+
+#: ../includes/admin-page.php:143
+msgid "Socials Ignited Widget Options"
+msgstr ""
+
+#: ../includes/admin-page.php:143
+msgctxt "plugin name"
+msgid "Socials Ignited"
+msgstr ""
+
+#: ../includes/widget.php:6
+msgid "Social Icons widget placeholder"
+msgstr ""
+
+#: ../includes/widget.php:78
+msgid ""
+"This widget is a placeholder for Social Media icons. You may configure those "
+"icons from <strong>Settings</strong> menu, <strong>Socials Ignited</strong> "
+"sub-menu, ."
+msgstr ""
+
+#: ../includes/widget.php:79
+msgid "Title:"
+msgstr ""
+
+#: ../includes/widget.php:92
+msgid "Icon set:"
+msgstr ""
+
+#: ../includes/widget.php:101
+msgid "Color Variation:"
+msgstr ""
+
+#: ../includes/widget.php:112
+msgid "Icon Size:"
+msgstr ""
