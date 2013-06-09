@@ -1,20 +1,26 @@
 /*
  * Chained - jQuery non AJAX(J) chained selects plugin
  *
- * Copyright (c) 2010-2011 Mika Tuupola
+ * Copyright (c) 2010-2013 Mika Tuupola
  *
  * Licensed under the MIT license:
  *   http://www.opensource.org/licenses/mit-license.php
  *
+ * Project home:
+ *   http://www.appelsiini.net/projects/lazyload
+ *
+ * Version:  0.9.3
+ *
  */
 
 (function($) {
-
-    $.fn.chained = function(parent_selector, options) { 
+    "use strict";
+    
+    $.fn.chained = function(parent_selector, options) {
         
         return this.each(function() {
             
-            /* Save this to self because this changes when scope changes. */            
+            /* Save this to self because this changes when scope changes. */
             var self   = this;
             var backup = $(self).clone();
                         
@@ -39,14 +45,14 @@
                 
                     $("option", self).each(function() {
                         /* Remove unneeded items but save the default value. */
-                        if (!$(this).hasClass(selected) && 
+                        if (!$(this).hasClass(selected) &&
                             !$(this).hasClass(selected_first) && $(this).val() !== "") {
                                 $(this).remove();
-                        }                        
+                        }
                     });
-                
+
                     /* If we have only the default value disable select. */
-                    if (1 == $("option", self).size() && $(self).val() === "") {
+                    if (1 === $("option", self).size() && $(self).val() === "") {
                         $(self).attr("disabled", "disabled");
                     } else {
                         $(self).removeAttr("disabled");
@@ -59,9 +65,9 @@
                 if ( !$("option:selected", this).length ) {
                     $("option", this).first().attr("selected", "selected");
                 }
-	    
+      
                 /* Force updating the children. */
-                $(this).trigger("change");             
+                $(this).trigger("change");
 
             });
         });

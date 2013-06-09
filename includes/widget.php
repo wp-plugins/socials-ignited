@@ -4,7 +4,7 @@ class CI_Socials_Ignited extends WP_Widget {
 
 	function CI_Socials_Ignited(){
 		$widget_ops = array('description' => __('Social Icons widget placeholder','cisiw'));
-		$control_ops = array('width' => 300, 'height' => 400);
+		$control_ops = array(/*'width' => 300, 'height' => 400*/);
 		parent::WP_Widget('ci_socials_ignited', $name='-= CI Socials Ignited =-', $widget_ops, $control_ops);
 	}
 
@@ -69,7 +69,8 @@ class CI_Socials_Ignited extends WP_Widget {
 	} // save
 	
 	function form($instance){
-		$instance = wp_parse_args( (array) $instance, array('title'=>'', 'size'=>'32', 'icon_set'=>'square', 'variation'=>'default') );
+		//$instance = wp_parse_args( (array) $instance, array('title'=>'', 'size'=>32, 'icon_set'=>'square', 'variation'=>'default') );
+		$instance = wp_parse_args( (array) $instance, array('title'=>'', 'size'=>32, 'icon_set'=>'round', 'variation'=>'light') );
 		$title = htmlspecialchars($instance['title']);
 		$icon_set = htmlspecialchars($instance['icon_set']);
 		$variation = htmlspecialchars($instance['variation']);
@@ -89,7 +90,7 @@ class CI_Socials_Ignited extends WP_Widget {
 			$icon_set_paths = cisiw_get_lookup_paths();
 		?>
 		<p>
-			<label><?php _e('Icon set:','cisiw'); ?></label>
+			<label><?php _e('Icon set:', 'cisiw'); ?></label>
 			<select name="<?php echo $this->get_field_name('icon_set'); ?>" class="widefat" id="<?php echo $this->get_field_id('icon_set'); ?>">
 				<?php foreach($icon_set_names as $set => $name): ?>
 					<option value="<?php echo $set; ?>" <?php selected($set, $icon_set); ?>><?php echo $name; ?></option>
@@ -98,36 +99,42 @@ class CI_Socials_Ignited extends WP_Widget {
 		</p>
 		
 		<p>
-			<label><?php _e('Color Variation:','cisiw'); ?></label>
+			<label><?php _e('Color Variation:', 'cisiw'); ?></label>
 			<select name="<?php echo $this->get_field_name('variation'); ?>" class="widefat" id="<?php echo $this->get_field_id('variation'); ?>">
 				<?php foreach($icon_sets as $set => $variations): ?>
 					<?php foreach($variations as $var => $sizes): ?>
-						<option class="<?php echo $set; ?>" value="<?php echo $var; ?>" <?php selected($var, $variation); ?>><?php echo $var; ?></option>
+						<option class="<?php echo $set; ?>" value="<?php echo $var; ?>" <?php selected($set.$var, $icon_set.$variation); ?>><?php echo $var; ?></option>
 					<?php endforeach; ?>
 				<?php endforeach; ?>
 			</select>
 		</p>
 		
 		<p>
-			<label><?php _e('Icon Size:','cisiw'); ?></label>
+			<label><?php _e('Icon Size:', 'cisiw'); ?></label>
 			<select name="<?php echo $this->get_field_name('size'); ?>" class="widefat" id="<?php echo $this->get_field_id('size'); ?>">
 				<?php foreach($icon_sets as $set => $variations): ?>
 					<?php foreach($variations as $var => $sizes): ?>
 						<?php foreach($sizes as $s): ?>
-							<option class="<?php echo $set.'\\'.$var; ?>" value="<?php echo $s; ?>" <?php selected($s, $size); ?>><?php echo $s.'x'.$s; ?></option>
+							<option class="<?php echo $set.'\\'.$var; ?>" value="<?php echo $s; ?>" <?php selected($set.$var.$s, $icon_set.$variation.$size); ?>><?php echo $s.'x'.$s; ?></option>
 						<?php endforeach; ?>
 					<?php endforeach; ?>
 				<?php endforeach; ?>
 			</select>
 		</p>
 		
+		<?php
+			$var_id = '#'.$this->get_field_id('variation');
+			$icon_id = '#'.$this->get_field_id('icon_set');
+			$size_id = '#'.$this->get_field_id('size');
+		?>
+
 		<script type="text/javascript">
 			jQuery(document).ready(function($) {
-				$("#<?php echo $this->get_field_id('variation'); ?>").chainedTo("#<?php echo $this->get_field_id('icon_set'); ?>");
-				$("#<?php echo $this->get_field_id('size'); ?>").chainedTo("#<?php echo $this->get_field_id('icon_set'); ?>, #<?php echo $this->get_field_id('variation'); ?>");
+				$("<?php echo $var_id; ?>").chainedTo("<?php echo $icon_id; ?>");
+				$("<?php echo $size_id; ?>").chainedTo("<?php echo $icon_id; ?>, <?php echo $var_id; ?>");
 			});
 		</script>
-
+		
 		<?php
 		
 	} // form
@@ -146,7 +153,7 @@ function cisiw_widget_admin_scripts()
 	
 	if($pagenow=='widgets.php')
 	{
-		wp_enqueue_script('jquery-chained', CISIW_PLUGIN_URL.'js/jquery.chained.js', array('jquery'), '0.9.1' );
+		wp_enqueue_script('jquery-chained', CISIW_PLUGIN_URL.'js/jquery.chained.js', array('jquery'), '0.9.3' );
 		wp_enqueue_script('cisiw-widget-admin', CISIW_PLUGIN_URL.'js/admin_widget.js', array('jquery-chained') );
 	}
 }
