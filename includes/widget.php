@@ -69,8 +69,7 @@ class CI_Socials_Ignited extends WP_Widget {
 	} // save
 	
 	function form($instance){
-		//$instance = wp_parse_args( (array) $instance, array('title'=>'', 'size'=>32, 'icon_set'=>'square', 'variation'=>'default') );
-		$instance = wp_parse_args( (array) $instance, array('title'=>'', 'size'=>32, 'icon_set'=>'round', 'variation'=>'light') );
+		$instance = wp_parse_args( (array) $instance, array('title'=>'', 'size'=>32, 'icon_set'=>'square', 'variation'=>'default') );
 		$title = htmlspecialchars($instance['title']);
 		$icon_set = htmlspecialchars($instance['icon_set']);
 		$variation = htmlspecialchars($instance['variation']);
