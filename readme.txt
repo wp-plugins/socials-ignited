@@ -6,9 +6,8 @@ Author: The CSSigniter Team
 Contributors: anastis, tsiger, silencerius
 Tags: social, widget, icons, round, square, light, dark
 Requires at least: 3.3.3
-Tested up to: 3.5
-Stable tag: 1.1.1
-Version: 1.1.1
+Tested up to: 3.6
+Stable tag: 1.1.2
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -62,6 +61,10 @@ As above. Let us know and we will consider it.
 This version is recommended for users having responsive themes, and those who want to add their own icons.
 
 == Changelog ==
+
+= 1.1.2 =
+* Removed align attribute from img elements.
+* Added alt attribute to img elements.
 
 = 1.1.1 =
 * Fixed an issue where the URL would appear on the "Enter your URL" prompt.

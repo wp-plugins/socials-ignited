@@ -32,6 +32,8 @@ class CI_Socials_Ignited extends WP_Widget {
 		
 		echo '<div class="ci-socials-ignited ci-socials-ignited-'. esc_attr($size) .'">';
 
+		$names = cisiw_get_services();
+
 		foreach($cisiw_options as $option => $value) 
 		{ 
 			// Make sure the current option is a social service
@@ -47,7 +49,7 @@ class CI_Socials_Ignited extends WP_Widget {
 	
 					if($icon_url!==false)
 					{
-						echo '<a href="'. esc_url($value) .'" '. $target .'><img align="middle" src="' . $icon_url . '"/></a>'."\n";
+						echo '<a href="'. esc_url($value) .'" '. $target .'><img alt="' . $names[$key] . '" src="' . $icon_url . '"/></a>'."\n";
 					}
 
 				}
