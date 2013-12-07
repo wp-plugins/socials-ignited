@@ -132,6 +132,7 @@ function cisiw_options_page() {
 						<td colspan="4">
 							<p class="submit">
 								<input type="submit" class="button-primary" value="<?php _e('Save Options', 'cisiw'); ?>" />
+								<input type="submit" value="<?php _e('Reset custom order', 'cisiw'); ?>" class="button" id="cisiw-reset-order" name="cisiw-reset-order">
 							</p>
 						</td>	
 					</tr>
@@ -154,7 +155,36 @@ endif;
 add_action('admin_init', 'cisiw_register_settings');
 if( !function_exists('cisiw_register_settings') ):
 function cisiw_register_settings() {
-	register_setting('cisiw_settings_group', 'cisiw_settings');
+	register_setting('cisiw_settings_group', 'cisiw_settings', 'cisiw_validate_settings');
+}
+endif;
+
+if( !function_exists('cisiw_validate_settings') ):
+function cisiw_validate_settings($input) {
+	if(!empty($_POST['cisiw-reset-order']))
+	{
+		$services = cisiw_get_services();
+		$cisiw_options = get_option('cisiw_settings');
+
+		$defaults = array();
+		foreach ($services as $service => $desc)	{
+			$key = $service.'_url';
+			$defaults[$key] = !empty($cisiw_options[$key]) ? $cisiw_options[$key] : '' ;
+		}
+
+		// Go through keys that are not in the list of services, e.g. "Open link in new window" setting.
+		foreach ($cisiw_options as $key => $value)
+		{
+			if( !in_array($key, $services) )
+			{
+				$defaults[$key] = $value;
+			}
+		}
+
+		return $defaults;
+	}
+
+	return $input;
 }
 endif;
 
@@ -163,7 +193,6 @@ if( !function_exists('cisiw_enqueue_admin_scripts') ):
 function cisiw_enqueue_admin_scripts()
 {
 	global $pagenow;
-	
 	if($pagenow=='options-general.php' and isset($_GET['page']) and $_GET['page']=='cisiw-options')
 	{
 		wp_enqueue_style('cisiw-admin', CISIW_PLUGIN_URL.'css/admin.css');
