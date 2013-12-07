@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Socials Ignited\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-17 01:07+0200\n"
-"PO-Revision-Date: 2013-01-17 01:07+0200\n"
+"POT-Creation-Date: 2013-12-07 22:07+0200\n"
+"PO-Revision-Date: 2013-12-07 22:07+0200\n"
 "Last-Translator: Anastis Sourgoutsidis <anastis@cssigniter.com>\n"
 "Language-Team: CSSIgniter LLC <info@cssigniter.com>\n"
 "Language: en_US\n"
@@ -16,7 +16,7 @@ msgstr ""
 "esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-Basepath: .\n"
 "X-Textdomain-Support: yes\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.6.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
@@ -183,77 +183,77 @@ msgstr ""
 
 #: ../socials-ignited.php:89
 msgctxt "website name"
-msgid "Paypal"
+msgid "Path"
 msgstr ""
 
 #: ../socials-ignited.php:90
 msgctxt "website name"
-msgid "Picasa"
+msgid "Paypal"
 msgstr ""
 
 #: ../socials-ignited.php:91
 msgctxt "website name"
-msgid "Pinterest"
+msgid "Picasa"
 msgstr ""
 
 #: ../socials-ignited.php:92
 msgctxt "website name"
-msgid "Posterous"
+msgid "Pinterest"
 msgstr ""
 
 #: ../socials-ignited.php:93
 msgctxt "website name"
-msgid "Reddit"
+msgid "Posterous"
 msgstr ""
 
 #: ../socials-ignited.php:94
 msgctxt "website name"
-msgid "RSS"
+msgid "Reddit"
 msgstr ""
 
 #: ../socials-ignited.php:95
 msgctxt "website name"
-msgid "ShareThis"
+msgid "RSS"
 msgstr ""
 
 #: ../socials-ignited.php:96
 msgctxt "website name"
-msgid "Skype"
+msgid "ShareThis"
 msgstr ""
 
 #: ../socials-ignited.php:97
 msgctxt "website name"
-msgid "SoundCloud"
+msgid "Skype"
 msgstr ""
 
 #: ../socials-ignited.php:98
 msgctxt "website name"
-msgid "Spotify"
+msgid "SoundCloud"
 msgstr ""
 
 #: ../socials-ignited.php:99
 msgctxt "website name"
-msgid "StumbleUpon"
+msgid "Spotify"
 msgstr ""
 
 #: ../socials-ignited.php:100
 msgctxt "website name"
-msgid "Technorati"
+msgid "StumbleUpon"
 msgstr ""
 
 #: ../socials-ignited.php:101
 msgctxt "website name"
-msgid "Tumblr"
+msgid "Technorati"
 msgstr ""
 
 #: ../socials-ignited.php:102
 msgctxt "website name"
-msgid "Twitter"
+msgid "Tumblr"
 msgstr ""
 
 #: ../socials-ignited.php:103
 msgctxt "website name"
-msgid "Twitter (alternative icon)"
+msgid "Twitter"
 msgstr ""
 
 #: ../socials-ignited.php:104
@@ -321,6 +321,11 @@ msgctxt "icons set name"
 msgid "Round"
 msgstr ""
 
+#: ../includes/admin-page.php:38
+#, php-format
+msgid "<h2>Socials Ignited</h2><h3>by <a href=\"%s\">CSSIgniter</a></h3>"
+msgstr ""
+
 #: ../includes/admin-page.php:39
 msgid ""
 "Just enter the URL for each social service you want to display. Then go to "
@@ -350,23 +355,27 @@ msgctxt "social service url value"
 msgid "Value"
 msgstr ""
 
-#: ../includes/admin-page.php:109
+#: ../includes/admin-page.php:115
 msgid "Enter your URL <em>(Include http://</em>)"
 msgstr ""
 
-#: ../includes/admin-page.php:114 ../includes/admin-page.php:116
+#: ../includes/admin-page.php:121 ../includes/admin-page.php:123
 msgid "Recommended value:"
 msgstr ""
 
-#: ../includes/admin-page.php:127
+#: ../includes/admin-page.php:134
 msgid "Save Options"
 msgstr ""
 
-#: ../includes/admin-page.php:143
+#: ../includes/admin-page.php:135
+msgid "Reset custom order"
+msgstr ""
+
+#: ../includes/admin-page.php:151
 msgid "Socials Ignited Widget Options"
 msgstr ""
 
-#: ../includes/admin-page.php:143
+#: ../includes/admin-page.php:151
 msgctxt "plugin name"
 msgid "Socials Ignited"
 msgstr ""
@@ -375,25 +384,25 @@ msgstr ""
 msgid "Social Icons widget placeholder"
 msgstr ""
 
-#: ../includes/widget.php:78
+#: ../includes/widget.php:80
 msgid ""
 "This widget is a placeholder for Social Media icons. You may configure those "
 "icons from <strong>Settings</strong> menu, <strong>Socials Ignited</strong> "
 "sub-menu, ."
 msgstr ""
 
-#: ../includes/widget.php:79
+#: ../includes/widget.php:81
 msgid "Title:"
 msgstr ""
 
-#: ../includes/widget.php:92
+#: ../includes/widget.php:94
 msgid "Icon set:"
 msgstr ""
 
-#: ../includes/widget.php:101
+#: ../includes/widget.php:103
 msgid "Color Variation:"
 msgstr ""
 
-#: ../includes/widget.php:112
+#: ../includes/widget.php:114
 msgid "Icon Size:"
 msgstr ""
