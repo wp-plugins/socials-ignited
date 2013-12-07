@@ -34,8 +34,8 @@ function cisiw_options_page() {
 
 	?>
 	<div class="wrap">
-		<div id="icon-plugins" class="icon32"><br /></div><h2>Socials Ignited</h2>
-		<h3>by <a href="http://www.cssigniter.com">CSSIgniter</a></h3>
+		<div id="icon-plugins" class="icon32"><br /></div>
+		<?php echo sprintf( __('<h2>Socials Ignited</h2><h3>by <a href="%s">CSSIgniter</a></h3>', 'cisiw'), 'http://www.cssigniter.com' ); ?>
 		<p class="description"><?php _e('Just enter the URL for each social service you want to display. Then go to Widgets and drag the Socials Ignited widget to the sidebar(s) that you want. You will be able to select the icon set and sizes for each instance. Please note that not all icons are available in each set.', 'cisiw'); ?></p>
 		<p class="description"><?php _e('You may rearrange the services by grabbing a row from its empty area and dragging it to the desired position. Services without a URL will not be displayed.', 'cisiw'); ?></p>
 		<form method="post" action="options.php">
