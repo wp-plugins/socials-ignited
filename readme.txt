@@ -6,8 +6,8 @@ Author: The CSSigniter Team
 Contributors: anastis, tsiger, silencerius
 Tags: social, widget, icons, round, square, light, dark
 Requires at least: 3.3.3
-Tested up to: 3.6
-Stable tag: 1.1.2
+Tested up to: 3.7.1
+Stable tag: 1.2
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -58,9 +58,17 @@ As above. Let us know and we will consider it.
 3. Actual output
 
 == Upgrade Notice ==
-This version is recommended for users having responsive themes, and those who want to add their own icons.
+This version features more default icons and a few minor fixes.
 
 == Changelog ==
+
+= 1.2 =
+* Added 16x16 and 24x24 square icons.
+* Added button to reset custom order of icons.
+* Internationalized plugin's settings title.
+* Fixed an issue where a label would prompt for a "http://" on the Email field.
+* Added Path (path.com) icon.
+* Updated language files.
 
 = 1.1.2 =
 * Removed align attribute from img elements.
