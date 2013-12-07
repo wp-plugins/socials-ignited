@@ -86,6 +86,7 @@ function cisiw_get_services()
 		'netvibes'		=> _x('Netvibes', 'website name', 'cisiw'),
 		'newsvine'		=> _x('Newsvine', 'website name', 'cisiw'),
 		'orkut'			=> _x('Orkut', 'website name', 'cisiw'),
+		'path'			=> _x('Path', 'website name', 'cisiw'),		
 		'paypal'		=> _x('Paypal', 'website name', 'cisiw'),
 		'picasa' 		=> _x('Picasa', 'website name', 'cisiw'),
 		'pinterest' 	=> _x('Pinterest', 'website name', 'cisiw'),
@@ -100,7 +101,6 @@ function cisiw_get_services()
 		'technorati'	=> _x('Technorati', 'website name', 'cisiw'),
 		'tumblr'		=> _x('Tumblr', 'website name', 'cisiw'),
 		'twitter' 		=> _x('Twitter', 'website name', 'cisiw'),
-		'twitter_alt'	=> _x('Twitter (alternative icon)', 'website name', 'cisiw'),
 		'viddler'		=> _x('Viddler', 'website name', 'cisiw'),
 		'vimeo'			=> _x('Vimeo', 'website name', 'cisiw'),
 		'virb'			=> _x('Virb', 'website name', 'cisiw'),
@@ -127,7 +127,7 @@ function cisiw_get_icon_sets()
 			// Second level are the available variations
 			'default' => array(
 				// Third level are the available sizes for the specific variation.
-				'32', '48', '64'
+				'16', '24', '32', '48', '64'
 			)
 		),
 		'round' => array(
@@ -193,5 +193,14 @@ function cisiw_get_icon_path($icon)
 }
 endif;
 
+function cisiw_css() {
+	echo '<style type="text/css">';
+	echo '.ci-socials-ignited:before, .ci-socials-ignited:after { content: " "; display: table; }';
+	echo '.ci-socials-ignited:after { clear: both; }';
+	echo '.ci-socials-ignited a { float:left; margin:0 5px 5px 0; }';
+	echo '.ci-socials-ignited img { display:block; }';
+	echo '</style>';
+}
+add_filter('wp_head', 'cisiw_css');
 
 ?>

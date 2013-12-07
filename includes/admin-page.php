@@ -86,7 +86,12 @@ function cisiw_options_page() {
 										// So, this will run only once per icon set.
 										foreach($first_variation as $variation => $var_sizes)
 										{
-											$icon = $set.'/'.$variation.'/'.$var_sizes[0].'/'.$key.'.png';
+											if ($variation == 'default') {
+												$icon = $set.'/'.$variation.'/'.$var_sizes[2].'/'.$key.'.png';
+											}
+											else {
+												$icon = $set.'/'.$variation.'/'.$var_sizes[0].'/'.$key.'.png';
+											}
 
 											$icon_url = cisiw_get_icon_path($icon);
 
@@ -106,7 +111,9 @@ function cisiw_options_page() {
 							<td class="url">
 								<p>
 									<input id="cisiw_settings[<?php echo $cisiw_url; ?>]" name="cisiw_settings[<?php echo $cisiw_url; ?>]" type="text" value="<?php if (isset($cisiw_options[$cisiw_url])) { echo esc_attr($cisiw_options[$cisiw_url]); } ?>"/>
-									<label class="description" for="cisiw_settings[<?php echo $cisiw_url; ?>]"><?php _e('Enter your URL <em>(Include http://</em>)', 'cisiw'); ?></label>
+									<?php if($key!='email'): ?>
+										<label class="description" for="cisiw_settings[<?php echo $cisiw_url; ?>]"><?php _e('Enter your URL <em>(Include http://</em>)', 'cisiw'); ?></label>
+									<?php endif; ?>		
 									<?php 
 										if($key=='rss')
 										{
