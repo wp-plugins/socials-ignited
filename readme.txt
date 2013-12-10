@@ -7,7 +7,7 @@ Contributors: anastis, tsiger, silencerius
 Tags: social, widget, icons, round, square, light, dark
 Requires at least: 3.3.3
 Tested up to: 3.7.1
-Stable tag: 1.2
+Stable tag: 1.2.1
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -58,9 +58,12 @@ As above. Let us know and we will consider it.
 3. Actual output
 
 == Upgrade Notice ==
-This version features more default icons and a few minor fixes.
+This version fixes a minor stylistic issue.
 
 == Changelog ==
+
+= 1.2.1 =
+* Removed some styles that caused existing instances to show up wrongly.
 
 = 1.2 =
 * Added 16x16 and 24x24 square icons.
