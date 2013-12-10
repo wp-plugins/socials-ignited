@@ -193,14 +193,4 @@ function cisiw_get_icon_path($icon)
 }
 endif;
 
-function cisiw_css() {
-	echo '<style type="text/css">';
-	echo '.ci-socials-ignited:before, .ci-socials-ignited:after { content: " "; display: table; }';
-	echo '.ci-socials-ignited:after { clear: both; }';
-	echo '.ci-socials-ignited a { float:left; margin:0 5px 5px 0; }';
-	echo '.ci-socials-ignited img { display:block; }';
-	echo '</style>';
-}
-add_filter('wp_head', 'cisiw_css');
-
 ?>
