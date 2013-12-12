@@ -1,11 +1,20 @@
+.ci-socials-ignited {
+	line-height: 0;
+}
+
 .ci-socials-ignited img {
 	max-width: none !important;
 	min-width: 0 !important;
 }
 
-.ci-socials-ignited a:hover { 
-	transition: none; 
+.widget_ci_socials_ignited.widget a,
+.widget_ci_socials_ignited.widget a:visited,
+.widget_ci_socials_ignited.widget a:hover,
+.widget_ci_socials_ignited.widget a:focus {
+	transition: none;
 	border: none; 
 	background: none; 
-	text-decoration: none; 
+	text-decoration: none;
+	display: inline-block;
+	line-height: 0;
 }
