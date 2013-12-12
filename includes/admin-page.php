@@ -72,7 +72,6 @@ function cisiw_options_page() {
 				</thead>
 
 				<tbody>
-
 					<?php foreach($user_set as $key => $value): ?>
 						<?php $cisiw_url = $key . "_url"; ?>
 						<tr valign="top">
@@ -82,11 +81,11 @@ function cisiw_options_page() {
 										// Let's get the first variation available so that we'll have
 										// something to show on the settings screen.
 										$first_variation = array_slice($set_info, 0, 1, true);
-										
+
 										// So, this will run only once per icon set.
 										foreach($first_variation as $variation => $var_sizes)
 										{
-											if ($variation == 'default') {
+											if ($set == 'square' and $variation == 'default') {
 												$icon = $set.'/'.$variation.'/'.$var_sizes[2].'/'.$key.'.png';
 											}
 											else {
