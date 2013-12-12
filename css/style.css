@@ -1,4 +1,11 @@
-.ci-social-igniter img {
+.ci-socials-ignited img {
 	max-width: none !important;
 	min-width: 0 !important;
+}
+
+.ci-socials-ignited a:hover { 
+	transition: none; 
+	border: none; 
+	background: none; 
+	text-decoration: none; 
 }

@@ -147,6 +147,12 @@ function CI_SocialsIgnited_Action() {
 }
 add_action('widgets_init', 'CI_SocialsIgnited_Action');
 
+add_action('wp_enqueue_scripts', 'cisiw_widget_scripts');
+function cisiw_widget_scripts()
+{
+	wp_enqueue_style('socials-ignited', CISIW_PLUGIN_URL.'css/style.css');
+}
+
 add_action('admin_enqueue_scripts', 'cisiw_widget_admin_scripts');
 function cisiw_widget_admin_scripts()
 {
