@@ -5,9 +5,9 @@ Author URI: http://www.cssigniter.com/
 Author: The CSSigniter Team
 Contributors: anastis, tsiger, silencerius
 Tags: social, widget, icons, round, square, light, dark
-Requires at least: 3.3.3
-Tested up to: 3.7.1
-Stable tag: 1.2.1
+Requires at least: 3.5
+Tested up to: 3.8
+Stable tag: 1.3
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -57,10 +57,11 @@ As above. Let us know and we will consider it.
 2. Widget options
 3. Actual output
 
-== Upgrade Notice ==
-This version fixes a minor stylistic issue.
-
 == Changelog ==
+
+= 1.3 =
+* Added a Custom CSS option for easy customization, and in order to preserve custom styling betweet updates.
+* Updated language files.
 
 = 1.2.1 =
 * Removed some styles that caused existing instances to show up wrongly.
