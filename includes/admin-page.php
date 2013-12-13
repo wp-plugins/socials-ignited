@@ -7,6 +7,8 @@ function cisiw_options_page() {
 
 	$services = cisiw_get_services();
 
+	$cisiw_options['custom_css'] = empty($cisiw_options['custom_css']) ? '' : $cisiw_options['custom_css'];
+
 	// Create default empty values for services.
 	// It will be used to preserve user-ordering.
 	$defaults = array();
@@ -41,15 +43,30 @@ function cisiw_options_page() {
 		<form method="post" action="options.php">
  			<?php settings_fields('cisiw_settings_group'); ?>
 
-			<table class="form-table">
-				<thead>
+			<table class="form-table" id="cisiw-admin-options">
+				<tbody>
 					<tr>
 						<th scope="row"><label for="cisiw_settings[new_window]"><?php _e('Open links in a new window?', 'cisiw'); ?></label></th>
-						<td>
+						<td colspan="2">
 							<input id="cisiw_settings[new_window]" type="checkbox" name="cisiw_settings[new_window]" value="1" <?php isset($cisiw_options['new_window']) ? checked(1, $cisiw_options['new_window']) : '' ; ?> />
 						</td>
 					</tr>
-				</thead>
+					<tr>
+						<th scope="row"><label for="cisiw_settings[custom_css]"><?php _e('Custom CSS', 'cisiw'); ?></label></th>
+						<td>
+							<textarea id="cisiw_settings[custom_css]" name="cisiw_settings[custom_css]" rows="9" cols="80"><?php echo esc_textarea($cisiw_options['custom_css']); ?></textarea>
+							<?php
+								$sample_output = "<div class=\"widget_ci_socials_ignited widget\" id=\"ci_socials_ignited-6\">\n  <div class=\"ci-socials-ignited ci-socials-ignited-32\">\n    <a href=\"#\">\n      <img src=\"http://www.example.com/.../square/default/32/apple.png\">\n    </a>\n  </div>\n</div>";
+							?>
+						</td>
+						<td>
+							<?php _e('Sample widget HTML output:', 'cisiw'); ?>
+							<br>
+							<pre><?php echo esc_html($sample_output); ?></pre>
+						</td>
+					</tr>
+
+				</tbody>
 			</table>
 			<p></p>
 
@@ -131,13 +148,14 @@ function cisiw_options_page() {
 						<td colspan="4">
 							<p class="submit">
 								<input type="submit" class="button-primary" value="<?php _e('Save Options', 'cisiw'); ?>" />
-								<input type="submit" value="<?php _e('Reset custom order', 'cisiw'); ?>" class="button" id="cisiw-reset-order" name="cisiw-reset-order">
+								<input type="submit" value="<?php _e('Reset custom order', 'cisiw'); ?>" class="button" name="cisiw-reset-order">
 							</p>
 						</td>	
 					</tr>
 					
 				</tbody>
 			</table>
+
  		</form>
 	</div>
 	<?php

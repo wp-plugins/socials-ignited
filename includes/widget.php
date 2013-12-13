@@ -151,6 +151,12 @@ add_action('wp_enqueue_scripts', 'cisiw_widget_scripts');
 function cisiw_widget_scripts()
 {
 	wp_enqueue_style('socials-ignited', CISIW_PLUGIN_URL.'css/style.css');
+
+	$cisiw_options = get_option('cisiw_settings');
+	if( !empty( $cisiw_options['custom_css'] ) )
+	{
+		wp_add_inline_style('socials-ignited', $cisiw_options['custom_css']);
+	}
 }
 
 add_action('admin_enqueue_scripts', 'cisiw_widget_admin_scripts');

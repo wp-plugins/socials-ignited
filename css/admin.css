@@ -24,3 +24,7 @@
 #cisiw-admin-table th strong { 
 	position:relative; top:5px; 
 }
+
+#cisiw-admin-options textarea {
+	vertical-align: top;
+}
