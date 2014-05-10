@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Socials Ignited\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-07 22:07+0200\n"
-"PO-Revision-Date: 2013-12-07 22:07+0200\n"
+"POT-Creation-Date: 2014-05-10 14:49+0200\n"
+"PO-Revision-Date: 2014-05-10 14:49+0200\n"
 "Last-Translator: Anastis Sourgoutsidis <anastis@cssigniter.com>\n"
 "Language-Team: CSSIgniter LLC <info@cssigniter.com>\n"
 "Language: en_US\n"
@@ -16,10 +16,109 @@ msgstr ""
 "esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-Basepath: .\n"
 "X-Textdomain-Support: yes\n"
-"X-Generator: Poedit 1.6.1\n"
+"X-Generator: Poedit 1.6.5\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
+
+#: ../includes/admin-page.php:40
+#, php-format
+msgid "<h2>Socials Ignited</h2><h3>by <a href=\"%s\">CSSIgniter</a></h3>"
+msgstr ""
+
+#: ../includes/admin-page.php:41
+msgid ""
+"Just enter the URL for each social service you want to display. Then go to "
+"Widgets and drag the Socials Ignited widget to the sidebar(s) that you want. "
+"You will be able to select the icon set and sizes for each instance. Please "
+"note that not all icons are available in each set."
+msgstr ""
+
+#: ../includes/admin-page.php:42
+msgid ""
+"You may rearrange the services by grabbing a row from its empty area and "
+"dragging it to the desired position. Services without a URL will not be "
+"displayed."
+msgstr ""
+
+#: ../includes/admin-page.php:49
+msgid "Open links in a new window?"
+msgstr ""
+
+#: ../includes/admin-page.php:55
+msgid "Custom CSS"
+msgstr ""
+
+#: ../includes/admin-page.php:63
+msgid "Sample widget HTML output:"
+msgstr ""
+
+#: ../includes/admin-page.php:86
+msgctxt "social service name"
+msgid "Service name"
+msgstr ""
+
+#: ../includes/admin-page.php:87
+msgctxt "social service url value"
+msgid "Value"
+msgstr ""
+
+#: ../includes/admin-page.php:131
+msgid "Enter your URL <em>(Include http://</em>)"
+msgstr ""
+
+#: ../includes/admin-page.php:137 ../includes/admin-page.php:139
+msgid "Recommended value:"
+msgstr ""
+
+#: ../includes/admin-page.php:150
+msgid "Save Options"
+msgstr ""
+
+#: ../includes/admin-page.php:151
+msgid "Reset custom order"
+msgstr ""
+
+#: ../includes/admin-page.php:168
+msgid "Socials Ignited Widget Options"
+msgstr ""
+
+#: ../includes/admin-page.php:168
+msgctxt "plugin name"
+msgid "Socials Ignited"
+msgstr ""
+
+#: ../includes/widget.php:6
+msgid "Social Icons widget placeholder"
+msgstr ""
+
+#: ../includes/widget.php:82
+msgid ""
+"This widget is a placeholder for Social Media icons. You may configure those "
+"icons from <strong>Settings</strong> menu, <strong>Socials Ignited</strong> "
+"sub-menu, ."
+msgstr ""
+
+#: ../includes/widget.php:83
+msgid "Title:"
+msgstr ""
+
+#: ../includes/widget.php:96
+msgid "Icon set:"
+msgstr ""
+
+#: ../includes/widget.php:106
+msgid "Color Variation:"
+msgstr ""
+
+#: ../includes/widget.php:117
+msgid "Icon Size:"
+msgstr ""
+
+#: ../includes/widget.php:129
+msgid ""
+"Please save the widget first, in order to be able to choose more options."
+msgstr ""
 
 #: ../socials-ignited.php:57
 msgctxt "website name"
@@ -319,90 +418,4 @@ msgstr ""
 #: ../socials-ignited.php:147
 msgctxt "icons set name"
 msgid "Round"
-msgstr ""
-
-#: ../includes/admin-page.php:38
-#, php-format
-msgid "<h2>Socials Ignited</h2><h3>by <a href=\"%s\">CSSIgniter</a></h3>"
-msgstr ""
-
-#: ../includes/admin-page.php:39
-msgid ""
-"Just enter the URL for each social service you want to display. Then go to "
-"Widgets and drag the Socials Ignited widget to the sidebar(s) that you want. "
-"You will be able to select the icon set and sizes for each instance. Please "
-"note that not all icons are available in each set."
-msgstr ""
-
-#: ../includes/admin-page.php:40
-msgid ""
-"You may rearrange the services by grabbing a row from its empty area and "
-"dragging it to the desired position. Services without a URL will not be "
-"displayed."
-msgstr ""
-
-#: ../includes/admin-page.php:47
-msgid "Open links in a new window?"
-msgstr ""
-
-#: ../includes/admin-page.php:69
-msgctxt "social service name"
-msgid "Service name"
-msgstr ""
-
-#: ../includes/admin-page.php:70
-msgctxt "social service url value"
-msgid "Value"
-msgstr ""
-
-#: ../includes/admin-page.php:115
-msgid "Enter your URL <em>(Include http://</em>)"
-msgstr ""
-
-#: ../includes/admin-page.php:121 ../includes/admin-page.php:123
-msgid "Recommended value:"
-msgstr ""
-
-#: ../includes/admin-page.php:134
-msgid "Save Options"
-msgstr ""
-
-#: ../includes/admin-page.php:135
-msgid "Reset custom order"
-msgstr ""
-
-#: ../includes/admin-page.php:151
-msgid "Socials Ignited Widget Options"
-msgstr ""
-
-#: ../includes/admin-page.php:151
-msgctxt "plugin name"
-msgid "Socials Ignited"
-msgstr ""
-
-#: ../includes/widget.php:6
-msgid "Social Icons widget placeholder"
-msgstr ""
-
-#: ../includes/widget.php:80
-msgid ""
-"This widget is a placeholder for Social Media icons. You may configure those "
-"icons from <strong>Settings</strong> menu, <strong>Socials Ignited</strong> "
-"sub-menu, ."
-msgstr ""
-
-#: ../includes/widget.php:81
-msgid "Title:"
-msgstr ""
-
-#: ../includes/widget.php:94
-msgid "Icon set:"
-msgstr ""
-
-#: ../includes/widget.php:103
-msgid "Color Variation:"
-msgstr ""
-
-#: ../includes/widget.php:114
-msgid "Icon Size:"
 msgstr ""

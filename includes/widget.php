@@ -10,7 +10,7 @@ class CI_Socials_Ignited extends WP_Widget {
 
 	function widget($args, $instance) {
 		extract($args);
-		$title = $instance['title'];
+		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
 		$icon_set = isset($instance['icon_set']) ? $instance['icon_set'] : 'square';
 		$variation = isset($instance['variation']) ? $instance['variation'] : 'default';
 		$size = isset($instance['size']) ? $instance['size'] : '32';
@@ -63,22 +63,24 @@ class CI_Socials_Ignited extends WP_Widget {
 
 	function update($new_instance, $old_instance){
 		$instance = $old_instance;
-		$instance['title'] = htmlspecialchars($new_instance['title']);
-		$instance['icon_set'] = htmlspecialchars($new_instance['icon_set']);
-		$instance['variation'] = htmlspecialchars($new_instance['variation']);
-		$instance['size'] = intval($new_instance['size']);
+		$instance['title'] = sanitize_text_field($new_instance['title']);
+		$instance['icon_set'] = sanitize_key($new_instance['icon_set']);
+		$instance['variation'] = sanitize_key($new_instance['variation']);
+		$instance['size'] = sanitize_key($new_instance['size']);
 		return $instance;
 	} // save
 	
 	function form($instance){
-		$instance = wp_parse_args( (array) $instance, array('title'=>'', 'size'=>32, 'icon_set'=>'square', 'variation'=>'default') );
-		$title = htmlspecialchars($instance['title']);
-		$icon_set = htmlspecialchars($instance['icon_set']);
-		$variation = htmlspecialchars($instance['variation']);
-		$size = intval($instance['size']);
+		$instance = wp_parse_args( (array) $instance, array(
+			'title' => '',
+			'size' => 32,
+			'icon_set' => 'square',
+			'variation' => 'default'
+		));
+		extract($instance);
 
 		echo '<p>'.__('This widget is a placeholder for Social Media icons. You may configure those icons from <strong>Settings</strong> menu, <strong>Socials Ignited</strong> sub-menu, .', 'cisiw').'</p>';
-		echo '<p><label>' . __('Title:', 'cisiw') . '</label><input id="' . $this->get_field_id('title') . '" name="' . $this->get_field_name('title') . '" type="text" value="' . esc_attr($title) . '" class="widefat" /></p>';
+		echo '<p><label for="'.$this->get_field_id('title').'">' . __('Title:', 'cisiw') . '</label><input id="' . $this->get_field_id('title') . '" name="' . $this->get_field_name('title') . '" type="text" value="' . esc_attr($title) . '" class="widefat" /></p>';
 		?>
 		
 
@@ -91,38 +93,41 @@ class CI_Socials_Ignited extends WP_Widget {
 			$icon_set_paths = cisiw_get_lookup_paths();
 		?>
 		<p>
-			<label><?php _e('Icon set:', 'cisiw'); ?></label>
+			<label for="<?php echo $this->get_field_id('icon_set'); ?>"><?php _e('Icon set:', 'cisiw'); ?></label>
 			<select name="<?php echo $this->get_field_name('icon_set'); ?>" class="widefat" id="<?php echo $this->get_field_id('icon_set'); ?>">
 				<?php foreach($icon_set_names as $set => $name): ?>
 					<option value="<?php echo $set; ?>" <?php selected($set, $icon_set); ?>><?php echo $name; ?></option>
 				<?php endforeach; ?>
 			</select>
 		</p>
-		
-		<p>
-			<label><?php _e('Color Variation:', 'cisiw'); ?></label>
-			<select name="<?php echo $this->get_field_name('variation'); ?>" class="widefat" id="<?php echo $this->get_field_id('variation'); ?>">
-				<?php foreach($icon_sets as $set => $variations): ?>
-					<?php foreach($variations as $var => $sizes): ?>
-						<option class="<?php echo $set; ?>" value="<?php echo $var; ?>" <?php selected($set.$var, $icon_set.$variation); ?>><?php echo $var; ?></option>
-					<?php endforeach; ?>
-				<?php endforeach; ?>
-			</select>
-		</p>
-		
-		<p>
-			<label><?php _e('Icon Size:', 'cisiw'); ?></label>
-			<select name="<?php echo $this->get_field_name('size'); ?>" class="widefat" id="<?php echo $this->get_field_id('size'); ?>">
-				<?php foreach($icon_sets as $set => $variations): ?>
-					<?php foreach($variations as $var => $sizes): ?>
-						<?php foreach($sizes as $s): ?>
-							<option class="<?php echo $set.'\\'.$var; ?>" value="<?php echo $s; ?>" <?php selected($set.$var.$s, $icon_set.$variation.$size); ?>><?php echo $s.'x'.$s; ?></option>
+
+		<?php if($this->number != '__i__'): ?>
+			<p>
+				<label for="<?php echo $this->get_field_id('variation'); ?>"><?php _e('Color Variation:', 'cisiw'); ?></label>
+				<select name="<?php echo $this->get_field_name('variation'); ?>" class="widefat" id="<?php echo $this->get_field_id('variation'); ?>">
+					<?php foreach($icon_sets as $set => $variations): ?>
+						<?php foreach($variations as $var => $sizes): ?>
+							<option class="<?php echo $set; ?>" value="<?php echo $var; ?>" <?php selected($set.$var, $icon_set.$variation); ?>><?php echo $var; ?></option>
 						<?php endforeach; ?>
 					<?php endforeach; ?>
-				<?php endforeach; ?>
-			</select>
-		</p>
-		
+				</select>
+			</p>
+
+			<p>
+				<label for="<?php echo $this->get_field_id('size'); ?>"><?php _e('Icon Size:', 'cisiw'); ?></label>
+				<select name="<?php echo $this->get_field_name('size'); ?>" class="widefat" id="<?php echo $this->get_field_id('size'); ?>">
+					<?php foreach($icon_sets as $set => $variations): ?>
+						<?php foreach($variations as $var => $sizes): ?>
+							<?php foreach($sizes as $s): ?>
+								<option class="<?php echo $set.'\\'.$var; ?>" value="<?php echo $s; ?>" <?php selected($set.$var.$s, $icon_set.$variation.$size); ?>><?php echo $s.'x'.$s; ?></option>
+							<?php endforeach; ?>
+						<?php endforeach; ?>
+					<?php endforeach; ?>
+				</select>
+			</p>
+		<?php else: ?>
+			<p><?php _e('Please save the widget first, in order to be able to choose more options.', 'ci_theme'); ?></p>
+		<?php endif; ?>
 		<?php
 			$var_id = '#'.$this->get_field_id('variation');
 			$icon_id = '#'.$this->get_field_id('icon_set');
@@ -131,11 +136,11 @@ class CI_Socials_Ignited extends WP_Widget {
 
 		<script type="text/javascript">
 			jQuery(document).ready(function($) {
-				$("<?php echo $var_id; ?>").chainedTo("<?php echo $icon_id; ?>");
-				$("<?php echo $size_id; ?>").chainedTo("<?php echo $icon_id; ?>, <?php echo $var_id; ?>");
+				jQuery("<?php echo $var_id; ?>").chainedTo("<?php echo $icon_id; ?>");
+				jQuery("<?php echo $size_id; ?>").chainedTo("<?php echo $icon_id; ?>, <?php echo $var_id; ?>");
 			});
 		</script>
-		
+
 		<?php
 		
 	} // form
@@ -164,10 +169,10 @@ function cisiw_widget_admin_scripts()
 {
 	global $pagenow;
 	
-	if($pagenow=='widgets.php')
+	if( in_array($pagenow, array('widgets.php', 'customize.php')) )
 	{
-		wp_enqueue_script('jquery-chained', CISIW_PLUGIN_URL.'js/jquery.chained.js', array('jquery'), '0.9.3' );
-		wp_enqueue_script('cisiw-widget-admin', CISIW_PLUGIN_URL.'js/admin_widget.js', array('jquery-chained') );
+		wp_enqueue_script('jquery-chained', CISIW_PLUGIN_URL.'js/jquery.chained.js', array('jquery'), '0.9.10' );
+		//wp_enqueue_script('cisiw-widget-admin', CISIW_PLUGIN_URL.'js/admin_widget.js', array('jquery-chained') );
 	}
 }
 

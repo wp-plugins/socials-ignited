@@ -6,7 +6,7 @@ Author: The CSSigniter Team
 Contributors: anastis, tsiger, silencerius
 Tags: social, widget, icons, round, square, light, dark
 Requires at least: 3.5
-Tested up to: 3.8
+Tested up to: 3.9.1
 Stable tag: 1.3
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -59,6 +59,16 @@ As above. Let us know and we will consider it.
 
 == Changelog ==
 
+= 1.4 =
+* Fixed an issue where the Customizer screen would not work because jquery.chained.js wasn’t loaded.
+* Updated jquery.chained.js to v0.9.10.
+* Worked around an issue where the chained dropdowns wouldn’t work before Save was pressed.
+* Added more round dark icons (addthis, amazon_alt, behance, soundcloud).
+* Improved sanitization.
+* Labels are now properly associated to fields.
+* Title now goes through the widget_title filter.
+* Updated language files.
+
 = 1.3 =
 * Added a Custom CSS option for easy customization, and in order to preserve custom styling betweet updates.
 * Updated language files.
@@ -91,5 +101,4 @@ As above. Let us know and we will consider it.
 
 == To do ==
 
-* Allow CSS styling from within options (or widget?) so that CSS isn't lost between updates.
 * Set base margin - padding from options to apply to all widget instances.
