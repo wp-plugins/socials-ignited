@@ -9,6 +9,7 @@ class CI_Socials_Ignited_FontAwesome extends WP_Widget {
 		$widget_ops = array('description' => __('Social Icons widget, FontAwesome edition','cisiw'));
 		$control_ops = array(/*'width' => 300, 'height' => 400*/);
 		parent::WP_Widget('ci_socials_ignited_fontawesome', $name='-= CI Socials Ignited =-', $widget_ops, $control_ops);
+		add_action('wp_enqueue_scripts', array($this, 'enqueue_css'));
 	}
 
 	function widget($args, $instance)
@@ -16,11 +17,6 @@ class CI_Socials_Ignited_FontAwesome extends WP_Widget {
 		extract($args);
 		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
 
-		$cisiw_options = get_option('cisiw_settings');
-		$cisiw_options = $cisiw_options !== false ? $cisiw_options : array();
-
-		$color = !empty($instance['color']) ? $instance['color'] : $cisiw_options['f_color'];
-		$size = !empty($instance['size']) ? $instance['size'] : $cisiw_options['f_size'];
 		$new_win = $instance['new_win']=='on' ? ' target="_blank" ' : '';
 		$icons = !empty($instance['icons']) ? $instance['icons'] : array();
 
@@ -40,22 +36,14 @@ class CI_Socials_Ignited_FontAwesome extends WP_Widget {
 				$title = esc_attr($icons[$i + 2]);
 				$title = !empty($title) ? ' title="'.$title.'" ' : '';
 
-				if(!empty($url))
-					echo '<a href="'.$url.'" '.$new_win.'>';
-
-				echo '<i class="fa '.$code.'" '.$title.'></i>';
-
-				if(!empty($url))
-					echo '</a>';
+				echo '<a href="'.$url.'" '.$new_win.'><i class="fa '.$code.'" '.$title.'></i></a>';
 			}
 		}
-
-		$widget_style = '#'.$widget_id.' a i { color: '.$color.'; font-size: '.$size.'px;  }';
-		wp_add_inline_style('socials-ignited', $widget_style);
 
 		echo "</div>";
 
 		echo $after_widget;
+
 	} // widget
 
 	function update($new_instance, $old_instance){
@@ -92,22 +80,6 @@ class CI_Socials_Ignited_FontAwesome extends WP_Widget {
 			{
 				?>
 				<div class="cisiw-icon">
-<!--					<label>--><?php //_e('Icon:', 'ci_theme'); ?>
-<!--						<select name="--><?php //echo $this->get_field_name('icons'); ?><!--[]">-->
-<!--							--><?php
-//								$icon_options = array(
-//									'fa-deviantart' => 'Deviant Art',
-//									'fa-reddit' => 'Reddit',
-//									'fa-soundcloud' => 'SoundCloud',
-//									'fa-wordpress' => 'WordPress',
-//								);
-//								foreach($icon_options as $code => $name )
-//								{
-//									echo '<option value="'.$code.'" '. selected($code, $icons[$i], false) .'>'.$name.'</option>';
-//								}
-//							?>
-<!--						</select>-->
-<!--					</label>-->
 					<label><?php _e('Icon code:', 'ci_theme'); ?> <input type="text" class="widefat" name="<?php echo $this->get_field_name('icons'); ?>[]" value="<?php echo esc_attr($icons[$i]); ?>" /></label>
 					<label><?php _e('Link URL:', 'ci_theme'); ?> <input type="text" class="widefat" name="<?php echo $this->get_field_name('icons'); ?>[]" value="<?php echo esc_attr($icons[$i+1]); ?>" /></label>
 					<label><?php _e('Title text (optional):', 'ci_theme'); ?> <input type="text" class="widefat" name="<?php echo $this->get_field_name('icons'); ?>[]" value="<?php echo esc_attr($icons[$i+2]); ?>" /></label>
@@ -122,6 +94,20 @@ class CI_Socials_Ignited_FontAwesome extends WP_Widget {
 
 	} // form
 
+	function enqueue_css()
+	{
+		$instance = $this->get_settings();
+		$instance = $instance[$this->number];
+		$cisiw_options = get_option('cisiw_settings');
+		$cisiw_options = $cisiw_options !== false ? $cisiw_options : array();
+
+		$color = !empty($instance['color']) ? $instance['color'] : $cisiw_options['f_color'];
+		$size = !empty($instance['size']) ? $instance['size'] : $cisiw_options['f_size'];
+
+		$widget_style = '#'.$this->id.' a { color: '.$color.'; font-size: '.$size.'px;  }';
+		wp_add_inline_style('socials-ignited', $widget_style);
+
+	}
 } // class
 
 function CI_SocialsIgnited_FontAwesome_Action() {
