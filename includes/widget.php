@@ -11,7 +11,8 @@ class CI_Socials_Ignited_FontAwesome extends WP_Widget {
 		parent::WP_Widget('ci_socials_ignited_fontawesome', $name='-= CI Socials Ignited =-', $widget_ops, $control_ops);
 	}
 
-	function widget($args, $instance) {
+	function widget($args, $instance)
+	{
 		extract($args);
 		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
 
@@ -31,34 +32,26 @@ class CI_Socials_Ignited_FontAwesome extends WP_Widget {
 
 		if( !empty($icons) )
 		{
-			$icon_num = 0; // Helps count actual icons (instead of increments of field groups, i.e. 6)
-			$icon_no = 1;
 			for( $i = 0; $i < count($icons); $i+=3 )
 			{
-				$icon_num++;
-				$icon_id = $widget_id . '_' . $icon_num;
 
-				$i_code = esc_attr($icons[$i]);
-				$i_url = esc_url($icons[$i + 1]);
-				$i_title = esc_attr($icons[$i + 2]);
+				$code = esc_attr($icons[$i]);
+				$url = esc_url($icons[$i + 1]);
+				$title = esc_attr($icons[$i + 2]);
+				$title = !empty($title) ? ' title="'.$title.'" ' : '';
 
-				$title = !empty($i_title) ? ' title="'.$i_title.'" ' : '';
+				if(!empty($url))
+					echo '<a href="'.$url.'" '.$new_win.'>';
 
-//				?>
-<!--				<a href=""><i class=""></i></a>-->
-<!--				<li class="group icon" id="player---><?php //echo $icon_id; ?><!--">-->
-<!--					<a href="--><?php //echo esc_url($tracks[$i_play]); ?><!--" class="sm2_link"><span class="track-no">--><?php //echo $icon_no; $icon_no++;?><!--</span><i class="fa fa-play"></i></a>-->
-<!---->
-<!--					<h5>--><?php //echo $tracks[$i_subtitle]; ?><!--</h5>-->
-<!---->
-<!--					--><?php //if(!empty($tracks[$i_subtitle])): ?>
-<!--						<h4>--><?php //echo $tracks[$i_title]; ?><!--</h4>-->
-<!--					--><?php //endif; ?>
-<!--				</li>-->
-<!--				--><?php
+				echo '<i class="fa '.$code.'" '.$title.'></i>';
+
+				if(!empty($url))
+					echo '</a>';
 			}
 		}
 
+		$widget_style = '#'.$widget_id.' a i { color: '.$color.'; font-size: '.$size.'px;  }';
+		wp_add_inline_style('socials-ignited', $widget_style);
 
 		echo "</div>";
 
@@ -203,7 +196,7 @@ class CI_Socials_Ignited extends WP_Widget {
 		}
 
 		echo "</div>";
-		
+
 		echo $after_widget;
 	} // widget
 
@@ -308,6 +301,11 @@ endif; //class_exists
 add_action('wp_enqueue_scripts', 'cisiw_widget_scripts');
 function cisiw_widget_scripts()
 {
+	if(is_active_widget('', '', 'ci_socials_ignited_fontawesome'))
+	{
+		wp_enqueue_style('font-awesome', CISIW_PLUGIN_URL.'css/font-awesome.css', array(), '4.1.0');
+	}
+
 	wp_enqueue_style('socials-ignited', CISIW_PLUGIN_URL.'css/style.css');
 
 	$cisiw_options = get_option('cisiw_settings');
