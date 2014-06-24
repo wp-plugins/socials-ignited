@@ -1,11 +1,119 @@
 <?php 
+//
+// Font widget
+//
+if( !class_exists('CI_Socials_Ignited_FontAwesome') ):
+class CI_Socials_Ignited_FontAwesome extends WP_Widget {
+
+	function CI_Socials_Ignited_FontAwesome(){
+		$widget_ops = array('description' => __('Social Icons widget, FontAwesome edition','cisiw'));
+		$control_ops = array(/*'width' => 300, 'height' => 400*/);
+		parent::WP_Widget('ci_socials_ignited_fontawesome', $name='-= CI Socials Ignited =-', $widget_ops, $control_ops);
+	}
+
+	function widget($args, $instance) {
+		extract($args);
+		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
+
+		$cisiw_options = get_option('cisiw_settings');
+		$cisiw_options = $cisiw_options !== false ? $cisiw_options : array();
+
+		$color = !empty($instance['color']) ? $instance['color'] : $cisiw_options['f_color'];
+		$size = !empty($instance['size']) ? $instance['size'] : $cisiw_options['f_size'];
+
+
+		echo $before_widget;
+		if ($title) echo $before_title . $title . $after_title;
+
+		$new_window = "";
+		$target = "";
+
+		if (!empty($cisiw_options['new_window']) and $cisiw_options['new_window']==1)
+			$new_window = true;
+
+		if ($new_window)
+			$target = "target='_blank'";
+
+		echo '<div class="ci-socials-ignited ci-socials-ignited-'. esc_attr($size) .'">';
+
+		$names = cisiw_get_services();
+
+		foreach($cisiw_options as $option => $value)
+		{
+			// Make sure the current option is a social service
+			if(substr($option, -4)=='_url')
+			{
+				$key = str_replace('_url', '', $option);
+
+				if(!empty($value))
+				{
+					$icon = $icon_set.'/'.$variation.'/'.$size.'/'.$key.'.png';
+
+					$icon_url = cisiw_get_icon_path($icon);
+
+					if($icon_url!==false)
+					{
+						echo '<a href="'. esc_url($value) .'" '. $target .'><img alt="' . $names[$key] . '" src="' . $icon_url . '"/></a>'."\n";
+					}
+
+				}
+			}
+		}
+
+		echo "</div>";
+
+		echo $after_widget;
+	} // widget
+
+	function update($new_instance, $old_instance){
+		$instance = $old_instance;
+		$instance['title'] = sanitize_text_field($new_instance['title']);
+		$instance['color'] = ci_sanitize_hex_color($new_instance['color']);
+		$instance['size']  = absint_or_empty($new_instance['size']);
+		return $instance;
+	} // save
+
+	function form($instance){
+		$instance = wp_parse_args( (array) $instance, array(
+			'title' => '',
+			'color' => '',
+			'size' => '',
+			'new_win' => ''
+		));
+		extract($instance);
+
+		?>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'cisiw'); ?></label><input id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" class="widefat" /></p>
+		<p><label for="<?php echo $this->get_field_id('color'); ?>"><?php _e('Color:', 'cisiw'); ?></label><input id="<?php echo $this->get_field_id('color'); ?>" name="<?php echo $this->get_field_name('color'); ?>" type="text" value="<?php echo esc_attr($color); ?>" class="colorpckr widefat" /></p>
+		<p><label for="<?php echo $this->get_field_id('size'); ?>"><?php _e('Size:', 'cisiw'); ?></label><input id="<?php echo $this->get_field_id('size'); ?>" name="<?php echo $this->get_field_name('size'); ?>" type="number" value="<?php echo esc_attr($size); ?>" class="widefat" /></p>
+		<p><label><input id="<?php echo $this->get_field_id('new_win'); ?>" name="<?php echo $this->get_field_name('new_win'); ?>" type="checkbox" value="on" <?php checked('on', $new_win); ?> /><?php _e('Open in new window', 'cisiw'); ?></label></p>
+		<?php
+
+	} // form
+
+} // class
+
+function CI_SocialsIgnited_FontAwesome_Action() {
+	register_widget('CI_Socials_Ignited_FontAwesome');
+}
+add_action('widgets_init', 'CI_SocialsIgnited_FontAwesome_Action');
+
+endif; //class_exists
+
+
+
+
+
+//
+// Image widget
+//
 if( !class_exists('CI_Socials_Ignited') ):
 class CI_Socials_Ignited extends WP_Widget {
 
 	function CI_Socials_Ignited(){
-		$widget_ops = array('description' => __('Social Icons widget placeholder','cisiw'));
+		$widget_ops = array('description' => __('Social Icons widget placeholder (deprecated)','cisiw'));
 		$control_ops = array(/*'width' => 300, 'height' => 400*/);
-		parent::WP_Widget('ci_socials_ignited', $name='-= CI Socials Ignited =-', $widget_ops, $control_ops);
+		parent::WP_Widget('ci_socials_ignited', $name='Socials Ignited (deprecated)', $widget_ops, $control_ops);
 	}
 
 	function widget($args, $instance) {
@@ -79,7 +187,8 @@ class CI_Socials_Ignited extends WP_Widget {
 		));
 		extract($instance);
 
-		echo '<p>'.__('This widget is a placeholder for Social Media icons. You may configure those icons from <strong>Settings</strong> menu, <strong>Socials Ignited</strong> sub-menu, .', 'cisiw').'</p>';
+		echo '<p>'.__('This widget is now deprecated and it will be removed ina future plugin update. Please use the <strong>-= CI Socials Ignited =-</strong> widget instead.', 'cisiw').'</p>';
+		echo '<p>'.__('This widget is a placeholder for Social Media icons. You may configure those icons from <strong>Settings</strong> menu, <strong>Socials Ignited</strong> sub-menu.', 'cisiw').'</p>';
 		echo '<p><label for="'.$this->get_field_id('title').'">' . __('Title:', 'cisiw') . '</label><input id="' . $this->get_field_id('title') . '" name="' . $this->get_field_name('title') . '" type="text" value="' . esc_attr($title) . '" class="widefat" /></p>';
 		?>
 		
@@ -152,6 +261,12 @@ function CI_SocialsIgnited_Action() {
 }
 add_action('widgets_init', 'CI_SocialsIgnited_Action');
 
+endif; //class_exists
+
+
+
+
+
 add_action('wp_enqueue_scripts', 'cisiw_widget_scripts');
 function cisiw_widget_scripts()
 {
@@ -168,13 +283,13 @@ add_action('admin_enqueue_scripts', 'cisiw_widget_admin_scripts');
 function cisiw_widget_admin_scripts()
 {
 	global $pagenow;
-	
+
 	if( in_array($pagenow, array('widgets.php', 'customize.php')) )
 	{
+		wp_enqueue_style( 'wp-color-picker' );
+		wp_enqueue_script( 'wp-color-picker' );
 		wp_enqueue_script('jquery-chained', CISIW_PLUGIN_URL.'js/jquery.chained.js', array('jquery'), '0.9.10' );
-		//wp_enqueue_script('cisiw-widget-admin', CISIW_PLUGIN_URL.'js/admin_widget.js', array('jquery-chained') );
+		wp_enqueue_script('cisiw-widget-admin', CISIW_PLUGIN_URL.'js/admin_widget.js', array('jquery-chained') );
 	}
 }
-
-endif; //class_exists
 ?>

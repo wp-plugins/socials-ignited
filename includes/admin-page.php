@@ -34,15 +34,58 @@ function cisiw_options_page() {
 	}
 	// At this point we should have a complete, sorted and clean array of services and values.
 
+
+	// Let's initialize the rest of the values.
+	$cisiw_options['f_color'] = !empty($cisiw_options['f_color']) ? $cisiw_options['f_color'] : '#000000';
+	$cisiw_options['f_size'] = !empty($cisiw_options['f_size']) ? $cisiw_options['f_size'] : 32;
+
 	?>
 	<div class="wrap">
-		<div id="icon-plugins" class="icon32"><br /></div>
 		<?php echo sprintf( __('<h2>Socials Ignited</h2><h3>by <a href="%s">CSSIgniter</a></h3>', 'cisiw'), 'http://www.cssigniter.com' ); ?>
-		<p class="description"><?php _e('Just enter the URL for each social service you want to display. Then go to Widgets and drag the Socials Ignited widget to the sidebar(s) that you want. You will be able to select the icon set and sizes for each instance. Please note that not all icons are available in each set.', 'cisiw'); ?></p>
-		<p class="description"><?php _e('You may rearrange the services by grabbing a row from its empty area and dragging it to the desired position. Services without a URL will not be displayed.', 'cisiw'); ?></p>
 		<form method="post" action="options.php">
  			<?php settings_fields('cisiw_settings_group'); ?>
 
+			<h3><?php _e('Font widget settings', 'cisiw'); ?></h3>
+			<table class="form-table" id="cisiw-fontwidget-options">
+				<tbody>
+					<tr>
+						<th scope="row"><label for="cisiw_settings[f_color]"><?php _e('Default color', 'cisiw'); ?></label></th>
+						<td colspan="2">
+							<input id="cisiw_settings[f_color]" type="text" name="cisiw_settings[f_color]" value="<?php echo esc_attr($cisiw_options['f_color']); ?>" class="colorpckr" />
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"><label for="cisiw_settings[f_size]"><?php _e('Default size', 'cisiw'); ?></label></th>
+						<td colspan="2">
+							<input id="cisiw_settings[f_size]" type="number" name="cisiw_settings[f_size]" value="<?php echo esc_attr($cisiw_options['f_size']); ?>" />
+						</td>
+					</tr>
+<!--					<tr>-->
+<!--						<th scope="row"><label for="cisiw_settings[custom_css]">--><?php //_e('Custom CSS', 'cisiw'); ?><!--</label></th>-->
+<!--						<td>-->
+<!--							<textarea id="cisiw_settings[custom_css]" name="cisiw_settings[custom_css]" rows="9" cols="80">--><?php //echo esc_textarea($cisiw_options['custom_css']); ?><!--</textarea>-->
+<!--							--><?php
+//								$sample_output = "<div class=\"widget_ci_socials_ignited widget\" id=\"ci_socials_ignited-6\">\n  <div class=\"ci-socials-ignited ci-socials-ignited-32\">\n    <a href=\"#\">\n      <img src=\"http://www.example.com/.../square/default/32/apple.png\">\n    </a>\n  </div>\n</div>";
+//							?>
+<!--						</td>-->
+<!--						<td>-->
+<!--							--><?php //_e('Sample widget HTML output:', 'cisiw'); ?>
+<!--							<br>-->
+<!--							<pre>--><?php //echo esc_html($sample_output); ?><!--</pre>-->
+<!--						</td>-->
+<!--					</tr>-->
+					<tr>
+						<td colspan="4">
+							<p class="submit">
+								<input type="submit" class="button-primary" value="<?php _e('Save Options', 'cisiw'); ?>" />
+							</p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<p></p>
+
+			<h3><?php _e('Image widget settings (deprecated)', 'cisiw'); ?></h3>
 			<table class="form-table" id="cisiw-admin-options">
 				<tbody>
 					<tr>
@@ -69,6 +112,8 @@ function cisiw_options_page() {
 				</tbody>
 			</table>
 			<p></p>
+			<p class="description"><?php _e('Just enter the URL for each social service you want to display. Then go to Widgets and drag the Socials Ignited widget to the sidebar(s) that you want. You will be able to select the icon set and sizes for each instance. Please note that not all icons are available in each set.', 'cisiw'); ?></p>
+			<p class="description"><?php _e('You may rearrange the services by grabbing a row from its empty area and dragging it to the desired position. Services without a URL will not be displayed.', 'cisiw'); ?></p>
 
 			<table class="form-table" id="cisiw-admin-table">
 				<thead>
@@ -201,6 +246,7 @@ function cisiw_validate_settings($input) {
 		return $defaults;
 	}
 
+	if(isset($input['f_color'])) $input['f_color'] = ci_sanitize_hex_color($input['f_color']);
 	return $input;
 }
 endif;
@@ -212,6 +258,10 @@ function cisiw_enqueue_admin_scripts()
 	global $pagenow;
 	if($pagenow=='options-general.php' and isset($_GET['page']) and $_GET['page']=='cisiw-options')
 	{
+		wp_enqueue_style( 'wp-color-picker' );
+		wp_enqueue_script( 'wp-color-picker' );
+
+
 		wp_enqueue_style('cisiw-admin', CISIW_PLUGIN_URL.'css/admin.css');
 		
 		wp_enqueue_script('jquery');

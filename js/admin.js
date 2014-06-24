@@ -12,4 +12,27 @@ jQuery(document).ready(function($) {
 			return $helper;
 		}
 	});
+
+
+	//
+	// ColorPickers
+	//
+	if( typeof($.fn.ColorPicker) === 'function' ){
+		$('.colorpckr').ColorPicker({
+			onSubmit: function(hsb, hex, rgb, el) {
+				$(el).val('#'+hex);
+				$(el).ColorPickerHide();
+			},
+			onBeforeShow: function () {
+				$(this).ColorPickerSetColor(this.value);
+			}
+		}).bind('keyup', function(){
+			$(this).ColorPickerSetColor(this.value);
+		});
+	}
+
+	if( typeof($.fn.wpColorPicker) === 'function' ){
+		$('.colorpckr').wpColorPicker();
+	}
+
 });

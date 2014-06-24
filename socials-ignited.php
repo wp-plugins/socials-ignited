@@ -193,4 +193,79 @@ function cisiw_get_icon_path($icon)
 }
 endif;
 
+if ( !function_exists('ci_sanitize_hex_color') ):
+/**
+ * Returns a sanitized hex color code.
+ *
+ * @param string $str The color string to be sanitized.
+ * @param bool $return_hash Whether to return the color code prepended by a hash.
+ * @param string $return_fail The value to return on failure.
+ * @return string A valid hex color code on success, an empty string on failure.
+ */
+function ci_sanitize_hex_color($str, $return_hash = true, $return_fail = '')
+{
+	$str_limit = 6;
+
+	if($return_hash)
+	{
+		$str_limit = 7;
+		if(substr($str, 0, 1)!='#')
+		{
+			$str = '#' . $str;
+		}
+	}
+
+	$str = substr($str, 0, $str_limit);
+
+	$matches = array();
+	/*
+	 * Examples on success:
+	 * $matches = array(
+	 * 		[0] => #1a2b3c
+	 * 		[1] => #
+	 * 		[2] => 1a2b3c
+	 * )
+	 *
+	 * $matches = array(
+	 * 		[0] => 1a2b3c
+	 * 		[1] =>
+	 * 		[2] => 1a2b3c
+	 * )
+	 *
+	 */
+	preg_match('/(#?)([0-9a-fA-F]{6})/', $str, $matches);
+
+	if(count($matches) == 3)
+	{
+		if($return_hash)
+			return $matches[1] . $matches[2];
+		else
+			return $matches[2];
+	}
+	else
+	{
+		return $return_fail;
+	}
+}
+endif;
+
+if( !function_exists('absint_or_empty')):
+/**
+ * Return a positive integer value, or an empty string instead of zero.
+ *
+ * @uses absint()
+ *
+ * @param mixed $value A value to convert to integer.
+ * @return Empty string on zero, or a positive integer.
+ */
+function absint_or_empty($value)
+{
+	$value = absint($value);
+	if($value == 0)
+		return '';
+	else
+		return $value;
+}
+endif;
+
 ?>
