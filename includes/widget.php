@@ -312,6 +312,7 @@ function cisiw_widget_admin_scripts()
 		wp_enqueue_script( 'wp-color-picker' );
 		wp_enqueue_script('jquery-chained', CISIW_PLUGIN_URL.'js/jquery.chained.js', array('jquery'), '0.9.10' );
 		wp_enqueue_script('cisiw-widget-admin', CISIW_PLUGIN_URL.'js/admin_widget.js', array('jquery-chained') );
+		wp_enqueue_style('cisiw-widget-admin', CISIW_PLUGIN_URL.'css/admin_widget.css');
 
 		$params['icon_code'] = __('Icon code:', 'cisiw');
 		$params['icon_title'] = __('Title text (optional):', 'cisiw');
