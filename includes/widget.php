@@ -20,45 +20,45 @@ class CI_Socials_Ignited_FontAwesome extends WP_Widget {
 
 		$color = !empty($instance['color']) ? $instance['color'] : $cisiw_options['f_color'];
 		$size = !empty($instance['size']) ? $instance['size'] : $cisiw_options['f_size'];
+		$new_win = $instance['new_win']=='on' ? ' target="_blank" ' : '';
+		$icons = !empty($instance['icons']) ? $instance['icons'] : array();
 
 
 		echo $before_widget;
 		if ($title) echo $before_title . $title . $after_title;
 
-		$new_window = "";
-		$target = "";
+		echo '<div class="ci-socials-ignited-fa">';
 
-		if (!empty($cisiw_options['new_window']) and $cisiw_options['new_window']==1)
-			$new_window = true;
-
-		if ($new_window)
-			$target = "target='_blank'";
-
-		echo '<div class="ci-socials-ignited ci-socials-ignited-'. esc_attr($size) .'">';
-
-		$names = cisiw_get_services();
-
-		foreach($cisiw_options as $option => $value)
+		if( !empty($icons) )
 		{
-			// Make sure the current option is a social service
-			if(substr($option, -4)=='_url')
+			$icon_num = 0; // Helps count actual icons (instead of increments of field groups, i.e. 6)
+			$icon_no = 1;
+			for( $i = 0; $i < count($icons); $i+=3 )
 			{
-				$key = str_replace('_url', '', $option);
+				$icon_num++;
+				$icon_id = $widget_id . '_' . $icon_num;
 
-				if(!empty($value))
-				{
-					$icon = $icon_set.'/'.$variation.'/'.$size.'/'.$key.'.png';
+				$i_code = esc_attr($icons[$i]);
+				$i_url = esc_url($icons[$i + 1]);
+				$i_title = esc_attr($icons[$i + 2]);
 
-					$icon_url = cisiw_get_icon_path($icon);
+				$title = !empty($i_title) ? ' title="'.$i_title.'" ' : '';
 
-					if($icon_url!==false)
-					{
-						echo '<a href="'. esc_url($value) .'" '. $target .'><img alt="' . $names[$key] . '" src="' . $icon_url . '"/></a>'."\n";
-					}
-
-				}
+//				?>
+<!--				<a href=""><i class=""></i></a>-->
+<!--				<li class="group icon" id="player---><?php //echo $icon_id; ?><!--">-->
+<!--					<a href="--><?php //echo esc_url($tracks[$i_play]); ?><!--" class="sm2_link"><span class="track-no">--><?php //echo $icon_no; $icon_no++;?><!--</span><i class="fa fa-play"></i></a>-->
+<!---->
+<!--					<h5>--><?php //echo $tracks[$i_subtitle]; ?><!--</h5>-->
+<!---->
+<!--					--><?php //if(!empty($tracks[$i_subtitle])): ?>
+<!--						<h4>--><?php //echo $tracks[$i_title]; ?><!--</h4>-->
+<!--					--><?php //endif; ?>
+<!--				</li>-->
+<!--				--><?php
 			}
 		}
+
 
 		echo "</div>";
 
@@ -69,16 +69,19 @@ class CI_Socials_Ignited_FontAwesome extends WP_Widget {
 		$instance = $old_instance;
 		$instance['title'] = sanitize_text_field($new_instance['title']);
 		$instance['color'] = ci_sanitize_hex_color($new_instance['color']);
-		$instance['size']  = absint_or_empty($new_instance['size']);
+		$instance['size'] = absint_or_empty($new_instance['size']);
+		$instance['new_win'] = ci_sanitize_checkbox($new_instance['new_win']);
+		$instance['icons'] = is_array( $new_instance['icons'] ) ? $new_instance['icons'] : array();
 		return $instance;
 	} // save
 
 	function form($instance){
 		$instance = wp_parse_args( (array) $instance, array(
-			'title' => '',
-			'color' => '',
-			'size' => '',
-			'new_win' => ''
+			'title'   => '',
+			'color'   => '',
+			'size'    => '',
+			'new_win' => '',
+			'icons'   => array()
 		));
 		extract($instance);
 
@@ -87,7 +90,42 @@ class CI_Socials_Ignited_FontAwesome extends WP_Widget {
 		<p><label for="<?php echo $this->get_field_id('color'); ?>"><?php _e('Color:', 'cisiw'); ?></label><input id="<?php echo $this->get_field_id('color'); ?>" name="<?php echo $this->get_field_name('color'); ?>" type="text" value="<?php echo esc_attr($color); ?>" class="colorpckr widefat" /></p>
 		<p><label for="<?php echo $this->get_field_id('size'); ?>"><?php _e('Size:', 'cisiw'); ?></label><input id="<?php echo $this->get_field_id('size'); ?>" name="<?php echo $this->get_field_name('size'); ?>" type="number" value="<?php echo esc_attr($size); ?>" class="widefat" /></p>
 		<p><label><input id="<?php echo $this->get_field_id('new_win'); ?>" name="<?php echo $this->get_field_name('new_win'); ?>" type="checkbox" value="on" <?php checked('on', $new_win); ?> /><?php _e('Open in new window', 'cisiw'); ?></label></p>
-		<?php
+		<span class="hid_id" data-hidden-name="<?php echo $this->get_field_name('icons'); ?>"></span><?php
+
+		echo '<div class="icons ci-socials-ignited-fonticons">';
+		if (!empty($icons) and (count($icons) > 0))
+		{
+			for( $i = 0; $i < count($icons); $i+=3 )
+			{
+				?>
+				<div class="cisiw-icon">
+<!--					<label>--><?php //_e('Icon:', 'ci_theme'); ?>
+<!--						<select name="--><?php //echo $this->get_field_name('icons'); ?><!--[]">-->
+<!--							--><?php
+//								$icon_options = array(
+//									'fa-deviantart' => 'Deviant Art',
+//									'fa-reddit' => 'Reddit',
+//									'fa-soundcloud' => 'SoundCloud',
+//									'fa-wordpress' => 'WordPress',
+//								);
+//								foreach($icon_options as $code => $name )
+//								{
+//									echo '<option value="'.$code.'" '. selected($code, $icons[$i], false) .'>'.$name.'</option>';
+//								}
+//							?>
+<!--						</select>-->
+<!--					</label>-->
+					<label><?php _e('Icon code:', 'ci_theme'); ?> <input type="text" class="widefat" name="<?php echo $this->get_field_name('icons'); ?>[]" value="<?php echo esc_attr($icons[$i]); ?>" /></label>
+					<label><?php _e('Link URL:', 'ci_theme'); ?> <input type="text" class="widefat" name="<?php echo $this->get_field_name('icons'); ?>[]" value="<?php echo esc_attr($icons[$i+1]); ?>" /></label>
+					<label><?php _e('Title text (optional):', 'ci_theme'); ?> <input type="text" class="widefat" name="<?php echo $this->get_field_name('icons'); ?>[]" value="<?php echo esc_attr($icons[$i+2]); ?>" /></label>
+					<a class="icon-remove" href="#"><?php _e('Remove icon...', 'ci_theme'); ?></a>
+				</div>
+				<?php
+			}
+		}
+		echo '</div>';
+
+		?><a class="button add-icon" href="#"><?php _e('Add Icon', 'ci_theme'); ?></a><?php
 
 	} // form
 
@@ -235,7 +273,7 @@ class CI_Socials_Ignited extends WP_Widget {
 				</select>
 			</p>
 		<?php else: ?>
-			<p><?php _e('Please save the widget first, in order to be able to choose more options.', 'ci_theme'); ?></p>
+			<p><?php _e('Please save the widget first, in order to be able to choose more options.', 'cisiw'); ?></p>
 		<?php endif; ?>
 		<?php
 			$var_id = '#'.$this->get_field_id('variation');
@@ -290,6 +328,12 @@ function cisiw_widget_admin_scripts()
 		wp_enqueue_script( 'wp-color-picker' );
 		wp_enqueue_script('jquery-chained', CISIW_PLUGIN_URL.'js/jquery.chained.js', array('jquery'), '0.9.10' );
 		wp_enqueue_script('cisiw-widget-admin', CISIW_PLUGIN_URL.'js/admin_widget.js', array('jquery-chained') );
+
+		$params['icon_code'] = __('Icon code:', 'cisiw');
+		$params['icon_title'] = __('Title text (optional):', 'cisiw');
+		$params['icon_url'] = __('Link URL:', 'cisiw');
+		$params['icon_remove'] = __('Remove icon...', 'cisiw');
+		wp_localize_script('cisiw-widget-admin', 'cisiwWidget', $params);
 	}
 }
 ?>

@@ -5,26 +5,59 @@
 //});
 
 // Font widget
-jQuery(document).ready(function($) {
-	//
-	// ColorPickers
-	//
-	if( typeof($.fn.ColorPicker) === 'function' ){
-		$('.colorpckr').ColorPicker({
-			onSubmit: function(hsb, hex, rgb, el) {
-				$(el).val('#'+hex);
-				$(el).ColorPickerHide();
-			},
-			onBeforeShow: function () {
-				$(this).ColorPickerSetColor(this.value);
-			}
-		}).bind('keyup', function(){
-			$(this).ColorPickerSetColor(this.value);
+jQuery(document).ready(function($){
+	function ciPicker(){
+		var ciColorPicker = $('#widgets-right .colorpckr, #wp_inactive_widgets .colorpckr');
+		ciColorPicker.each(function(){
+			$(this).wpColorPicker();
 		});
 	}
 
-	if( typeof($.fn.wpColorPicker) === 'function' ){
-		$('.colorpckr').wpColorPicker();
+	ciPicker();
+
+	$(document).ajaxSuccess(function(e, xhr, settings) {
+		if(settings.data.search('action=save-widget') != -1 ) {
+			ciPicker();
+		}
+	});
+
+
+
+	//Repeating icon fields
+	if($('div[id*="ci_socials_ignited_fontawesome"]').length > 0) {
+
+		$('div[id*="ci_socials_ignited_fontawesome"] .ci-socials-ignited-fonticons').sortable();
+
+		$('#wpbody').on('click', 'div[id*="ci_socials_ignited_fontawesome"] .add-icon', function(e) {
+
+			var fieldname = $(this).siblings('.hid_id').data('hidden-name');
+			fieldname = fieldname + '[]';
+			var field_icon = '<label>'+ cisiwWidget.icon_code +' <input type="text" class="widefat" name="' + fieldname + '" /></label>';
+			var field_url = '<label>'+ cisiwWidget.icon_url +' <input type="text" class="widefat" name="' + fieldname + '" /></label>';
+			var field_title = '<label>'+ cisiwWidget.icon_title +' <input type="text" class="widefat" name="' + fieldname + '" /></label>';
+			var remove_btn = '<a class="track-remove" href="#">' + cisiwWidget.icon_remove + '</a>';
+
+			var html = '<div class="cisiw-icon">' + field_icon + field_url + field_title + remove_btn + '</div>';
+
+			$(html).hide().appendTo( $(this).prev('.ci-socials-ignited-fonticons') ).fadeIn();
+
+			$('div[id*="ci_socials_ignited_fontawesome"] .ci-socials-ignited-fonticons').sortable({
+				//update: renumberTracks
+			});
+
+			e.preventDefault();
+		});
+		$('#wpbody').on('click', 'div[id*="ci_socials_ignited_fontawesome"] .icon-remove', function(e) {
+			$(this).parent('div.cisiw-icon').fadeOut(300, function() {
+				$(this).remove();
+			});
+
+			e.preventDefault();
+		});
 	}
 
+
+
 });
+
+

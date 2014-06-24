@@ -268,4 +268,21 @@ function absint_or_empty($value)
 }
 endif;
 
+if( !function_exists('ci_sanitize_checkbox')):
+/**
+ * Sanitizes a checkbox value, by comparing $input with $allowed_value
+ *
+ * @param string $input The checkbox value that was sent through the form.
+ * @param string $allowed_value The only value that the checkbox can have (default 'on').
+ * @return string The $allowed_value on success, or an empty string on failure.
+ */
+function ci_sanitize_checkbox(&$input, $allowed_value = 'on')
+{
+	if(isset($input) and $input == $allowed_value)
+		return $allowed_value;
+	else
+		return '';
+}
+endif;
+
 ?>
