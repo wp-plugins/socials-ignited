@@ -28,7 +28,7 @@ class CI_Socials_Ignited_FontAwesome extends WP_Widget {
 
 		if( !empty($icons) )
 		{
-			for( $i = 0; $i < count($icons); $i+=3 )
+			for( $i = 0; $i < count($icons); $i+=4 )
 			{
 
 				$code = esc_attr($icons[$i]);
@@ -71,26 +71,31 @@ class CI_Socials_Ignited_FontAwesome extends WP_Widget {
 		<p><label for="<?php echo $this->get_field_id('color'); ?>"><?php _e('Color:', 'cisiw'); ?></label><input id="<?php echo $this->get_field_id('color'); ?>" name="<?php echo $this->get_field_name('color'); ?>" type="text" value="<?php echo esc_attr($color); ?>" class="colorpckr widefat" /></p>
 		<p><label for="<?php echo $this->get_field_id('size'); ?>"><?php _e('Size:', 'cisiw'); ?></label><input id="<?php echo $this->get_field_id('size'); ?>" name="<?php echo $this->get_field_name('size'); ?>" type="number" value="<?php echo esc_attr($size); ?>" class="widefat" /></p>
 		<p><label><input id="<?php echo $this->get_field_id('new_win'); ?>" name="<?php echo $this->get_field_name('new_win'); ?>" type="checkbox" value="on" <?php checked('on', $new_win); ?> /><?php _e('Open in new window', 'cisiw'); ?></label></p>
+
+		<p><?php echo sprintf(__('Press the "Add Icon" button to add one or more icons. You may rearrange the icons by clicking on an empty area and drag-dropping them. You must enter the icon codes as they appear in the <a href="%s">icons reference page</a>, e.g. <strong>fa-facebook</strong>', 'cisiw'), 'http://fortawesome.github.io/Font-Awesome/icons/'); ?></p>
+
 		<span class="hid_id" data-hidden-name="<?php echo $this->get_field_name('icons'); ?>"></span><?php
 
 		echo '<div class="icons ci-socials-ignited-fonticons">';
 		if (!empty($icons) and (count($icons) > 0))
 		{
-			for( $i = 0; $i < count($icons); $i+=3 )
+			for( $i = 0; $i < count($icons); $i+=4 )
 			{
 				?>
 				<div class="cisiw-icon">
-					<label><?php _e('Icon code:', 'ci_theme'); ?> <input type="text" class="widefat" name="<?php echo $this->get_field_name('icons'); ?>[]" value="<?php echo esc_attr($icons[$i]); ?>" /></label>
-					<label><?php _e('Link URL:', 'ci_theme'); ?> <input type="text" class="widefat" name="<?php echo $this->get_field_name('icons'); ?>[]" value="<?php echo esc_attr($icons[$i+1]); ?>" /></label>
-					<label><?php _e('Title text (optional):', 'ci_theme'); ?> <input type="text" class="widefat" name="<?php echo $this->get_field_name('icons'); ?>[]" value="<?php echo esc_attr($icons[$i+2]); ?>" /></label>
-					<a class="icon-remove" href="#"><?php _e('Remove icon...', 'ci_theme'); ?></a>
+					<label><?php _e('Icon code:', 'cisiw'); ?> <input type="text" class="widefat" name="<?php echo $this->get_field_name('icons'); ?>[]" value="<?php echo esc_attr($icons[$i]); ?>" /></label>
+					<label><?php _e('Link URL:', 'cisiw'); ?> <input type="text" class="widefat" name="<?php echo $this->get_field_name('icons'); ?>[]" value="<?php echo esc_attr($icons[$i+1]); ?>" /></label>
+					<label><?php _e('Title text (optional):', 'cisiw'); ?> <input type="text" class="widefat" name="<?php echo $this->get_field_name('icons'); ?>[]" value="<?php echo esc_attr($icons[$i+2]); ?>" /></label>
+					<!-- Fourth field reserved for future use -->
+					<input type="hidden" name="<?php echo $this->get_field_name('icons'); ?>[]" value="<?php echo esc_attr($icons[$i+3]); ?>" />
+					<a class="icon-remove" href="#"><?php _e('Remove icon...', 'cisiw'); ?></a>
 				</div>
 				<?php
 			}
 		}
 		echo '</div>';
 
-		?><a class="button add-icon" href="#"><?php _e('Add Icon', 'ci_theme'); ?></a><?php
+		?><a class="button add-icon" href="#"><?php _e('Add Icon', 'cisiw'); ?></a><?php
 
 	} // form
 
@@ -204,7 +209,7 @@ class CI_Socials_Ignited extends WP_Widget {
 		));
 		extract($instance);
 
-		echo '<p>'.__('This widget is now deprecated and it will be removed ina future plugin update. Please use the <strong>-= CI Socials Ignited =-</strong> widget instead.', 'cisiw').'</p>';
+		echo '<p>'.__('This widget is now deprecated and it will be removed in a future plugin update (v2.0). Please use the <strong>-= CI Socials Ignited =-</strong> widget instead.', 'cisiw').'</p>';
 		echo '<p>'.__('This widget is a placeholder for Social Media icons. You may configure those icons from <strong>Settings</strong> menu, <strong>Socials Ignited</strong> sub-menu.', 'cisiw').'</p>';
 		echo '<p><label for="'.$this->get_field_id('title').'">' . __('Title:', 'cisiw') . '</label><input id="' . $this->get_field_id('title') . '" name="' . $this->get_field_name('title') . '" type="text" value="' . esc_attr($title) . '" class="widefat" /></p>';
 		?>

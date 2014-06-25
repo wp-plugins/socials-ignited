@@ -1,3 +1,11 @@
 label[for^=widget-ci_socials_ignited] {
 	display: block;
 }
+.ci-socials-ignited-fonticons .icon-remove {
+	display: block;
+	margin-bottom: 15px;
+}
+
+.button.add-icon {
+	margin-bottom: 15px;
+}

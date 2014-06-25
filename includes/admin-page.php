@@ -60,20 +60,23 @@ function cisiw_options_page() {
 							<input id="cisiw_settings[f_size]" type="number" name="cisiw_settings[f_size]" value="<?php echo esc_attr($cisiw_options['f_size']); ?>" />
 						</td>
 					</tr>
-<!--					<tr>-->
-<!--						<th scope="row"><label for="cisiw_settings[custom_css]">--><?php //_e('Custom CSS', 'cisiw'); ?><!--</label></th>-->
-<!--						<td>-->
-<!--							<textarea id="cisiw_settings[custom_css]" name="cisiw_settings[custom_css]" rows="9" cols="80">--><?php //echo esc_textarea($cisiw_options['custom_css']); ?><!--</textarea>-->
-<!--							--><?php
-//								$sample_output = "<div class=\"widget_ci_socials_ignited widget\" id=\"ci_socials_ignited-6\">\n  <div class=\"ci-socials-ignited ci-socials-ignited-32\">\n    <a href=\"#\">\n      <img src=\"http://www.example.com/.../square/default/32/apple.png\">\n    </a>\n  </div>\n</div>";
-//							?>
-<!--						</td>-->
-<!--						<td>-->
-<!--							--><?php //_e('Sample widget HTML output:', 'cisiw'); ?>
-<!--							<br>-->
-<!--							<pre>--><?php //echo esc_html($sample_output); ?><!--</pre>-->
-<!--						</td>-->
-<!--					</tr>-->
+
+<?php /*
+					<tr>
+						<th scope="row"><label for="cisiw_settings[custom_css]"><?php _e('Custom CSS', 'cisiw'); ?></label></th>
+						<td>
+							<textarea id="cisiw_settings[custom_css]" name="cisiw_settings[custom_css]" rows="9" cols="80"><?php echo esc_textarea($cisiw_options['custom_css']); ?></textarea>
+							<?php
+								$sample_output = "<div class=\"widget_ci_socials_ignited widget\" id=\"ci_socials_ignited-6\">\n  <div class=\"ci-socials-ignited ci-socials-ignited-32\">\n    <a href=\"#\">\n      <img src=\"http://www.example.com/.../square/default/32/apple.png\">\n    </a>\n  </div>\n</div>";
+							?>
+						</td>
+						<td>
+							<?php _e('Sample widget HTML output:', 'cisiw'); ?>
+							<br>
+							<pre><?php echo esc_html($sample_output); ?></pre>
+						</td>
+					</tr>
+*/ ?>
 					<tr>
 						<td colspan="4">
 							<p class="submit">
@@ -86,6 +89,7 @@ function cisiw_options_page() {
 			<p></p>
 
 			<h3><?php _e('Image widget settings (deprecated)', 'cisiw'); ?></h3>
+			<p><?php _e('The image icons of Socials Ignited are now deprecated. Icons and functionality will no longer be updated, and you are encouraged to change all your current image-based widgets to the new font-based one.', 'cisiw'); ?></p>
 			<table class="form-table" id="cisiw-admin-options">
 				<tbody>
 					<tr>
@@ -97,7 +101,7 @@ function cisiw_options_page() {
 					<tr>
 						<th scope="row"><label for="cisiw_settings[custom_css]"><?php _e('Custom CSS', 'cisiw'); ?></label></th>
 						<td>
-							<textarea id="cisiw_settings[custom_css]" name="cisiw_settings[custom_css]" rows="9" cols="80"><?php echo esc_textarea($cisiw_options['custom_css']); ?></textarea>
+							<textarea id="cisiw_settings[custom_css]" name="cisiw_settings[custom_css]" rows="7" cols="30"><?php echo esc_textarea($cisiw_options['custom_css']); ?></textarea>
 							<?php
 								$sample_output = "<div class=\"widget_ci_socials_ignited widget\" id=\"ci_socials_ignited-6\">\n  <div class=\"ci-socials-ignited ci-socials-ignited-32\">\n    <a href=\"#\">\n      <img src=\"http://www.example.com/.../square/default/32/apple.png\">\n    </a>\n  </div>\n</div>";
 							?>

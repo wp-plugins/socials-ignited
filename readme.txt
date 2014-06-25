@@ -5,7 +5,7 @@ Author URI: http://www.cssigniter.com/
 Author: The CSSigniter Team
 Contributors: anastis, tsiger, silencerius
 Tags: social, widget, icons, round, square, light, dark
-Requires at least: 3.5
+Requires at least: 3.8
 Tested up to: 3.9.1
 Stable tag: 1.4
 License: GPLv2
@@ -18,16 +18,13 @@ The Socials Ignited plugin gives you a widget, allowing you to display and link 
 Brought to you by the folks of [CSSIgniter](http://www.cssigniter.com "Premium WordPress Themes"), the Socials Ignited 
 plugin allows you to display and link icons on your website of more than 50 social networks, just by dragging a widget.
 
-  All you have to do is set your URL for each social network you are registered, and then just drag the widget
-into any widget area you want.
-
 There are icons for:
 
 *   Facebook
 *   Twitter
 *   Digg
 *   Flickr
-*   And much, much more...
+*   And much, much more... (any of the [439 Font Awesome icons](http://fortawesome.github.io/Font-Awesome/icons/) actually)
 
 Of course, there are more features to come. Check the *To Do* section for what is coming.
 
@@ -35,8 +32,11 @@ Of course, there are more features to come. Check the *To Do* section for what i
 
 1. Upload the folder `socials-ignited/` into the `/wp-content/plugins/` directory
 2. Activate the plugin through the *Plugins* menu in WordPress
-3. Set your social URLs from *Settings -> Socials Ignited*
+3. Set your defaults from *Settings -> Socials Ignited*
 4. Drag the *Socials Ignited* widget into the widget area of your choice. 
+5. Set the icons you want, their links and optional titles, color and size.
+6. Press Save.
+7. Done. 
 
 For in-depth details, tips and tricks, visit [the plugin's homepage](http://www.cssigniter.com/ignite/socials-ignited/ "Socials Ignited")
 
@@ -58,6 +58,12 @@ As above. Let us know and we will consider it.
 3. Actual output
 
 == Changelog ==
+
+= 1.5 =
+* Added Font Awesome support as *-= CI Socials Ignited =-* widget.
+* Renamed old *-= CI Socials Ignited =-* widget to *Socials Ignited (deprecated)*
+* Added various deprecation messages. No functions/files have actually been marked deprecated though.
+
 
 = 1.4 =
 * Fixed an issue where the Customizer screen would not work because jquery.chained.js wasn’t loaded.

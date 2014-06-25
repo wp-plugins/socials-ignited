@@ -35,9 +35,10 @@ jQuery(document).ready(function($){
 			var field_icon = '<label>'+ cisiwWidget.icon_code +' <input type="text" class="widefat" name="' + fieldname + '" /></label>';
 			var field_url = '<label>'+ cisiwWidget.icon_url +' <input type="text" class="widefat" name="' + fieldname + '" /></label>';
 			var field_title = '<label>'+ cisiwWidget.icon_title +' <input type="text" class="widefat" name="' + fieldname + '" /></label>';
-			var remove_btn = '<a class="track-remove" href="#">' + cisiwWidget.icon_remove + '</a>';
+			var field_hidden = '<input type="hidden" name="' + fieldname + '" />';
+			var remove_btn = '<a class="icon-remove" href="#">' + cisiwWidget.icon_remove + '</a>';
 
-			var html = '<div class="cisiw-icon">' + field_icon + field_url + field_title + remove_btn + '</div>';
+			var html = '<div class="cisiw-icon">' + field_icon + field_url + field_title + field_hidden + remove_btn + '</div>';
 
 			$(html).hide().appendTo( $(this).prev('.ci-socials-ignited-fonticons') ).fadeIn();
 
@@ -55,8 +56,6 @@ jQuery(document).ready(function($){
 			e.preventDefault();
 		});
 	}
-
-
 
 });
 
