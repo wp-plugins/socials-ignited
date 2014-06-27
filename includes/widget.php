@@ -50,7 +50,11 @@ class CI_Socials_Ignited_FontAwesome extends WP_Widget {
 		$instance = $old_instance;
 		$instance['title'] = sanitize_text_field($new_instance['title']);
 		$instance['color'] = ci_sanitize_hex_color($new_instance['color']);
+		$instance['background_color'] = ci_sanitize_hex_color($new_instance['background_color']);
 		$instance['size'] = absint_or_empty($new_instance['size']);
+		$instance['background_size'] = absint_or_empty($new_instance['background_size']);
+		$instance['border_radius'] = absint_or_empty($new_instance['border_radius']);
+		$instance['opacity'] = $new_instance['opacity'];
 		$instance['new_win'] = ci_sanitize_checkbox($new_instance['new_win']);
 		$instance['icons'] = is_array( $new_instance['icons'] ) ? $new_instance['icons'] : array();
 		return $instance;
@@ -60,7 +64,11 @@ class CI_Socials_Ignited_FontAwesome extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, array(
 			'title'   => '',
 			'color'   => '',
-			'size'    => '',
+			'background_color' => '',
+			'border_radius' => '50',
+			'size'    => '17',
+			'background_size' => '30',
+			'opacity' => '1',
 			'new_win' => '',
 			'icons'   => array()
 		));
@@ -71,16 +79,18 @@ class CI_Socials_Ignited_FontAwesome extends WP_Widget {
 
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'cisiw'); ?></label><input id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" class="widefat" /></p>
 		<p><label for="<?php echo $this->get_field_id('color'); ?>"><?php _e('Icon Color:', 'cisiw'); ?></label><input id="<?php echo $this->get_field_id('color'); ?>" name="<?php echo $this->get_field_name('color'); ?>" type="text" value="<?php echo esc_attr($color); ?>" class="colorpckr widefat" /></p>
+		<p><label for="<?php echo $this->get_field_id('background_color'); ?>"><?php _e('Icon Background Color:', 'cisiw'); ?></label><input id="<?php echo $this->get_field_id('background_color'); ?>" name="<?php echo $this->get_field_name('background_color'); ?>" type="text" value="<?php echo esc_attr($background_color); ?>" class="colorpckr widefat" /></p>
 		<p><label for="<?php echo $this->get_field_id('size'); ?>"><?php _e('Icon Size (single integer in pixels):', 'cisiw'); ?></label><input id="<?php echo $this->get_field_id('size'); ?>" name="<?php echo $this->get_field_name('size'); ?>" type="number" value="<?php echo esc_attr($size); ?>" class="widefat" /></p>
+		<p><label for="<?php echo $this->get_field_id('background_size'); ?>"><?php _e('Background Size (single integer in pixels):', 'cisiw'); ?></label><input id="<?php echo $this->get_field_id('background_size'); ?>" name="<?php echo $this->get_field_name('background_size'); ?>" type="number" value="<?php echo esc_attr($background_size); ?>" class="widefat" /></p>
+		<p><label for="<?php echo $this->get_field_id('border_radius'); ?>"><?php _e('Border Radius (single integer in pixels):', 'cisiw'); ?></label><input id="<?php echo $this->get_field_id('border_radius'); ?>" name="<?php echo $this->get_field_name('border_radius'); ?>" type="number" value="<?php echo esc_attr($border_radius); ?>" class="widefat" /></p>
+		<p><label for="<?php echo $this->get_field_id('opacity'); ?>"><?php _e('Opacity (0.1 up to 1):', 'cisiw'); ?></label><input id="<?php echo $this->get_field_id('opacity'); ?>" name="<?php echo $this->get_field_name('opacity'); ?>" type="number" min="0.1" max="1" step="0.1" value="<?php echo esc_attr($opacity); ?>" class="widefat" /></p>
 		<p><label><input id="<?php echo $this->get_field_id('new_win'); ?>" name="<?php echo $this->get_field_name('new_win'); ?>" type="checkbox" value="on" <?php checked('on', $new_win); ?> /><?php _e('Open in new window', 'cisiw'); ?></label></p>
 
 		<span class="hid_id" data-hidden-name="<?php echo $this->get_field_name('icons'); ?>"></span><?php
 
 		echo '<div class="icons ci-socials-ignited-fonticons">';
-		if (!empty($icons) and (count($icons) > 0))
-		{
-			for( $i = 0; $i < count($icons); $i+=4 )
-			{
+		if (!empty($icons) and (count($icons) > 0))	{
+			for( $i = 0; $i < count($icons); $i+=4 ) {
 				?>
 				<div class="cisiw-icon">
 					<label><?php _e('Icon code:', 'cisiw'); ?> <input type="text" class="widefat" name="<?php echo $this->get_field_name('icons'); ?>[]" value="<?php echo esc_attr($icons[$i]); ?>" /></label>
@@ -88,7 +98,7 @@ class CI_Socials_Ignited_FontAwesome extends WP_Widget {
 					<label><?php _e('Title text (optional):', 'cisiw'); ?> <input type="text" class="widefat" name="<?php echo $this->get_field_name('icons'); ?>[]" value="<?php echo esc_attr($icons[$i+2]); ?>" /></label>
 					<!-- Fourth field reserved for future use -->
 					<input type="hidden" name="<?php echo $this->get_field_name('icons'); ?>[]" value="<?php echo esc_attr($icons[$i+3]); ?>" />
-					<a class="icon-remove button" href="#"><?php _e('Remove icon', 'cisiw'); ?></a>
+					<a class="icon-remove button" href="#"><?php _e('Remove Icon', 'cisiw'); ?></a>
 				</div>
 				<?php
 			}
@@ -99,17 +109,20 @@ class CI_Socials_Ignited_FontAwesome extends WP_Widget {
 
 	} // form
 
-	function enqueue_css()
-	{
+	function enqueue_css() {
 		$instance = $this->get_settings();
 		$instance = $instance[$this->number];
 		$cisiw_options = get_option('cisiw_settings');
 		$cisiw_options = $cisiw_options !== false ? $cisiw_options : array();
 
 		$color = !empty($instance['color']) ? $instance['color'] : $cisiw_options['f_color'];
+		$background_color = !empty($instance['background_color']) ? $instance['background_color'] : 'none';
 		$size = !empty($instance['size']) ? $instance['size'] : $cisiw_options['f_size'];
+		$background_size = !empty($instance['background_size']) ? $instance['background_size'] : $cisiw_options['f_size'];
+		$border_radius = !empty($instance['border_radius']) ? $instance['border_radius'] : '0';
+		$opacity = !empty($instance['opacity']) ? $instance['opacity'] : '1';
 
-		$widget_style = '#'.$this->id.' a { color: '.$color.'; font-size: '.$size.'px;  }';
+		$widget_style = '#'.$this->id.' i { color: '.$color.'; background: '. $background_color .'; font-size: '.$size.'px; width: '. $background_size .'px; height: '. $background_size .'px; line-height: '. $background_size .'px; border-radius: '. $border_radius .'px; opacity: '.$opacity.'; }'. ' #'.$this->id.' a:hover i { opacity: 1; }';
 		wp_add_inline_style('socials-ignited', $widget_style);
 
 	}
@@ -322,7 +335,7 @@ function cisiw_widget_admin_scripts()
 		$params['icon_code'] = __('Icon code:', 'cisiw');
 		$params['icon_title'] = __('Title text (optional):', 'cisiw');
 		$params['icon_url'] = __('Link URL:', 'cisiw');
-		$params['icon_remove'] = __('Remove icon...', 'cisiw');
+		$params['icon_remove'] = __('Remove Icon', 'cisiw');
 		wp_localize_script('cisiw-widget-admin', 'cisiwWidget', $params);
 	}
 }
