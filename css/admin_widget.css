@@ -1,11 +1,16 @@
 label[for^=widget-ci_socials_ignited] {
-	display: block;
-}
-.ci-socials-ignited-fonticons .icon-remove {
-	display: block;
-	margin-bottom: 15px;
-}
+  display: block; }
 
-.button.add-icon {
-	margin-bottom: 15px;
-}
+div[id*=ci_socials_ignited_fontawesome] .add-icon {
+  margin-bottom: 20px; }
+
+.cisiw-icon {
+  padding: 10px;
+  background: #FAFAFA;
+  border: 1px solid #E5E5E5;
+  margin-bottom: 15px; }
+  .cisiw-icon label {
+    margin: 0 0 8px;
+    display: block; }
+  .cisiw-icon .icon-remove {
+    margin: 5px 0 0; }

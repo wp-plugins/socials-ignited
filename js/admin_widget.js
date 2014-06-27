@@ -33,10 +33,10 @@ jQuery(document).ready(function($){
 			var fieldname = $(this).siblings('.hid_id').data('hidden-name');
 			fieldname = fieldname + '[]';
 			var field_icon = '<label>'+ cisiwWidget.icon_code +' <input type="text" class="widefat" name="' + fieldname + '" /></label>';
-			var field_url = '<label>'+ cisiwWidget.icon_url +' <input type="text" class="widefat" name="' + fieldname + '" /></label>';
+			var field_url = '<label>'+ cisiwWidget.icon_url +' <input type="text" class="widefat" value="http://" name="' + fieldname + '" /></label>';
 			var field_title = '<label>'+ cisiwWidget.icon_title +' <input type="text" class="widefat" name="' + fieldname + '" /></label>';
 			var field_hidden = '<input type="hidden" name="' + fieldname + '" />';
-			var remove_btn = '<a class="icon-remove" href="#">' + cisiwWidget.icon_remove + '</a>';
+			var remove_btn = '<a class="icon-remove button" href="#">' + cisiwWidget.icon_remove + '</a>';
 
 			var html = '<div class="cisiw-icon">' + field_icon + field_url + field_title + field_hidden + remove_btn + '</div>';
 

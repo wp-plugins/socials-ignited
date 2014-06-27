@@ -67,12 +67,12 @@ class CI_Socials_Ignited_FontAwesome extends WP_Widget {
 		extract($instance);
 
 		?>
-		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'cisiw'); ?></label><input id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" class="widefat" /></p>
-		<p><label for="<?php echo $this->get_field_id('color'); ?>"><?php _e('Color:', 'cisiw'); ?></label><input id="<?php echo $this->get_field_id('color'); ?>" name="<?php echo $this->get_field_name('color'); ?>" type="text" value="<?php echo esc_attr($color); ?>" class="colorpckr widefat" /></p>
-		<p><label for="<?php echo $this->get_field_id('size'); ?>"><?php _e('Size:', 'cisiw'); ?></label><input id="<?php echo $this->get_field_id('size'); ?>" name="<?php echo $this->get_field_name('size'); ?>" type="number" value="<?php echo esc_attr($size); ?>" class="widefat" /></p>
-		<p><label><input id="<?php echo $this->get_field_id('new_win'); ?>" name="<?php echo $this->get_field_name('new_win'); ?>" type="checkbox" value="on" <?php checked('on', $new_win); ?> /><?php _e('Open in new window', 'cisiw'); ?></label></p>
+		<p class="cisiw-icon-instructions"><small><?php echo sprintf(__('To add icons click on "Add Icon" at the bottom of the widget and then insert the <em>Icon code</em> and its <em>Link URL</em>. Icon codes can be found <a target="_blank" href="%s">here</a>, type them exactly as they are shown (with fa- in front), e.g. <strong>fa-facebook</strong>. You can also drag and drop the boxes to rearrange the icons.', 'cisiw'), 'http://fontawesome.io/icons/#brand'); ?></small></p>
 
-		<p><?php echo sprintf(__('Press the "Add Icon" button to add one or more icons. You may rearrange the icons by clicking on an empty area and drag-dropping them. You must enter the icon codes as they appear in the <a href="%s">icons reference page</a>, e.g. <strong>fa-facebook</strong>', 'cisiw'), 'http://fortawesome.github.io/Font-Awesome/icons/'); ?></p>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'cisiw'); ?></label><input id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" class="widefat" /></p>
+		<p><label for="<?php echo $this->get_field_id('color'); ?>"><?php _e('Icon Color:', 'cisiw'); ?></label><input id="<?php echo $this->get_field_id('color'); ?>" name="<?php echo $this->get_field_name('color'); ?>" type="text" value="<?php echo esc_attr($color); ?>" class="colorpckr widefat" /></p>
+		<p><label for="<?php echo $this->get_field_id('size'); ?>"><?php _e('Icon Size (single integer in pixels):', 'cisiw'); ?></label><input id="<?php echo $this->get_field_id('size'); ?>" name="<?php echo $this->get_field_name('size'); ?>" type="number" value="<?php echo esc_attr($size); ?>" class="widefat" /></p>
+		<p><label><input id="<?php echo $this->get_field_id('new_win'); ?>" name="<?php echo $this->get_field_name('new_win'); ?>" type="checkbox" value="on" <?php checked('on', $new_win); ?> /><?php _e('Open in new window', 'cisiw'); ?></label></p>
 
 		<span class="hid_id" data-hidden-name="<?php echo $this->get_field_name('icons'); ?>"></span><?php
 
@@ -88,7 +88,7 @@ class CI_Socials_Ignited_FontAwesome extends WP_Widget {
 					<label><?php _e('Title text (optional):', 'cisiw'); ?> <input type="text" class="widefat" name="<?php echo $this->get_field_name('icons'); ?>[]" value="<?php echo esc_attr($icons[$i+2]); ?>" /></label>
 					<!-- Fourth field reserved for future use -->
 					<input type="hidden" name="<?php echo $this->get_field_name('icons'); ?>[]" value="<?php echo esc_attr($icons[$i+3]); ?>" />
-					<a class="icon-remove" href="#"><?php _e('Remove icon...', 'cisiw'); ?></a>
+					<a class="icon-remove button" href="#"><?php _e('Remove icon', 'cisiw'); ?></a>
 				</div>
 				<?php
 			}
