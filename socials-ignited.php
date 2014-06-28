@@ -204,36 +204,25 @@ if ( !function_exists('ci_sanitize_hex_color') ):
  */
 function ci_sanitize_hex_color($str, $return_hash = true, $return_fail = '')
 {
-	$str_limit = 6;
 
-	if($return_hash)
+	// Include the hash if not there.
+	// The regex below depends on in.
+	if(substr($str, 0, 1)!='#')
 	{
-		$str_limit = 7;
-		if(substr($str, 0, 1)!='#')
-		{
-			$str = '#' . $str;
-		}
+		$str = '#' . $str;
 	}
-
-	$str = substr($str, 0, $str_limit);
 
 	$matches = array();
 	/*
-	 * Examples on success:
+	 * Example on success:
 	 * $matches = array(
 	 * 		[0] => #1a2b3c
 	 * 		[1] => #
 	 * 		[2] => 1a2b3c
 	 * )
 	 *
-	 * $matches = array(
-	 * 		[0] => 1a2b3c
-	 * 		[1] =>
-	 * 		[2] => 1a2b3c
-	 * )
-	 *
 	 */
-	preg_match('/(#?)([0-9a-fA-F]{6})/', $str, $matches);
+	preg_match('/(#)([0-9a-fA-F]{6})/', $str, $matches);
 
 	if(count($matches) == 3)
 	{
