@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Socials Ignited\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-25 06:21+0200\n"
-"PO-Revision-Date: 2014-06-25 06:21+0200\n"
+"POT-Creation-Date: 2014-07-01 18:20+0200\n"
+"PO-Revision-Date: 2014-07-01 18:20+0200\n"
 "Last-Translator: Anastis Sourgoutsidis <anastis@cssigniter.com>\n"
 "Language-Team: CSSIgniter LLC <info@cssigniter.com>\n"
 "Language: en_US\n"
@@ -115,82 +115,99 @@ msgstr ""
 msgid "Social Icons widget, FontAwesome edition"
 msgstr ""
 
-#: ../includes/widget.php:70 ../includes/widget.php:212
+#: ../includes/widget.php:78
+#, php-format
+msgid ""
+"To add icons click on \"Add Icon\" at the bottom of the widget and then "
+"insert the <em>Icon code</em> and its <em>Link URL</em>. Icon codes can be "
+"found <a target=\"_blank\" href=\"%s\">here</a>, type them exactly as they "
+"are shown (with fa- in front), e.g. <strong>fa-facebook</strong>. You can "
+"also drag and drop the boxes to rearrange the icons."
+msgstr ""
+
+#: ../includes/widget.php:80 ../includes/widget.php:227
 msgid "Title:"
 msgstr ""
 
-#: ../includes/widget.php:71
-msgid "Color:"
+#: ../includes/widget.php:81
+msgid "Icon Color:"
 msgstr ""
 
-#: ../includes/widget.php:72
-msgid "Size:"
+#: ../includes/widget.php:82
+msgid "Icon Background Color:"
 msgstr ""
 
-#: ../includes/widget.php:73
+#: ../includes/widget.php:83
+msgid "Icon Size (single integer in pixels):"
+msgstr ""
+
+#: ../includes/widget.php:84
+msgid "Background Size (single integer in pixels):"
+msgstr ""
+
+#: ../includes/widget.php:85
+msgid "Border Radius (single integer in pixels):"
+msgstr ""
+
+#: ../includes/widget.php:86
+msgid "Opacity (0.1 up to 1):"
+msgstr ""
+
+#: ../includes/widget.php:87
 msgid "Open in new window"
 msgstr ""
 
-#: ../includes/widget.php:75
-#, php-format
-msgid ""
-"Press the \"Add Icon\" button to add one or more icons. You may rearrange "
-"the icons by clicking on an empty area and drag-dropping them. You must "
-"enter the icon codes as they appear in the <a href=\"%s\">icons reference "
-"page</a>, e.g. <strong>fa-facebook</strong>"
-msgstr ""
-
-#: ../includes/widget.php:86 ../includes/widget.php:320
+#: ../includes/widget.php:96 ../includes/widget.php:335
 msgid "Icon code:"
 msgstr ""
 
-#: ../includes/widget.php:87 ../includes/widget.php:322
+#: ../includes/widget.php:97 ../includes/widget.php:337
 msgid "Link URL:"
 msgstr ""
 
-#: ../includes/widget.php:88 ../includes/widget.php:321
+#: ../includes/widget.php:98 ../includes/widget.php:336
 msgid "Title text (optional):"
 msgstr ""
 
-#: ../includes/widget.php:89 ../includes/widget.php:323
-msgid "Remove icon..."
+#: ../includes/widget.php:101 ../includes/widget.php:338
+msgid "Remove Icon"
 msgstr ""
 
-#: ../includes/widget.php:96
+#: ../includes/widget.php:108
 msgid "Add Icon"
 msgstr ""
 
-#: ../includes/widget.php:134
+#: ../includes/widget.php:149
 msgid "Social Icons widget placeholder (deprecated)"
 msgstr ""
 
-#: ../includes/widget.php:210
+#: ../includes/widget.php:225
 msgid ""
 "This widget is now deprecated and it will be removed in a future plugin "
 "update (v2.0). Please use the <strong>-= CI Socials Ignited =-</strong> "
 "widget instead."
 msgstr ""
 
-#: ../includes/widget.php:211
+#: ../includes/widget.php:226
 msgid ""
 "This widget is a placeholder for Social Media icons. You may configure those "
 "icons from <strong>Settings</strong> menu, <strong>Socials Ignited</strong> "
 "sub-menu."
 msgstr ""
 
-#: ../includes/widget.php:225
+#: ../includes/widget.php:240
 msgid "Icon set:"
 msgstr ""
 
-#: ../includes/widget.php:235
+#: ../includes/widget.php:250
 msgid "Color Variation:"
 msgstr ""
 
-#: ../includes/widget.php:246
+#: ../includes/widget.php:261
 msgid "Icon Size:"
 msgstr ""
 
-#: ../includes/widget.php:258
+#: ../includes/widget.php:273
 msgid ""
 "Please save the widget first, in order to be able to choose more options."
 msgstr ""
