@@ -59,6 +59,9 @@ As above. Let us know and we will consider it.
 
 == Changelog ==
 
+= 1.6 =
+* Added more options to the *-= CI Socials Ignited =-* widget like background color, size, opacity.
+
 = 1.5 =
 * Added Font Awesome support as *-= CI Socials Ignited =-* widget.
 * Renamed old *-= CI Socials Ignited =-* widget to *Socials Ignited (deprecated)*
