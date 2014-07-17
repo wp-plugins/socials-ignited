@@ -2,10 +2,10 @@
 //
 // Font widget
 //
-if( !class_exists('CI_Socials_Ignited_FontAwesome') ):
-class CI_Socials_Ignited_FontAwesome extends WP_Widget {
+if( !class_exists('Socials_Ignited_Widget') ):
+class Socials_Ignited_Widget extends WP_Widget {
 
-	function CI_Socials_Ignited_FontAwesome(){
+	function Socials_Ignited_Widget(){
 		$widget_ops = array(
 			'description' => __('Social Icons widget, FontAwesome edition','cisiw'),
 			'classname' => 'widget_socials_ignited'
@@ -136,7 +136,7 @@ class CI_Socials_Ignited_FontAwesome extends WP_Widget {
 } // class
 
 function CI_SocialsIgnited_FontAwesome_Action() {
-	register_widget('CI_Socials_Ignited_FontAwesome');
+	register_widget('Socials_Ignited_Widget');
 }
 add_action('widgets_init', 'CI_SocialsIgnited_FontAwesome_Action');
 
