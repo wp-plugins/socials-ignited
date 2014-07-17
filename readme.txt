@@ -15,7 +15,7 @@ The Socials Ignited plugin gives you a widget, allowing you to display and link 
 
 == Description ==
 
-Brought to you by the folks of [CSSIgniter](http://www.cssigniter.com "Premium WordPress Themes"), the Socials Ignited 
+Brought to you by the [CSSIgniter](http://www.cssigniter.com "Premium WordPress Themes") folks, the Socials Ignited
 plugin allows you to display and link icons on your website of more than 50 social networks, just by dragging a widget.
 
 There are icons for:
@@ -40,24 +40,26 @@ Of course, there are more features to come. Check the *To Do* section for what i
 
 For in-depth details, tips and tricks, visit [the plugin's homepage](http://www.cssigniter.com/ignite/socials-ignited/ "Socials Ignited")
 
-== Frequently Asked Questions ==
-
-= Can you include an icon for that *random* social website? =
-
-Who knows? Let us know and we will consider it. While moar (sic) is usually better, icons require to actually make the icons.
-Plus, not everyone needs everything, so we can't just add icons and options ad infinitum.
-
-= I have a social website and an icon. Will you include it? =
-
-As above. Let us know and we will consider it.
-
 == Screenshots ==
 
 1. Socials Ignited options
 2. Widget options
 3. Actual output
 
+== Upgrade Notice ==
+
+= 1.7 =
+WARNING - UPDATING TO v1.7 WILL RESULT IN YOUR FONT-BASED SOCIALS-IGNITED WIDGETS TO BE PERMANENTLY LOST.
+FURTHERMORE, CUSTOM STYLES APPLYING TO THE FONT-WIDGET MAY NO LONGER WORK AND WILL NEED RETARGETING.
+Please keep note of your widgets' settings, remove them, and then update the plugin.
+
+
 == Changelog ==
+
+= 1.7 =
+* Renamed *-= CI Socials Ignited =-* class from *CI_Socials_Ignited_Fontawesome* to *Socials_Ignited_Widget* .
+* Changed *-= CI Socials Ignited =-* HTML IDs to *socials-ignited* .
+* Changed *-= CI Socials Ignited =-* HTML class to *widget_socials_ignited* .
 
 = 1.6 =
 * Added more options to the *-= CI Socials Ignited =-* widget like background color, size, opacity.
@@ -107,7 +109,3 @@ As above. Let us know and we will consider it.
 
 = 1.0 =
 * Initial release.
-
-== To do ==
-
-* Set base margin - padding from options to apply to all widget instances.
