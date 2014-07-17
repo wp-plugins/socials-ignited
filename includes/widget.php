@@ -8,7 +8,7 @@ class CI_Socials_Ignited_FontAwesome extends WP_Widget {
 	function CI_Socials_Ignited_FontAwesome(){
 		$widget_ops = array(
 			'description' => __('Social Icons widget, FontAwesome edition','cisiw'),
-			'classname' => 'ci-si-widget'
+			'classname' => 'widget_socials_ignited'
 		);
 		$control_ops = array(/*'width' => 300, 'height' => 400*/);
 		parent::WP_Widget('ci_socials_ignited_fontawesome', $name='-= CI Socials Ignited =-', $widget_ops, $control_ops);
@@ -153,10 +153,7 @@ if( !class_exists('CI_Socials_Ignited') ):
 class CI_Socials_Ignited extends WP_Widget {
 
 	function CI_Socials_Ignited(){
-		$widget_ops = array(
-			'description' => __('Social Icons widget placeholder (deprecated)','cisiw'),
-			'classname' => 'ci-si-widget'
-		);
+		$widget_ops = array( 'description' => __('Social Icons widget placeholder (deprecated)','cisiw') );
 		$control_ops = array(/*'width' => 300, 'height' => 400*/);
 		parent::WP_Widget('ci_socials_ignited', $name='Socials Ignited (deprecated)', $widget_ops, $control_ops);
 	}
