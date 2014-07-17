@@ -111,6 +111,10 @@ class CI_Socials_Ignited_FontAwesome extends WP_Widget {
 
 	function enqueue_css() {
 		$instance = $this->get_settings();
+
+		if(empty($instance) or empty($instance[$this->number]))
+			return;
+
 		$instance = $instance[$this->number];
 		$cisiw_options = get_option('cisiw_settings');
 		$cisiw_options = $cisiw_options !== false ? $cisiw_options : array();
