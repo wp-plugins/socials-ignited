@@ -11,7 +11,7 @@ class CI_Socials_Ignited_FontAwesome extends WP_Widget {
 			'classname' => 'widget_socials_ignited'
 		);
 		$control_ops = array(/*'width' => 300, 'height' => 400*/);
-		parent::WP_Widget('ci_socials_ignited_fontawesome', $name='-= CI Socials Ignited =-', $widget_ops, $control_ops);
+		parent::WP_Widget('socials-ignited', $name='-= CI Socials Ignited =-', $widget_ops, $control_ops);
 		add_action('wp_enqueue_scripts', array($this, 'enqueue_css'));
 	}
 
@@ -312,7 +312,7 @@ endif; //class_exists
 add_action('wp_enqueue_scripts', 'cisiw_widget_scripts');
 function cisiw_widget_scripts()
 {
-	if(is_active_widget('', '', 'ci_socials_ignited_fontawesome'))
+	if(is_active_widget('', '', 'socials-ignited'))
 	{
 		wp_enqueue_style('font-awesome', CISIW_PLUGIN_URL.'css/font-awesome.css', array(), '4.1.0');
 	}

@@ -1,8 +1,9 @@
-label[for^=widget-ci_socials_ignited] {
+label[for^=widget-socials-ignited],
+label[for^=widget-ci_socials_ignited]{
 	display: block;
 }
 
-div[id*=ci_socials_ignited_fontawesome] {
+div[id*=socials-ignited] {
 	.add-icon {
 		margin-bottom: 20px;
 	}

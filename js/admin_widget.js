@@ -24,11 +24,11 @@ jQuery(document).ready(function($){
 
 
 	//Repeating icon fields
-	if($('div[id*="ci_socials_ignited_fontawesome"]').length > 0) {
+	if($('div[id*="socials-ignited"]').length > 0) {
 
-		$('div[id*="ci_socials_ignited_fontawesome"] .ci-socials-ignited-fonticons').sortable();
+		$('div[id*="socials-ignited"] .ci-socials-ignited-fonticons').sortable();
 
-		$('#wpbody').on('click', 'div[id*="ci_socials_ignited_fontawesome"] .add-icon', function(e) {
+		$('#wpbody').on('click', 'div[id*="socials-ignited"] .add-icon', function(e) {
 
 			var fieldname = $(this).siblings('.hid_id').data('hidden-name');
 			fieldname = fieldname + '[]';
@@ -42,13 +42,13 @@ jQuery(document).ready(function($){
 
 			$(html).hide().appendTo( $(this).prev('.ci-socials-ignited-fonticons') ).fadeIn();
 
-			$('div[id*="ci_socials_ignited_fontawesome"] .ci-socials-ignited-fonticons').sortable({
+			$('div[id*="socials-ignited"] .ci-socials-ignited-fonticons').sortable({
 				//update: renumberTracks
 			});
 
 			e.preventDefault();
 		});
-		$('#wpbody').on('click', 'div[id*="ci_socials_ignited_fontawesome"] .icon-remove', function(e) {
+		$('#wpbody').on('click', 'div[id*="socials-ignited"] .icon-remove', function(e) {
 			$(this).parent('div.cisiw-icon').fadeOut(300, function() {
 				$(this).remove();
 			});
