@@ -46,14 +46,6 @@ For in-depth details, tips and tricks, visit [the plugin's homepage](http://www.
 2. Widget options
 3. Actual output
 
-== Upgrade Notice ==
-
-= 1.7 =
-WARNING - UPDATING TO v1.7 WILL RESULT IN YOUR FONT-BASED SOCIALS-IGNITED WIDGETS TO BE PERMANENTLY LOST.
-FURTHERMORE, CUSTOM STYLES APPLYING TO THE FONT-WIDGET MAY NO LONGER WORK AND WILL NEED RETARGETING.
-Please keep note of your widgets' settings, remove them, and then update the plugin.
-
-
 == Changelog ==
 
 = 1.7 =
@@ -68,7 +60,6 @@ Please keep note of your widgets' settings, remove them, and then update the plu
 * Added Font Awesome support as *-= CI Socials Ignited =-* widget.
 * Renamed old *-= CI Socials Ignited =-* widget to *Socials Ignited (deprecated)*
 * Added various deprecation messages. No functions/files have actually been marked deprecated though.
-
 
 = 1.4 =
 * Fixed an issue where the Customizer screen would not work because jquery.chained.js wasn’t loaded.
@@ -109,3 +100,10 @@ Please keep note of your widgets' settings, remove them, and then update the plu
 
 = 1.0 =
 * Initial release.
+
+== Upgrade Notice ==
+
+= 1.7 =
+WARNING - UPDATING TO v1.7 WILL RESULT IN YOUR FONT-BASED SOCIALS-IGNITED WIDGETS TO BE PERMANENTLY LOST.
+FURTHERMORE, CUSTOM STYLES APPLYING TO THE FONT-WIDGET MAY NO LONGER WORK AND WILL NEED RETARGETING.
+Please keep note of your widgets' settings, remove them, and then update the plugin.
