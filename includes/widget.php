@@ -12,7 +12,7 @@ class Socials_Ignited_Widget extends WP_Widget {
 		);
 		$control_ops = array(/*'width' => 300, 'height' => 400*/);
 		parent::WP_Widget('socials-ignited', $name='-= CI Socials Ignited =-', $widget_ops, $control_ops);
-		add_action('wp_enqueue_scripts', array($this, 'enqueue_css'));
+		add_action('wp_enqueue_scripts', array(&$this, 'enqueue_css'));
 	}
 
 	function widget($args, $instance)
@@ -113,24 +113,34 @@ class Socials_Ignited_Widget extends WP_Widget {
 	} // form
 
 	function enqueue_css() {
-		$instance = $this->get_settings();
+		$settings = $this->get_settings();
 
-		if(empty($instance) or empty($instance[$this->number]))
+		if(empty($settings))
 			return;
 
-		$instance = $instance[$this->number];
+
+		//$instance = $settings[$this->number];
+
 		$cisiw_options = get_option('cisiw_settings');
 		$cisiw_options = $cisiw_options !== false ? $cisiw_options : array();
 
-		$color = !empty($instance['color']) ? $instance['color'] : $cisiw_options['f_color'];
-		$background_color = !empty($instance['background_color']) ? $instance['background_color'] : 'none';
-		$size = !empty($instance['size']) ? $instance['size'] : $cisiw_options['f_size'];
-		$background_size = !empty($instance['background_size']) ? $instance['background_size'] : $cisiw_options['f_size'];
-		$border_radius = !empty($instance['border_radius']) ? $instance['border_radius'] : '0';
-		$opacity = !empty($instance['opacity']) ? $instance['opacity'] : '1';
+		foreach($settings as $instance_id => $instance) {
+			$id = $this->id_base.'-'.$instance_id;
 
-		$widget_style = '#'.$this->id.' i { color: '.$color.'; background: '. $background_color .'; font-size: '.$size.'px; width: '. $background_size .'px; height: '. $background_size .'px; line-height: '. $background_size .'px; border-radius: '. $border_radius .'px; opacity: '.$opacity.'; }'. ' #'.$this->id.' a:hover i { opacity: 1; }';
-		wp_add_inline_style('socials-ignited', $widget_style);
+			if ( !is_active_widget( false, $id, $this->id_base ) ) {
+				continue;
+			}
+
+			$color = !empty($instance['color']) ? $instance['color'] : $cisiw_options['f_color'];
+			$background_color = !empty($instance['background_color']) ? $instance['background_color'] : 'none';
+			$size = !empty($instance['size']) ? $instance['size'] : $cisiw_options['f_size'];
+			$background_size = !empty($instance['background_size']) ? $instance['background_size'] : $cisiw_options['f_size'];
+			$border_radius = !empty($instance['border_radius']) ? $instance['border_radius'] : '0';
+			$opacity = !empty($instance['opacity']) ? $instance['opacity'] : '1';
+
+			$widget_style = '#'.$id.' i { color: '.$color.'; background: '. $background_color .'; font-size: '.$size.'px; width: '. $background_size .'px; height: '. $background_size .'px; line-height: '. $background_size .'px; border-radius: '. $border_radius .'px; opacity: '.$opacity.'; }'. ' #'.$this->id.' a:hover i { opacity: 1; }';
+			wp_add_inline_style('socials-ignited', $widget_style);
+		}
 
 	}
 } // class
