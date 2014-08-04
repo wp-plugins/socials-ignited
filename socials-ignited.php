@@ -43,6 +43,10 @@ if(!defined('CISIW_PLUGIN_FILE')) {
 	define('CISIW_PLUGIN_FILE', __FILE__);
 }
 
+if(!defined('CISIW_BASENAME')) {
+	define('CISIW_BASENAME', plugin_basename(__FILE__));
+}
+
 load_plugin_textdomain('cisiw', false, dirname(plugin_basename(__FILE__)).'/languages/');
 
 
@@ -192,6 +196,25 @@ function cisiw_get_icon_path($icon)
 	
 }
 endif;
+
+add_filter('plugin_action_links_' . CISIW_BASENAME, 'cisiw_plugin_action_links');
+if( !function_exists('cisiw_plugin_action_links') ):
+function cisiw_plugin_action_links($links) {
+	$url = admin_url( 'options-general.php?page=cisiw-options' );
+	array_unshift( $links, '<a href="' . esc_url( $url ) . '">' . __( 'Settings', 'polylang' ) . '</a>' );
+	return $links;
+}
+endif;
+
+add_action('in_plugin_update_message-' . CISIW_BASENAME, 'cisiw_plugin_update_message', 10, 2);
+if( !function_exists('cisiw_plugin_update_message') ):
+function cisiw_plugin_update_message($plugin_data, $r) {
+	if ( !empty( $r->upgrade_notice ) ) {
+		printf( '<p style="margin: 3px 0 0 0; border-top: 1px solid #ddd; padding-top: 3px">%s</p>', $r->upgrade_notice );
+	}
+}
+endif;
+
 
 if ( !function_exists('ci_sanitize_hex_color') ):
 /**
