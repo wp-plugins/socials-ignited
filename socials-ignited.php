@@ -197,16 +197,16 @@ function cisiw_get_icon_path($icon)
 }
 endif;
 
-add_filter('plugin_action_links_' . CISIW_BASENAME, 'cisiw_plugin_action_links');
+add_filter('plugin_action_links_'.CISIW_BASENAME, 'cisiw_plugin_action_links');
 if( !function_exists('cisiw_plugin_action_links') ):
 function cisiw_plugin_action_links($links) {
 	$url = admin_url( 'options-general.php?page=cisiw-options' );
-	array_unshift( $links, '<a href="' . esc_url( $url ) . '">' . __( 'Settings', 'polylang' ) . '</a>' );
+	array_unshift( $links, '<a href="' . esc_url( $url ) . '">' . __( 'Settings', 'cisiw' ) . '</a>' );
 	return $links;
 }
 endif;
 
-add_action('in_plugin_update_message-' . CISIW_BASENAME, 'cisiw_plugin_update_message', 10, 2);
+add_action('in_plugin_update_message-'.CISIW_BASENAME, 'cisiw_plugin_update_message', 10, 2);
 if( !function_exists('cisiw_plugin_update_message') ):
 function cisiw_plugin_update_message($plugin_data, $r) {
 	if ( !empty( $r->upgrade_notice ) ) {
