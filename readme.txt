@@ -48,6 +48,11 @@ For in-depth details, tips and tricks, visit [the plugin's homepage](http://www.
 
 == Changelog ==
 
+= 1.7.1 =
+* Fixed a bug where only the generated CSS of the first Socials Ignited widget would get outputted (when multiple widgets existed).
+* Added a "Settings" link into the plugins' listing page.
+* The plugin's Upgrade Notice, if available, is now shown into the plugins listing page.
+
 = 1.7 =
 * Renamed *-= CI Socials Ignited =-* class from *CI_Socials_Ignited_Fontawesome* to *Socials_Ignited_Widget* .
 * Changed *-= CI Socials Ignited =-* HTML IDs to *socials-ignited* .
@@ -104,6 +109,6 @@ For in-depth details, tips and tricks, visit [the plugin's homepage](http://www.
 == Upgrade Notice ==
 
 = 1.7 =
-WARNING - UPDATING TO v1.7 WILL RESULT IN YOUR FONT-BASED SOCIALS-IGNITED WIDGETS TO BE PERMANENTLY LOST.
+WARNING - UPDATING FROM <= v1.6 TO >= v1.7 WILL RESULT IN YOUR FONT-BASED SOCIALS-IGNITED WIDGETS TO BE PERMANENTLY LOST.
 FURTHERMORE, CUSTOM STYLES APPLYING TO THE FONT-WIDGET MAY NO LONGER WORK AND WILL NEED RETARGETING.
-Please keep note of your widgets' settings, remove them, and then update the plugin.
+Please keep note of your widgets' settings, remove them (the widgets), and then update the plugin.
