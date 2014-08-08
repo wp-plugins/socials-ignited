@@ -7,8 +7,8 @@ class Socials_Ignited_Widget extends WP_Widget {
 
 	function Socials_Ignited_Widget(){
 		$widget_ops = array(
-			'description' => __('Social Icons widget, FontAwesome edition','cisiw'),
-			'classname' => 'widget_socials_ignited'
+			'description' => __( 'Social Icons widget, FontAwesome edition', 'cisiw' ),
+			'classname'   => 'widget_socials_ignited'
 		);
 		$control_ops = array(/*'width' => 300, 'height' => 400*/);
 		parent::WP_Widget('socials-ignited', $name='-= CI Socials Ignited =-', $widget_ops, $control_ops);
@@ -51,29 +51,34 @@ class Socials_Ignited_Widget extends WP_Widget {
 
 	function update($new_instance, $old_instance){
 		$instance = $old_instance;
-		$instance['title'] = sanitize_text_field($new_instance['title']);
-		$instance['color'] = ci_sanitize_hex_color($new_instance['color']);
-		$instance['background_color'] = ci_sanitize_hex_color($new_instance['background_color']);
-		$instance['size'] = absint_or_empty($new_instance['size']);
-		$instance['background_size'] = absint_or_empty($new_instance['background_size']);
-		$instance['border_radius'] = absint_or_empty($new_instance['border_radius']);
+		$instance['title'] = sanitize_text_field( $new_instance['title'] );
+		$instance['color'] = ci_sanitize_hex_color( $new_instance['color'] );
+		$instance['background_color'] = ci_sanitize_hex_color( $new_instance['background_color'] );
+		$instance['size'] = absint_or_empty( $new_instance['size'] );
+		$instance['background_size'] = absint_or_empty( $new_instance['background_size'] );
+		$instance['border_radius'] = absint_or_empty( $new_instance['border_radius'] );
 		$instance['opacity'] = $new_instance['opacity'];
-		$instance['new_win'] = ci_sanitize_checkbox($new_instance['new_win']);
+		$instance['new_win'] = ci_sanitize_checkbox( $new_instance['new_win'] );
 		$instance['icons'] = is_array( $new_instance['icons'] ) ? $new_instance['icons'] : array();
+
 		return $instance;
 	} // save
 
 	function form($instance){
+
+		$cisiw = get_option('cisiw_settings');
+		$cisiw = $cisiw !== false ? $cisiw : array();
+
 		$instance = wp_parse_args( (array) $instance, array(
-			'title'   => '',
-			'color'   => '',
-			'background_color' => '',
-			'border_radius' => '50',
-			'size'    => '17',
-			'background_size' => '30',
-			'opacity' => '1',
-			'new_win' => '',
-			'icons'   => array()
+			'title'            => '',
+			'color'            => isset($cisiw['f_color']) ? $cisiw['f_color'] : '',
+			'background_color' => isset($cisiw['f_background_color']) ? $cisiw['f_background_color'] : '',
+			'border_radius'    => isset($cisiw['f_border_radius']) ? $cisiw['f_border_radius'] : 50,
+			'size'             => isset($cisiw['f_size']) ? $cisiw['f_size'] : 17,
+			'background_size'  => isset($cisiw['f_background_size']) ? $cisiw['f_background_size'] : 30,
+			'opacity'          => isset($cisiw['f_opacity']) ? $cisiw['f_opacity'] : 1,
+			'new_win'          => '',
+			'icons'            => array()
 		));
 		extract($instance);
 
@@ -118,12 +123,6 @@ class Socials_Ignited_Widget extends WP_Widget {
 		if(empty($settings))
 			return;
 
-
-		//$instance = $settings[$this->number];
-
-		$cisiw_options = get_option('cisiw_settings');
-		$cisiw_options = $cisiw_options !== false ? $cisiw_options : array();
-
 		foreach($settings as $instance_id => $instance) {
 			$id = $this->id_base.'-'.$instance_id;
 
@@ -131,15 +130,40 @@ class Socials_Ignited_Widget extends WP_Widget {
 				continue;
 			}
 
-			$color = !empty($instance['color']) ? $instance['color'] : $cisiw_options['f_color'];
-			$background_color = !empty($instance['background_color']) ? $instance['background_color'] : 'none';
-			$size = !empty($instance['size']) ? $instance['size'] : $cisiw_options['f_size'];
-			$background_size = !empty($instance['background_size']) ? $instance['background_size'] : $cisiw_options['f_size'];
-			$border_radius = !empty($instance['border_radius']) ? $instance['border_radius'] : '0';
-			$opacity = !empty($instance['opacity']) ? $instance['opacity'] : '1';
+			$color            = $instance['color'];
+			$background_color = $instance['background_color'];
+			$size             = $instance['size'];
+			$background_size  = $instance['background_size'];
+			$border_radius    = $instance['border_radius'];
+			$opacity          = $instance['opacity'];
 
-			$widget_style = '#'.$id.' i { color: '.$color.'; background: '. $background_color .'; font-size: '.$size.'px; width: '. $background_size .'px; height: '. $background_size .'px; line-height: '. $background_size .'px; border-radius: '. $border_radius .'px; opacity: '.$opacity.'; }'. ' #'.$this->id.' a:hover i { opacity: 1; }';
-			wp_add_inline_style('socials-ignited', $widget_style);
+			$css = '';
+			if( !empty( $color ) ) {
+				$css .= 'color: ' . $color . '; ';
+			}
+			if( !empty( $background_color ) ) {
+				$css .= 'background: ' . $background_color . '; ';
+			}
+			if( !empty( $size ) ) {
+				$css .= 'font-size: ' . $size . 'px; ';
+			}
+			if( !empty( $background_size ) ) {
+				$css .= 'width: ' . $background_size . 'px; ';
+				$css .= 'height: ' . $background_size . 'px; ';
+				$css .= 'line-height: ' . $background_size . 'px; ';
+			}
+			if( !empty( $border_radius ) ) {
+				$css .= 'border-radius: ' . $border_radius . 'px; ';
+			}
+			if( !empty( $opacity ) ) {
+				$css .= 'opacity: ' . $opacity . '; ';
+			}
+
+			if( !empty( $css ) ) {
+				$css = '#'.$id.' i { ' . $css . ' } ' . PHP_EOL;
+				wp_add_inline_style('socials-ignited', $css);
+			}
+
 		}
 
 	}

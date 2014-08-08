@@ -37,7 +37,11 @@ function cisiw_options_page() {
 
 	// Let's initialize the rest of the values.
 	$cisiw_options['f_color'] = !empty($cisiw_options['f_color']) ? $cisiw_options['f_color'] : '#000000';
-	$cisiw_options['f_size'] = !empty($cisiw_options['f_size']) ? $cisiw_options['f_size'] : 32;
+	$cisiw_options['f_background_color'] = !empty($cisiw_options['f_background_color']) ? $cisiw_options['f_background_color'] : 'transparent';
+	$cisiw_options['f_size'] = !empty($cisiw_options['f_size']) ? $cisiw_options['f_size'] : 17;
+	$cisiw_options['f_background_size'] = !empty($cisiw_options['f_background_size']) ? $cisiw_options['f_background_size'] : 30;
+	$cisiw_options['f_border_radius'] = !empty($cisiw_options['f_border_radius']) ? $cisiw_options['f_border_radius'] : 50;
+	$cisiw_options['f_opacity'] = !empty($cisiw_options['f_opacity']) ? $cisiw_options['f_opacity'] : 1;
 
 	?>
 	<div class="wrap">
@@ -45,38 +49,45 @@ function cisiw_options_page() {
 		<form method="post" action="options.php">
  			<?php settings_fields('cisiw_settings_group'); ?>
 
-			<h3><?php _e('Font widget settings', 'cisiw'); ?></h3>
+			<h3><?php _e('Default font widget settings', 'cisiw'); ?></h3>
 			<table class="form-table" id="cisiw-fontwidget-options">
 				<tbody>
 					<tr>
-						<th scope="row"><label for="cisiw_settings[f_color]"><?php _e('Default color', 'cisiw'); ?></label></th>
+						<th scope="row"><label for="cisiw_settings[f_color]"><?php _e('Icon Color:', 'cisiw'); ?></label></th>
 						<td colspan="2">
 							<input id="cisiw_settings[f_color]" type="text" name="cisiw_settings[f_color]" value="<?php echo esc_attr($cisiw_options['f_color']); ?>" class="colorpckr" />
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><label for="cisiw_settings[f_size]"><?php _e('Default size', 'cisiw'); ?></label></th>
+						<th scope="row"><label for="cisiw_settings[f_background_color]"><?php _e('Icon Background Color:', 'cisiw'); ?></label></th>
+						<td colspan="2">
+							<input id="cisiw_settings[f_background_color]" type="text" name="cisiw_settings[f_background_color]" value="<?php echo esc_attr($cisiw_options['f_background_color']); ?>" class="colorpckr" />
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"><label for="cisiw_settings[f_size]"><?php _e('Icon Size (single integer in pixels):', 'cisiw'); ?></label></th>
 						<td colspan="2">
 							<input id="cisiw_settings[f_size]" type="number" name="cisiw_settings[f_size]" value="<?php echo esc_attr($cisiw_options['f_size']); ?>" />
 						</td>
 					</tr>
-
-<?php /*
 					<tr>
-						<th scope="row"><label for="cisiw_settings[custom_css]"><?php _e('Custom CSS', 'cisiw'); ?></label></th>
-						<td>
-							<textarea id="cisiw_settings[custom_css]" name="cisiw_settings[custom_css]" rows="9" cols="80"><?php echo esc_textarea($cisiw_options['custom_css']); ?></textarea>
-							<?php
-								$sample_output = "<div class=\"widget_ci_socials_ignited widget\" id=\"ci_socials_ignited-6\">\n  <div class=\"ci-socials-ignited ci-socials-ignited-32\">\n    <a href=\"#\">\n      <img src=\"http://www.example.com/.../square/default/32/apple.png\">\n    </a>\n  </div>\n</div>";
-							?>
-						</td>
-						<td>
-							<?php _e('Sample widget HTML output:', 'cisiw'); ?>
-							<br>
-							<pre><?php echo esc_html($sample_output); ?></pre>
+						<th scope="row"><label for="cisiw_settings[f_background_size]"><?php _e('Background Size (single integer in pixels):', 'cisiw'); ?></label></th>
+						<td colspan="2">
+							<input id="cisiw_settings[f_background_size]" type="number" name="cisiw_settings[f_background_size]" value="<?php echo esc_attr($cisiw_options['f_background_size']); ?>" />
 						</td>
 					</tr>
-*/ ?>
+					<tr>
+						<th scope="row"><label for="cisiw_settings[f_border_radius]"><?php _e('Border Radius (single integer in pixels):', 'cisiw'); ?></label></th>
+						<td colspan="2">
+							<input id="cisiw_settings[f_border_radius]" type="number" name="cisiw_settings[f_border_radius]" value="<?php echo esc_attr($cisiw_options['f_border_radius']); ?>" />
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"><label for="cisiw_settings[f_opacity]"><?php _e('Opacity (0.1 up to 1):', 'cisiw'); ?></label></th>
+						<td colspan="2">
+							<input id="cisiw_settings[f_opacity]" type="number" min="0.1" max="1" step="0.1" name="cisiw_settings[f_opacity]" value="<?php echo esc_attr($cisiw_options['f_opacity']); ?>" />
+						</td>
+					</tr>
 					<tr>
 						<td colspan="4">
 							<p class="submit">
@@ -250,7 +261,28 @@ function cisiw_validate_settings($input) {
 		return $defaults;
 	}
 
-	if(isset($input['f_color'])) $input['f_color'] = ci_sanitize_hex_color($input['f_color']);
+	if ( isset( $input['f_color'] ) ) {
+		$input['f_color'] = ci_sanitize_hex_color( $input['f_color'] );
+	}
+	if ( isset( $input['f_background_color'] ) ) {
+		$input['f_background_color'] = ci_sanitize_hex_color( $input['f_background_color'] );
+	}
+	if ( isset( $input['f_size'] ) ) {
+		$input['f_size'] = intval( $input['f_size'] );
+	}
+	if ( isset( $input['f_background_size'] ) ) {
+		$input['f_background_size'] = intval( $input['f_background_size'] );
+	}
+	if ( isset( $input['f_border_radius'] ) ) {
+		$input['f_border_radius'] = intval( $input['f_border_radius'] );
+	}
+	if ( isset( $input['f_opacity'] ) ) {
+		$val = floatval( $input['f_opacity'] );
+		if( $val < 0.1 ) $val = 0.1;
+		if( $val > 1 ) $val = 1;
+		$input['f_opacity'] = $val;
+	}
+
 	return $input;
 }
 endif;
