@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Socials Ignited\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-04 22:00+0200\n"
-"PO-Revision-Date: 2014-08-04 22:00+0200\n"
+"POT-Creation-Date: 2014-08-08 20:03+0200\n"
+"PO-Revision-Date: 2014-08-08 20:03+0200\n"
 "Last-Translator: Anastis Sourgoutsidis <anastis@cssigniter.com>\n"
 "Language-Team: CSSIgniter LLC <info@cssigniter.com>\n"
 "Language: en_US\n"
@@ -21,51 +21,67 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
 
-#: ../includes/admin-page.php:44
+#: ../includes/admin-page.php:48
 #, php-format
 msgid "<h2>Socials Ignited</h2><h3>by <a href=\"%s\">CSSIgniter</a></h3>"
 msgstr ""
 
-#: ../includes/admin-page.php:48
-msgid "Font widget settings"
-msgstr ""
-
 #: ../includes/admin-page.php:52
-msgid "Default color"
+msgid "Default font widget settings"
 msgstr ""
 
-#: ../includes/admin-page.php:58
-msgid "Default size"
+#: ../includes/admin-page.php:56 ../includes/widget.php:89
+msgid "Icon Color:"
 msgstr ""
 
-#: ../includes/admin-page.php:83 ../includes/admin-page.php:199
+#: ../includes/admin-page.php:62 ../includes/widget.php:90
+msgid "Icon Background Color:"
+msgstr ""
+
+#: ../includes/admin-page.php:68 ../includes/widget.php:91
+msgid "Icon Size (single integer in pixels):"
+msgstr ""
+
+#: ../includes/admin-page.php:74 ../includes/widget.php:92
+msgid "Background Size (single integer in pixels):"
+msgstr ""
+
+#: ../includes/admin-page.php:80 ../includes/widget.php:93
+msgid "Border Radius (single integer in pixels):"
+msgstr ""
+
+#: ../includes/admin-page.php:86 ../includes/widget.php:94
+msgid "Opacity (0.1 up to 1):"
+msgstr ""
+
+#: ../includes/admin-page.php:94 ../includes/admin-page.php:210
 msgid "Save Options"
 msgstr ""
 
-#: ../includes/admin-page.php:91
+#: ../includes/admin-page.php:102
 msgid "Image widget settings (deprecated)"
 msgstr ""
 
-#: ../includes/admin-page.php:92
+#: ../includes/admin-page.php:103
 msgid ""
 "The image icons of Socials Ignited are now deprecated. Icons and "
 "functionality will no longer be updated, and you are encouraged to change "
 "all your current image-based widgets to the new font-based one."
 msgstr ""
 
-#: ../includes/admin-page.php:96
+#: ../includes/admin-page.php:107
 msgid "Open links in a new window?"
 msgstr ""
 
-#: ../includes/admin-page.php:102
+#: ../includes/admin-page.php:113
 msgid "Custom CSS"
 msgstr ""
 
-#: ../includes/admin-page.php:110
+#: ../includes/admin-page.php:121
 msgid "Sample widget HTML output:"
 msgstr ""
 
-#: ../includes/admin-page.php:119
+#: ../includes/admin-page.php:130
 msgid ""
 "Just enter the URL for each social service you want to display. Then go to "
 "Widgets and drag the Socials Ignited widget to the sidebar(s) that you want. "
@@ -73,40 +89,40 @@ msgid ""
 "note that not all icons are available in each set."
 msgstr ""
 
-#: ../includes/admin-page.php:120
+#: ../includes/admin-page.php:131
 msgid ""
 "You may rearrange the services by grabbing a row from its empty area and "
 "dragging it to the desired position. Services without a URL will not be "
 "displayed."
 msgstr ""
 
-#: ../includes/admin-page.php:135
+#: ../includes/admin-page.php:146
 msgctxt "social service name"
 msgid "Service name"
 msgstr ""
 
-#: ../includes/admin-page.php:136
+#: ../includes/admin-page.php:147
 msgctxt "social service url value"
 msgid "Value"
 msgstr ""
 
-#: ../includes/admin-page.php:180
+#: ../includes/admin-page.php:191
 msgid "Enter your URL <em>(Include http://</em>)"
 msgstr ""
 
-#: ../includes/admin-page.php:186 ../includes/admin-page.php:188
+#: ../includes/admin-page.php:197 ../includes/admin-page.php:199
 msgid "Recommended value:"
 msgstr ""
 
-#: ../includes/admin-page.php:200
+#: ../includes/admin-page.php:211
 msgid "Reset custom order"
 msgstr ""
 
-#: ../includes/admin-page.php:217
+#: ../includes/admin-page.php:228
 msgid "Socials Ignited Widget Options"
 msgstr ""
 
-#: ../includes/admin-page.php:217
+#: ../includes/admin-page.php:228
 msgctxt "plugin name"
 msgid "Socials Ignited"
 msgstr ""
@@ -115,7 +131,7 @@ msgstr ""
 msgid "Social Icons widget, FontAwesome edition"
 msgstr ""
 
-#: ../includes/widget.php:81
+#: ../includes/widget.php:86
 #, php-format
 msgid ""
 "To add icons click on \"Add Icon\" at the bottom of the widget and then "
@@ -125,89 +141,65 @@ msgid ""
 "also drag and drop the boxes to rearrange the icons."
 msgstr ""
 
-#: ../includes/widget.php:83 ../includes/widget.php:244
+#: ../includes/widget.php:88 ../includes/widget.php:275
 msgid "Title:"
 msgstr ""
 
-#: ../includes/widget.php:84
-msgid "Icon Color:"
-msgstr ""
-
-#: ../includes/widget.php:85
-msgid "Icon Background Color:"
-msgstr ""
-
-#: ../includes/widget.php:86
-msgid "Icon Size (single integer in pixels):"
-msgstr ""
-
-#: ../includes/widget.php:87
-msgid "Background Size (single integer in pixels):"
-msgstr ""
-
-#: ../includes/widget.php:88
-msgid "Border Radius (single integer in pixels):"
-msgstr ""
-
-#: ../includes/widget.php:89
-msgid "Opacity (0.1 up to 1):"
-msgstr ""
-
-#: ../includes/widget.php:90
+#: ../includes/widget.php:95
 msgid "Open in new window"
 msgstr ""
 
-#: ../includes/widget.php:99 ../includes/widget.php:352
+#: ../includes/widget.php:104 ../includes/widget.php:383
 msgid "Icon code:"
 msgstr ""
 
-#: ../includes/widget.php:100 ../includes/widget.php:354
+#: ../includes/widget.php:105 ../includes/widget.php:385
 msgid "Link URL:"
 msgstr ""
 
-#: ../includes/widget.php:101 ../includes/widget.php:353
+#: ../includes/widget.php:106 ../includes/widget.php:384
 msgid "Title text (optional):"
 msgstr ""
 
-#: ../includes/widget.php:104 ../includes/widget.php:355
+#: ../includes/widget.php:109 ../includes/widget.php:386
 msgid "Remove Icon"
 msgstr ""
 
-#: ../includes/widget.php:111
+#: ../includes/widget.php:116
 msgid "Add Icon"
 msgstr ""
 
-#: ../includes/widget.php:166
+#: ../includes/widget.php:197
 msgid "Social Icons widget placeholder (deprecated)"
 msgstr ""
 
-#: ../includes/widget.php:242
+#: ../includes/widget.php:273
 msgid ""
 "This widget is now deprecated and it will be removed in a future plugin "
 "update (v2.0). Please use the <strong>-= CI Socials Ignited =-</strong> "
 "widget instead."
 msgstr ""
 
-#: ../includes/widget.php:243
+#: ../includes/widget.php:274
 msgid ""
 "This widget is a placeholder for Social Media icons. You may configure those "
 "icons from <strong>Settings</strong> menu, <strong>Socials Ignited</strong> "
 "sub-menu."
 msgstr ""
 
-#: ../includes/widget.php:257
+#: ../includes/widget.php:288
 msgid "Icon set:"
 msgstr ""
 
-#: ../includes/widget.php:267
+#: ../includes/widget.php:298
 msgid "Color Variation:"
 msgstr ""
 
-#: ../includes/widget.php:278
+#: ../includes/widget.php:309
 msgid "Icon Size:"
 msgstr ""
 
-#: ../includes/widget.php:290
+#: ../includes/widget.php:321
 msgid ""
 "Please save the widget first, in order to be able to choose more options."
 msgstr ""

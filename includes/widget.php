@@ -137,8 +137,10 @@ class Socials_Ignited_Widget extends WP_Widget {
 			$border_radius    = $instance['border_radius'];
 			$opacity          = $instance['opacity'];
 
-			$css_hover = '';
 			$css = '';
+			$css_hover = '';
+			$widget_style = '';
+
 			if( !empty( $color ) ) {
 				$css .= 'color: ' . $color . '; ';
 			}
@@ -159,7 +161,7 @@ class Socials_Ignited_Widget extends WP_Widget {
 			if( !empty( $opacity ) ) {
 				$css .= 'opacity: ' . $opacity . '; ';
 				if ( $opacity < 1 ) {
-					$css_hover = '#' . $this->id . ' a:hover i { opacity: 1; }' . PHP_EOL;
+					$css_hover = '#' . $id . ' a:hover i { opacity: 1; }' . PHP_EOL;
 				}
 			}
 

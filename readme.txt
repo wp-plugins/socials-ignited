@@ -4,9 +4,9 @@ Plugin URI: http://www.cssigniter.com/ignite/socials-ignited/
 Author URI: http://www.cssigniter.com/
 Author: The CSSigniter Team
 Contributors: anastis, tsiger, silencerius
-Tags: social, widget, icons, round, square, light, dark
+Tags: social, widget, icons, round, square, light, dark, fontawesome
 Requires at least: 3.8
-Tested up to: 3.9.1
+Tested up to: 3.9.2
 Stable tag: 1.7.1
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -47,6 +47,11 @@ For in-depth details, tips and tricks, visit [the plugin's homepage](http://www.
 3. Actual output
 
 == Changelog ==
+
+= 1.7.2 =
+* Now all options have user-supplied default from the options page.
+* Optimized output of CSS rules for each widgets. This also fixes some edge cases where invalid rules would get outputted.
+* The default option values are now only used when creating new widgets, rather than determining the outcome of the CSS generation.
 
 = 1.7.1 =
 * Fixed a bug where only the generated CSS of the first Socials Ignited widget would get outputted (when multiple widgets existed).
@@ -107,6 +112,12 @@ For in-depth details, tips and tricks, visit [the plugin's homepage](http://www.
 * Initial release.
 
 == Upgrade Notice ==
+
+= 1.7.2 =
+This version improves the use of defaults, and fixes some edge cases with the generated front-end CSS.
+
+= 1.7.1 =
+This version fixes a bug where only the generated CSS of the first Socials Ignited widget would get outputted (when multiple widgets existed).
 
 = 1.7 =
 WARNING - UPDATING FROM <= v1.6 TO >= v1.7 WILL RESULT IN YOUR FONT-BASED SOCIALS-IGNITED WIDGETS TO BE PERMANENTLY LOST.
