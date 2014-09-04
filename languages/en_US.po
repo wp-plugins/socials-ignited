@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Socials Ignited\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-08 20:03+0200\n"
-"PO-Revision-Date: 2014-08-08 20:03+0200\n"
+"POT-Creation-Date: 2014-09-04 19:51+0200\n"
+"PO-Revision-Date: 2014-09-04 19:51+0200\n"
 "Last-Translator: Anastis Sourgoutsidis <anastis@cssigniter.com>\n"
 "Language-Team: CSSIgniter LLC <info@cssigniter.com>\n"
 "Language: en_US\n"
@@ -16,7 +16,7 @@ msgstr ""
 "esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-Basepath: .\n"
 "X-Textdomain-Support: yes\n"
-"X-Generator: Poedit 1.6.7\n"
+"X-Generator: Poedit 1.6.9\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
@@ -30,27 +30,27 @@ msgstr ""
 msgid "Default font widget settings"
 msgstr ""
 
-#: ../includes/admin-page.php:56 ../includes/widget.php:89
+#: ../includes/admin-page.php:56 ../includes/widget.php:90
 msgid "Icon Color:"
 msgstr ""
 
-#: ../includes/admin-page.php:62 ../includes/widget.php:90
+#: ../includes/admin-page.php:62 ../includes/widget.php:91
 msgid "Icon Background Color:"
 msgstr ""
 
-#: ../includes/admin-page.php:68 ../includes/widget.php:91
+#: ../includes/admin-page.php:68 ../includes/widget.php:92
 msgid "Icon Size (single integer in pixels):"
 msgstr ""
 
-#: ../includes/admin-page.php:74 ../includes/widget.php:92
+#: ../includes/admin-page.php:74 ../includes/widget.php:93
 msgid "Background Size (single integer in pixels):"
 msgstr ""
 
-#: ../includes/admin-page.php:80 ../includes/widget.php:93
+#: ../includes/admin-page.php:80 ../includes/widget.php:94
 msgid "Border Radius (single integer in pixels):"
 msgstr ""
 
-#: ../includes/admin-page.php:86 ../includes/widget.php:94
+#: ../includes/admin-page.php:86 ../includes/widget.php:95
 msgid "Opacity (0.1 up to 1):"
 msgstr ""
 
@@ -131,7 +131,7 @@ msgstr ""
 msgid "Social Icons widget, FontAwesome edition"
 msgstr ""
 
-#: ../includes/widget.php:86
+#: ../includes/widget.php:87
 #, php-format
 msgid ""
 "To add icons click on \"Add Icon\" at the bottom of the widget and then "
@@ -141,65 +141,65 @@ msgid ""
 "also drag and drop the boxes to rearrange the icons."
 msgstr ""
 
-#: ../includes/widget.php:88 ../includes/widget.php:275
+#: ../includes/widget.php:89 ../includes/widget.php:276
 msgid "Title:"
 msgstr ""
 
-#: ../includes/widget.php:95
+#: ../includes/widget.php:96
 msgid "Open in new window"
 msgstr ""
 
-#: ../includes/widget.php:104 ../includes/widget.php:383
+#: ../includes/widget.php:105 ../includes/widget.php:384
 msgid "Icon code:"
 msgstr ""
 
-#: ../includes/widget.php:105 ../includes/widget.php:385
+#: ../includes/widget.php:106 ../includes/widget.php:386
 msgid "Link URL:"
 msgstr ""
 
-#: ../includes/widget.php:106 ../includes/widget.php:384
+#: ../includes/widget.php:107 ../includes/widget.php:385
 msgid "Title text (optional):"
 msgstr ""
 
-#: ../includes/widget.php:109 ../includes/widget.php:386
+#: ../includes/widget.php:110 ../includes/widget.php:387
 msgid "Remove Icon"
 msgstr ""
 
-#: ../includes/widget.php:116
+#: ../includes/widget.php:117
 msgid "Add Icon"
 msgstr ""
 
-#: ../includes/widget.php:197
+#: ../includes/widget.php:198
 msgid "Social Icons widget placeholder (deprecated)"
 msgstr ""
 
-#: ../includes/widget.php:273
+#: ../includes/widget.php:274
 msgid ""
 "This widget is now deprecated and it will be removed in a future plugin "
 "update (v2.0). Please use the <strong>-= CI Socials Ignited =-</strong> "
 "widget instead."
 msgstr ""
 
-#: ../includes/widget.php:274
+#: ../includes/widget.php:275
 msgid ""
 "This widget is a placeholder for Social Media icons. You may configure those "
 "icons from <strong>Settings</strong> menu, <strong>Socials Ignited</strong> "
 "sub-menu."
 msgstr ""
 
-#: ../includes/widget.php:288
+#: ../includes/widget.php:289
 msgid "Icon set:"
 msgstr ""
 
-#: ../includes/widget.php:298
+#: ../includes/widget.php:299
 msgid "Color Variation:"
 msgstr ""
 
-#: ../includes/widget.php:309
+#: ../includes/widget.php:310
 msgid "Icon Size:"
 msgstr ""
 
-#: ../includes/widget.php:321
+#: ../includes/widget.php:322
 msgid ""
 "Please save the widget first, in order to be able to choose more options."
 msgstr ""
