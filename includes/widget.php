@@ -51,15 +51,16 @@ class Socials_Ignited_Widget extends WP_Widget {
 
 	function update($new_instance, $old_instance){
 		$instance = $old_instance;
-		$instance['title'] = sanitize_text_field( $new_instance['title'] );
-		$instance['color'] = ci_sanitize_hex_color( $new_instance['color'] );
+
+		$instance['title']            = sanitize_text_field( $new_instance['title'] );
+		$instance['color']            = ci_sanitize_hex_color( $new_instance['color'] );
 		$instance['background_color'] = ci_sanitize_hex_color( $new_instance['background_color'] );
-		$instance['size'] = absint_or_empty( $new_instance['size'] );
-		$instance['background_size'] = absint_or_empty( $new_instance['background_size'] );
-		$instance['border_radius'] = absint_or_empty( $new_instance['border_radius'] );
-		$instance['opacity'] = $new_instance['opacity'];
-		$instance['new_win'] = ci_sanitize_checkbox( $new_instance['new_win'] );
-		$instance['icons'] = is_array( $new_instance['icons'] ) ? $new_instance['icons'] : array();
+		$instance['size']             = absint_or_empty( $new_instance['size'] );
+		$instance['background_size']  = absint_or_empty( $new_instance['background_size'] );
+		$instance['border_radius']    = absint_or_empty( $new_instance['border_radius'] );
+		$instance['opacity']          = round( floatval( $new_instance['opacity'] ), 1 );
+		$instance['new_win']          = ci_sanitize_checkbox( $new_instance['new_win'] );
+		$instance['icons']            = is_array( $new_instance['icons'] ) ? $new_instance['icons'] : array();
 
 		return $instance;
 	} // save
