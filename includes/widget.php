@@ -356,7 +356,8 @@ function cisiw_widget_scripts()
 {
 	if(is_active_widget('', '', 'socials-ignited'))
 	{
-		wp_enqueue_style('font-awesome', CISIW_PLUGIN_URL.'css/font-awesome.css', array(), '4.1.0');
+		wp_deregister_style('font-awesome');
+		wp_enqueue_style('font-awesome', CISIW_PLUGIN_URL.'css/font-awesome.css', array(), '4.2.0');
 	}
 
 	wp_enqueue_style('socials-ignited', CISIW_PLUGIN_URL.'css/style.css');

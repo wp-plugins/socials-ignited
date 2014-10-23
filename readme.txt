@@ -48,6 +48,9 @@ For in-depth details, tips and tricks, visit [the plugin's homepage](http://www.
 
 == Changelog ==
 
+= 1.7.4 =
+* Made the bundled version of FontAwesome override any pre-existing ones with the handle ‘font-awesome’. Some themes provide an older version of the font and that was used instead, resulting in non-working icons.
+
 = 1.7.3 =
 * Updated FontAwesome to v4.2.0
 
