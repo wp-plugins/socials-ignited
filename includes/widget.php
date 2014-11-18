@@ -5,7 +5,7 @@
 if( !class_exists('Socials_Ignited_Widget') ):
 class Socials_Ignited_Widget extends WP_Widget {
 
-	function Socials_Ignited_Widget(){
+	function Socials_Ignited_Widget() {
 		$widget_ops = array(
 			'description' => __( 'Social Icons widget, FontAwesome edition', 'cisiw' ),
 			'classname'   => 'widget_socials_ignited'
@@ -15,31 +15,29 @@ class Socials_Ignited_Widget extends WP_Widget {
 		add_action('wp_enqueue_scripts', array(&$this, 'enqueue_css'));
 	}
 
-	function widget($args, $instance)
-	{
+	function widget( $args, $instance ) {
 		extract($args);
 		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
 
-		$new_win = $instance['new_win']=='on' ? ' target="_blank" ' : '';
-		$icons = !empty($instance['icons']) ? $instance['icons'] : array();
+		$new_win = $instance['new_win'] == 'on' ? ' target="_blank" ' : '';
+		$icons   = ! empty( $instance['icons'] ) ? $instance['icons'] : array();
 
 
 		echo $before_widget;
-		if ($title) echo $before_title . $title . $after_title;
+		if ( $title ) {
+			echo $before_title . $title . $after_title;
+		}
 
 		echo '<div class="ci-socials-ignited ci-socials-ignited-fa">';
 
-		if( !empty($icons) )
-		{
-			for( $i = 0; $i < count($icons); $i+=4 )
-			{
+		if ( ! empty( $icons ) ) {
+			for ( $i = 0; $i < count( $icons ); $i += 4 ) {
+				$code  = esc_attr( $icons[ $i ] );
+				$url   = esc_url( $icons[ $i + 1 ] );
+				$title = esc_attr( $icons[ $i + 2 ] );
+				$title = ! empty( $title ) ? ' title="' . $title . '" ' : '';
 
-				$code = esc_attr($icons[$i]);
-				$url = esc_url($icons[$i + 1]);
-				$title = esc_attr($icons[$i + 2]);
-				$title = !empty($title) ? ' title="'.$title.'" ' : '';
-
-				echo '<a href="'.$url.'" '.$new_win.'><i class="fa '.$code.'" '.$title.'></i></a>';
+				echo '<a href="' . $url . '" ' . $new_win . '><i class="fa ' . $code . '" ' . $title . '></i></a>';
 			}
 		}
 
@@ -72,16 +70,16 @@ class Socials_Ignited_Widget extends WP_Widget {
 
 		$instance = wp_parse_args( (array) $instance, array(
 			'title'            => '',
-			'color'            => isset($cisiw['f_color']) ? $cisiw['f_color'] : '',
-			'background_color' => isset($cisiw['f_background_color']) ? $cisiw['f_background_color'] : '',
-			'border_radius'    => isset($cisiw['f_border_radius']) ? $cisiw['f_border_radius'] : 50,
-			'size'             => isset($cisiw['f_size']) ? $cisiw['f_size'] : 17,
-			'background_size'  => isset($cisiw['f_background_size']) ? $cisiw['f_background_size'] : 30,
-			'opacity'          => isset($cisiw['f_opacity']) ? $cisiw['f_opacity'] : 1,
+			'color'            => isset( $cisiw['f_color'] ) ? $cisiw['f_color'] : '',
+			'background_color' => isset( $cisiw['f_background_color'] ) ? $cisiw['f_background_color'] : '',
+			'border_radius'    => isset( $cisiw['f_border_radius'] ) ? $cisiw['f_border_radius'] : 50,
+			'size'             => isset( $cisiw['f_size'] ) ? $cisiw['f_size'] : 17,
+			'background_size'  => isset( $cisiw['f_background_size'] ) ? $cisiw['f_background_size'] : 30,
+			'opacity'          => isset( $cisiw['f_opacity'] ) ? $cisiw['f_opacity'] : 1,
 			'new_win'          => '',
 			'icons'            => array()
-		));
-		extract($instance);
+		) );
+		extract( $instance );
 
 		?>
 		<p class="cisiw-icon-instructions"><small><?php echo sprintf(__('To add icons click on "Add Icon" at the bottom of the widget and then insert the <em>Icon code</em> and its <em>Link URL</em>. Icon codes can be found <a target="_blank" href="%s">here</a>, type them exactly as they are shown (with fa- in front), e.g. <strong>fa-facebook</strong>. You can also drag and drop the boxes to rearrange the icons.', 'cisiw'), 'http://fontawesome.io/icons/#brand'); ?></small></p>
@@ -107,7 +105,7 @@ class Socials_Ignited_Widget extends WP_Widget {
 					<label><?php _e('Title text (optional):', 'cisiw'); ?> <input type="text" class="widefat" name="<?php echo $this->get_field_name('icons'); ?>[]" value="<?php echo esc_attr($icons[$i+2]); ?>" /></label>
 					<!-- Fourth field reserved for future use -->
 					<input type="hidden" name="<?php echo $this->get_field_name('icons'); ?>[]" value="<?php echo esc_attr($icons[$i+3]); ?>" />
-					<a class="icon-remove button" href="#"><?php _e('Remove Icon', 'cisiw'); ?></a>
+					<a class="ci-icon-remove button" href="#"><?php _e('Remove Icon', 'cisiw'); ?></a>
 				</div>
 				<?php
 			}
@@ -121,13 +119,14 @@ class Socials_Ignited_Widget extends WP_Widget {
 	function enqueue_css() {
 		$settings = $this->get_settings();
 
-		if(empty($settings))
+		if ( empty( $settings ) ) {
 			return;
+		}
 
-		foreach($settings as $instance_id => $instance) {
-			$id = $this->id_base.'-'.$instance_id;
+		foreach ( $settings as $instance_id => $instance ) {
+			$id = $this->id_base . '-' . $instance_id;
 
-			if ( !is_active_widget( false, $id, $this->id_base ) ) {
+			if ( ! is_active_widget( false, $id, $this->id_base ) ) {
 				continue;
 			}
 
@@ -138,38 +137,38 @@ class Socials_Ignited_Widget extends WP_Widget {
 			$border_radius    = $instance['border_radius'];
 			$opacity          = $instance['opacity'];
 
-			$css = '';
-			$css_hover = '';
+			$css          = '';
+			$css_hover    = '';
 			$widget_style = '';
 
-			if( !empty( $color ) ) {
+			if ( ! empty( $color ) ) {
 				$css .= 'color: ' . $color . '; ';
 			}
-			if( !empty( $background_color ) ) {
+			if ( ! empty( $background_color ) ) {
 				$css .= 'background: ' . $background_color . '; ';
 			}
-			if( !empty( $size ) ) {
+			if ( ! empty( $size ) ) {
 				$css .= 'font-size: ' . $size . 'px; ';
 			}
-			if( !empty( $background_size ) ) {
+			if ( ! empty( $background_size ) ) {
 				$css .= 'width: ' . $background_size . 'px; ';
 				$css .= 'height: ' . $background_size . 'px; ';
 				$css .= 'line-height: ' . $background_size . 'px; ';
 			}
-			if( !empty( $border_radius ) ) {
+			if ( ! empty( $border_radius ) ) {
 				$css .= 'border-radius: ' . $border_radius . 'px; ';
 			}
-			if( !empty( $opacity ) ) {
+			if ( ! empty( $opacity ) ) {
 				$css .= 'opacity: ' . $opacity . '; ';
 				if ( $opacity < 1 ) {
 					$css_hover = '#' . $id . ' a:hover i { opacity: 1; }' . PHP_EOL;
 				}
 			}
 
-			if( !empty( $css ) ) {
-				$css = '#'.$id.' i { ' . $css . ' } ' . PHP_EOL;
+			if ( ! empty( $css ) ) {
+				$css          = '#' . $id . ' i { ' . $css . ' } ' . PHP_EOL;
 				$widget_style = $css . $css_hover;
-				wp_add_inline_style('socials-ignited', $widget_style);
+				wp_add_inline_style( 'socials-ignited', $widget_style );
 			}
 
 		}
@@ -178,9 +177,10 @@ class Socials_Ignited_Widget extends WP_Widget {
 } // class
 
 function CI_SocialsIgnited_FontAwesome_Action() {
-	register_widget('Socials_Ignited_Widget');
+	register_widget( 'Socials_Ignited_Widget' );
 }
-add_action('widgets_init', 'CI_SocialsIgnited_FontAwesome_Action');
+
+add_action( 'widgets_init', 'CI_SocialsIgnited_FontAwesome_Action' );
 
 endif; //class_exists
 
@@ -195,53 +195,53 @@ if( !class_exists('CI_Socials_Ignited') ):
 class CI_Socials_Ignited extends WP_Widget {
 
 	function CI_Socials_Ignited(){
-		$widget_ops = array( 'description' => __('Social Icons widget placeholder (deprecated)','cisiw') );
-		$control_ops = array(/*'width' => 300, 'height' => 400*/);
+		$widget_ops  = array( 'description' => __( 'Social Icons widget placeholder (deprecated)', 'cisiw' ) );
+		$control_ops = array(/*'width' => 300, 'height' => 400*/ );
 		parent::WP_Widget('ci_socials_ignited', $name='Socials Ignited (deprecated)', $widget_ops, $control_ops);
 	}
 
-	function widget($args, $instance) {
+	function widget( $args, $instance ) {
 		extract($args);
-		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
-		$icon_set = isset($instance['icon_set']) ? $instance['icon_set'] : 'square';
-		$variation = isset($instance['variation']) ? $instance['variation'] : 'default';
-		$size = isset($instance['size']) ? $instance['size'] : '32';
+		$title     = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
+		$icon_set  = isset( $instance['icon_set'] ) ? $instance['icon_set'] : 'square';
+		$variation = isset( $instance['variation'] ) ? $instance['variation'] : 'default';
+		$size      = isset( $instance['size'] ) ? $instance['size'] : '32';
 		
 		$cisiw_options = get_option('cisiw_settings');
 		$cisiw_options = $cisiw_options !== false ? $cisiw_options : array();
 
 		echo $before_widget;
-		if ($title) echo $before_title . $title . $after_title;
-		
-		$new_window = "";
-		$target = "";
-		
-		if (!empty($cisiw_options['new_window']) and $cisiw_options['new_window']==1)
-			$new_window = true;
+		if ( $title ) {
+			echo $before_title . $title . $after_title;
+		}
 
-		if ($new_window)
+		$new_window = '';
+		$target     = '';
+
+		if ( ! empty( $cisiw_options['new_window'] ) and $cisiw_options['new_window'] == 1 ) {
+			$new_window = true;
+		}
+
+		if ( $new_window ) {
 			$target = "target='_blank'";
-		
-		echo '<div class="ci-socials-ignited ci-socials-ignited-'. esc_attr($size) .'">';
+		}
+
+		echo '<div class="ci-socials-ignited ci-socials-ignited-' . esc_attr( $size ) . '">';
 
 		$names = cisiw_get_services();
 
-		foreach($cisiw_options as $option => $value) 
-		{ 
+		foreach ( $cisiw_options as $option => $value ) {
 			// Make sure the current option is a social service
-			if(substr($option, -4)=='_url')
-			{	
-				$key = str_replace('_url', '', $option);
+			if ( substr( $option, - 4 ) == '_url' ) {
+				$key = str_replace( '_url', '', $option );
 
-				if(!empty($value))
-				{
-					$icon = $icon_set.'/'.$variation.'/'.$size.'/'.$key.'.png';
+				if ( ! empty( $value ) ) {
+					$icon = $icon_set . '/' . $variation . '/' . $size . '/' . $key . '.png';
 
-					$icon_url = cisiw_get_icon_path($icon);
-	
-					if($icon_url!==false)
-					{
-						echo '<a href="'. esc_url($value) .'" '. $target .'><img alt="' . $names[$key] . '" src="' . $icon_url . '"/></a>'."\n";
+					$icon_url = cisiw_get_icon_path( $icon );
+
+					if ( $icon_url !== false ) {
+						echo '<a href="' . esc_url( $value ) . '" ' . $target . '><img alt="' . $names[ $key ] . '" src="' . $icon_url . '"/></a>' . "\n";
 					}
 
 				}
@@ -253,22 +253,24 @@ class CI_Socials_Ignited extends WP_Widget {
 		echo $after_widget;
 	} // widget
 
-	function update($new_instance, $old_instance){
+	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
-		$instance['title'] = sanitize_text_field($new_instance['title']);
-		$instance['icon_set'] = sanitize_key($new_instance['icon_set']);
-		$instance['variation'] = sanitize_key($new_instance['variation']);
-		$instance['size'] = sanitize_key($new_instance['size']);
+
+		$instance['title']     = sanitize_text_field( $new_instance['title'] );
+		$instance['icon_set']  = sanitize_key( $new_instance['icon_set'] );
+		$instance['variation'] = sanitize_key( $new_instance['variation'] );
+		$instance['size']      = sanitize_key( $new_instance['size'] );
+
 		return $instance;
 	} // save
-	
-	function form($instance){
+
+	function form( $instance ) {
 		$instance = wp_parse_args( (array) $instance, array(
-			'title' => '',
-			'size' => 32,
-			'icon_set' => 'square',
+			'title'     => '',
+			'size'      => 32,
+			'icon_set'  => 'square',
 			'variation' => 'default'
-		));
+		) );
 		extract($instance);
 
 		echo '<p>'.__('This widget is now deprecated and it will be removed in a future plugin update (v2.0). Please use the <strong>-= CI Socials Ignited =-</strong> widget instead.', 'cisiw').'</p>';
@@ -281,7 +283,7 @@ class CI_Socials_Ignited extends WP_Widget {
 			// The classes on <option> elements, are needed for the chained dropdown effect, 
 			// and they must match the value="" of the element they are chained to.
 
-			$icon_sets = cisiw_get_icon_sets();
+			$icon_sets      = cisiw_get_icon_sets();
 			$icon_set_names = cisiw_get_icon_set_names();
 			$icon_set_paths = cisiw_get_lookup_paths();
 		?>
@@ -322,9 +324,9 @@ class CI_Socials_Ignited extends WP_Widget {
 			<p><?php _e('Please save the widget first, in order to be able to choose more options.', 'cisiw'); ?></p>
 		<?php endif; ?>
 		<?php
-			$var_id = '#'.$this->get_field_id('variation');
-			$icon_id = '#'.$this->get_field_id('icon_set');
-			$size_id = '#'.$this->get_field_id('size');
+			$var_id  = '#' . $this->get_field_id( 'variation' );
+			$icon_id = '#' . $this->get_field_id( 'icon_set' );
+			$size_id = '#' . $this->get_field_id( 'size' );
 		?>
 
 		<script type="text/javascript">
@@ -341,52 +343,54 @@ class CI_Socials_Ignited extends WP_Widget {
 } // class
 
 function CI_SocialsIgnited_Action() {
-	register_widget('CI_Socials_Ignited');
+	register_widget( 'CI_Socials_Ignited' );
 }
-add_action('widgets_init', 'CI_SocialsIgnited_Action');
+
+add_action( 'widgets_init', 'CI_SocialsIgnited_Action' );
 
 endif; //class_exists
 
+add_filter( 'kses_allowed_protocols', 'cisiw_kses_allowed_protocols' );
+function cisiw_kses_allowed_protocols( $protocols ) {
+	if ( ! in_array( 'skype', $protocols ) ) {
+		$protocols[] = 'skype';
+	}
 
-
+	return $protocols;
+}
 
 
 add_action('wp_enqueue_scripts', 'cisiw_widget_scripts');
-function cisiw_widget_scripts()
-{
-	if(is_active_widget('', '', 'socials-ignited'))
-	{
-		wp_deregister_style('font-awesome');
-		wp_enqueue_style('font-awesome', CISIW_PLUGIN_URL.'css/font-awesome.css', array(), '4.2.0');
+function cisiw_widget_scripts() {
+	if ( is_active_widget( '', '', 'socials-ignited' ) ) {
+		wp_deregister_style( 'font-awesome' );
+		wp_enqueue_style( 'font-awesome', CISIW_PLUGIN_URL . 'css/font-awesome.css', array(), '4.2.0' );
 	}
 
-	wp_enqueue_style('socials-ignited', CISIW_PLUGIN_URL.'css/style.css');
+	wp_enqueue_style( 'socials-ignited', CISIW_PLUGIN_URL . 'css/style.css' );
 
-	$cisiw_options = get_option('cisiw_settings');
-	if( !empty( $cisiw_options['custom_css'] ) )
-	{
-		wp_add_inline_style('socials-ignited', $cisiw_options['custom_css']);
+	$cisiw_options = get_option( 'cisiw_settings' );
+	if ( ! empty( $cisiw_options['custom_css'] ) ) {
+		wp_add_inline_style( 'socials-ignited', $cisiw_options['custom_css'] );
 	}
 }
 
 add_action('admin_enqueue_scripts', 'cisiw_widget_admin_scripts');
-function cisiw_widget_admin_scripts()
-{
+function cisiw_widget_admin_scripts() {
 	global $pagenow;
 
-	if( in_array($pagenow, array('widgets.php', 'customize.php')) )
-	{
+	if ( in_array( $pagenow, array( 'widgets.php', 'customize.php' ) ) ) {
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wp-color-picker' );
-		wp_enqueue_script('jquery-chained', CISIW_PLUGIN_URL.'js/jquery.chained.js', array('jquery'), '0.9.10' );
-		wp_enqueue_script('cisiw-widget-admin', CISIW_PLUGIN_URL.'js/admin_widget.js', array('jquery-chained') );
-		wp_enqueue_style('cisiw-widget-admin', CISIW_PLUGIN_URL.'css/admin_widget.css');
+		wp_enqueue_script( 'jquery-chained', CISIW_PLUGIN_URL . 'js/jquery.chained.js', array( 'jquery' ), '0.9.10' );
+		wp_enqueue_script( 'cisiw-widget-admin', CISIW_PLUGIN_URL . 'js/admin_widget.js', array( 'jquery-chained' ) );
+		wp_enqueue_style( 'cisiw-widget-admin', CISIW_PLUGIN_URL . 'css/admin_widget.css' );
 
-		$params['icon_code'] = __('Icon code:', 'cisiw');
-		$params['icon_title'] = __('Title text (optional):', 'cisiw');
-		$params['icon_url'] = __('Link URL:', 'cisiw');
-		$params['icon_remove'] = __('Remove Icon', 'cisiw');
-		wp_localize_script('cisiw-widget-admin', 'cisiwWidget', $params);
+		$params['icon_code']   = __( 'Icon code:', 'cisiw' );
+		$params['icon_title']  = __( 'Title text (optional):', 'cisiw' );
+		$params['icon_url']    = __( 'Link URL:', 'cisiw' );
+		$params['icon_remove'] = __( 'Remove Icon', 'cisiw' );
+		wp_localize_script( 'cisiw-widget-admin', 'cisiwWidget', $params );
 	}
 }
 ?>

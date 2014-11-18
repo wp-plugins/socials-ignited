@@ -12,36 +12,38 @@ function cisiw_options_page() {
 	// Create default empty values for services.
 	// It will be used to preserve user-ordering.
 	$defaults = array();
-	foreach($services as $service => $desc)	{ $defaults[$service]=''; }
+	foreach ( $services as $service => $desc ) {
+		$defaults[ $service ] = '';
+	}
 	
 	// Let's see what the user has stored. This order is significant.
 	$user_set = array();
-	foreach($cisiw_options as $url => $user_value) { 
-		if(substr($url, -4)=='_url')
-		{	
-			$s = str_replace('_url', '', $url);
-			if(array_key_exists($s, $services))
-				$user_set[$s] = $user_value;
+	foreach ( $cisiw_options as $url => $user_value ) {
+		if ( substr( $url, - 4 ) == '_url' ) {
+			$s = str_replace( '_url', '', $url );
+			if ( array_key_exists( $s, $services ) ) {
+				$user_set[ $s ] = $user_value;
+			}
 		}
 	}
 	
 	// At this point we have a clean list of services, as current as the last save.
 	// Let's check the (default) services against the user array, and add any newer services that may exist.
-	foreach($defaults as $key => $value)
-	{
-		if( !array_key_exists($key, $user_set) )
-			$user_set[$key] = $value;
+	foreach ( $defaults as $key => $value ) {
+		if ( ! array_key_exists( $key, $user_set ) ) {
+			$user_set[ $key ] = $value;
+		}
 	}
 	// At this point we should have a complete, sorted and clean array of services and values.
 
 
 	// Let's initialize the rest of the values.
-	$cisiw_options['f_color'] = !empty($cisiw_options['f_color']) ? $cisiw_options['f_color'] : '#000000';
-	$cisiw_options['f_background_color'] = !empty($cisiw_options['f_background_color']) ? $cisiw_options['f_background_color'] : 'transparent';
-	$cisiw_options['f_size'] = !empty($cisiw_options['f_size']) ? $cisiw_options['f_size'] : 17;
-	$cisiw_options['f_background_size'] = !empty($cisiw_options['f_background_size']) ? $cisiw_options['f_background_size'] : 30;
-	$cisiw_options['f_border_radius'] = !empty($cisiw_options['f_border_radius']) ? $cisiw_options['f_border_radius'] : 50;
-	$cisiw_options['f_opacity'] = !empty($cisiw_options['f_opacity']) ? $cisiw_options['f_opacity'] : 1;
+	$cisiw_options['f_color']            = ! empty( $cisiw_options['f_color'] ) ? $cisiw_options['f_color'] : '#000000';
+	$cisiw_options['f_background_color'] = ! empty( $cisiw_options['f_background_color'] ) ? $cisiw_options['f_background_color'] : 'transparent';
+	$cisiw_options['f_size']             = ! empty( $cisiw_options['f_size'] ) ? $cisiw_options['f_size'] : 17;
+	$cisiw_options['f_background_size']  = ! empty( $cisiw_options['f_background_size'] ) ? $cisiw_options['f_background_size'] : 30;
+	$cisiw_options['f_border_radius']    = ! empty( $cisiw_options['f_border_radius'] ) ? $cisiw_options['f_border_radius'] : 50;
+	$cisiw_options['f_opacity']          = ! empty( $cisiw_options['f_opacity'] ) ? $cisiw_options['f_opacity'] : 1;
 
 	?>
 	<div class="wrap">
@@ -133,10 +135,10 @@ function cisiw_options_page() {
 			<table class="form-table" id="cisiw-admin-table">
 				<thead>
 					<tr>
-						<?php 
-							$icon_sets = cisiw_get_icon_sets();
+						<?php
+							$icon_sets      = cisiw_get_icon_sets();
 							$icon_set_names = cisiw_get_icon_set_names();
-							$lookup_paths = cisiw_get_lookup_paths();
+							$lookup_paths   = cisiw_get_lookup_paths();
 							$icon_set_paths = cisiw_get_lookup_paths();
 						?>
 						
@@ -171,9 +173,8 @@ function cisiw_options_page() {
 
 											$icon_url = cisiw_get_icon_path($icon);
 
-											if($icon_url===false)
-											{
-												$icon_url = CISIW_PLUGIN_URL.'images/placeholder.png';
+											if ( $icon_url === false ) {
+												$icon_url = CISIW_PLUGIN_URL . 'images/placeholder.png';
 											}
 
 										}
@@ -190,13 +191,13 @@ function cisiw_options_page() {
 									<?php if($key!='email'): ?>
 										<label class="description" for="cisiw_settings[<?php echo $cisiw_url; ?>]"><?php _e('Enter your URL <em>(Include http://</em>)', 'cisiw'); ?></label>
 									<?php endif; ?>		
-									<?php 
-										if($key=='rss')
-										{
-											if(function_exists('ci_rss_feed'))
-												echo '<p>' . __('Recommended value:', 'cisiw') . ' <em>' . ci_rss_feed() . '</em></p>';
-											else
-												echo '<p>' . __('Recommended value:', 'cisiw') . ' <em>' . get_bloginfo('rss2_url') . '</em></p>';
+									<?php
+										if ( $key == 'rss' ) {
+											if ( function_exists( 'ci_rss_feed' ) ) {
+												echo '<p>' . __( 'Recommended value:', 'cisiw' ) . ' <em>' . ci_rss_feed() . '</em></p>';
+											} else {
+												echo '<p>' . __( 'Recommended value:', 'cisiw' ) . ' <em>' . get_bloginfo( 'rss2_url' ) . '</em></p>';
+											}
 										}
 									?>
 								</p>
@@ -240,21 +241,19 @@ if( !function_exists('cisiw_validate_settings') ):
 function cisiw_validate_settings($input) {
 	if(!empty($_POST['cisiw-reset-order']))
 	{
-		$services = cisiw_get_services();
-		$cisiw_options = get_option('cisiw_settings');
+		$services      = cisiw_get_services();
+		$cisiw_options = get_option( 'cisiw_settings' );
 
 		$defaults = array();
-		foreach ($services as $service => $desc)	{
-			$key = $service.'_url';
-			$defaults[$key] = !empty($cisiw_options[$key]) ? $cisiw_options[$key] : '' ;
+		foreach ( $services as $service => $desc ) {
+			$key              = $service . '_url';
+			$defaults[ $key ] = ! empty( $cisiw_options[ $key ] ) ? $cisiw_options[ $key ] : '';
 		}
 
 		// Go through keys that are not in the list of services, e.g. "Open link in new window" setting.
-		foreach ($cisiw_options as $key => $value)
-		{
-			if( !in_array($key, $services) )
-			{
-				$defaults[$key] = $value;
+		foreach ( $cisiw_options as $key => $value ) {
+			if ( ! in_array( $key, $services ) ) {
+				$defaults[ $key ] = $value;
 			}
 		}
 
@@ -278,8 +277,12 @@ function cisiw_validate_settings($input) {
 	}
 	if ( isset( $input['f_opacity'] ) ) {
 		$val = floatval( $input['f_opacity'] );
-		if( $val < 0.1 ) $val = 0.1;
-		if( $val > 1 ) $val = 1;
+		if ( $val < 0.1 ) {
+			$val = 0.1;
+		}
+		if ( $val > 1 ) {
+			$val = 1;
+		}
 		$input['f_opacity'] = $val;
 	}
 
@@ -292,8 +295,8 @@ if( !function_exists('cisiw_enqueue_admin_scripts') ):
 function cisiw_enqueue_admin_scripts()
 {
 	global $pagenow;
-	if($pagenow=='options-general.php' and isset($_GET['page']) and $_GET['page']=='cisiw-options')
-	{
+
+	if ( $pagenow == 'options-general.php' and isset( $_GET['page'] ) and $_GET['page'] == 'cisiw-options' ) {
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wp-color-picker' );
 
@@ -309,5 +312,3 @@ function cisiw_enqueue_admin_scripts()
 	
 }
 endif;
-
-?>

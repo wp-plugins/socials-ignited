@@ -1,9 +1,3 @@
-// Image widget
-//jQuery(document).ready(function($) {
-//	jQuery('"'+cisiw.var_id+'"').chainedTo('"'+cisiw.icon_id+'"');
-//	jQuery('"'+cisiw.size_id+'"').chainedTo('"'+cisiw.icon_id+', '+cisiw.var_id+'"');
-//});
-
 // Font widget
 jQuery(document).ready(function($){
 	function ciPicker(){
@@ -36,19 +30,19 @@ jQuery(document).ready(function($){
 			var field_url = '<label>'+ cisiwWidget.icon_url +' <input type="text" class="widefat" value="http://" name="' + fieldname + '" /></label>';
 			var field_title = '<label>'+ cisiwWidget.icon_title +' <input type="text" class="widefat" name="' + fieldname + '" /></label>';
 			var field_hidden = '<input type="hidden" name="' + fieldname + '" />';
-			var remove_btn = '<a class="icon-remove button" href="#">' + cisiwWidget.icon_remove + '</a>';
+			var remove_btn = '<a class="ci-icon-remove button" href="#">' + cisiwWidget.icon_remove + '</a>';
 
 			var html = '<div class="cisiw-icon">' + field_icon + field_url + field_title + field_hidden + remove_btn + '</div>';
 
 			$(html).hide().appendTo( $(this).prev('.ci-socials-ignited-fonticons') ).fadeIn();
 
 			$('div[id*="socials-ignited"] .ci-socials-ignited-fonticons').sortable({
-				//update: renumberTracks
+				//callback
 			});
 
 			e.preventDefault();
 		});
-		$('#wpbody').on('click', 'div[id*="socials-ignited"] .icon-remove', function(e) {
+		$('#wpbody').on('click', 'div[id*="socials-ignited"] .ci-icon-remove', function(e) {
 			$(this).parent('div.cisiw-icon').fadeOut(300, function() {
 				$(this).remove();
 			});

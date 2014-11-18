@@ -26,8 +26,6 @@ There are icons for:
 *   Flickr
 *   And much, much more... (any of the [439 Font Awesome icons](http://fortawesome.github.io/Font-Awesome/icons/) actually)
 
-Of course, there are more features to come. Check the *To Do* section for what is coming.
-
 == Installation ==
 
 1. Upload the folder `socials-ignited/` into the `/wp-content/plugins/` directory
@@ -47,6 +45,12 @@ For in-depth details, tips and tricks, visit [the plugin's homepage](http://www.
 3. Actual output
 
 == Changelog ==
+
+= 1.7.5 =
+* Added ‘skype’ in the list of kses allowed protocols. Links of type skype:username?call are now possible throughout WordPress.
+* Fixed a stylistic issue where if WPML was enabled, an icon appeared where it shouldn’t.
+* Reformatted some code to be more readable.
+* Updated line numbers in language files.
 
 = 1.7.4 =
 * Made the bundled version of FontAwesome override any pre-existing ones with the handle ‘font-awesome’. Some themes provide an older version of the font and that was used instead, resulting in non-working icons.
