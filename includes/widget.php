@@ -19,9 +19,10 @@ class Socials_Ignited_Widget extends WP_Widget {
 		extract($args);
 		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
 
-		$new_win = $instance['new_win'] == 'on' ? ' target="_blank" ' : '';
-		$icons   = ! empty( $instance['icons'] ) ? $instance['icons'] : array();
-
+		$new_win  = $instance['new_win'] == 'on' ? 'target="_blank"' : '';
+		$nofollow = $instance['nofollow'] == 'on' ? 'rel="nofollow"' : '';
+		$icons    = ! empty( $instance['icons'] ) ? $instance['icons'] : array();
+		$icons    = $this->convert_repeating_icons_from_unnamed( $icons );
 
 		echo $before_widget;
 		if ( $title ) {
@@ -31,13 +32,14 @@ class Socials_Ignited_Widget extends WP_Widget {
 		echo '<div class="ci-socials-ignited ci-socials-ignited-fa">';
 
 		if ( ! empty( $icons ) ) {
-			for ( $i = 0; $i < count( $icons ); $i += 4 ) {
-				$code  = esc_attr( $icons[ $i ] );
-				$url   = esc_url( $icons[ $i + 1 ] );
-				$title = esc_attr( $icons[ $i + 2 ] );
-				$title = ! empty( $title ) ? ' title="' . $title . '" ' : '';
-
-				echo '<a href="' . $url . '" ' . $new_win . '><i class="fa ' . $code . '" ' . $title . '></i></a>';
+			foreach( $icons as $field ) {
+				echo sprintf( '<a href="%s" %s %s %s><i class="fa %s"></i></a>',
+					esc_url( $field['url'] ),
+					$new_win,
+					$nofollow,
+					! empty( $field['title'] ) ? sprintf( 'title="%s"',	esc_attr( $field['title'] ) ) : '',
+					esc_attr( $field['icon'] )
+				);
 			}
 		}
 
@@ -47,7 +49,7 @@ class Socials_Ignited_Widget extends WP_Widget {
 
 	} // widget
 
-	function update($new_instance, $old_instance){
+	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 
 		$instance['title']            = sanitize_text_field( $new_instance['title'] );
@@ -58,13 +60,13 @@ class Socials_Ignited_Widget extends WP_Widget {
 		$instance['border_radius']    = absint_or_empty( $new_instance['border_radius'] );
 		$instance['opacity']          = round( floatval( $new_instance['opacity'] ), 1 );
 		$instance['new_win']          = ci_sanitize_checkbox( $new_instance['new_win'] );
-		$instance['icons']            = is_array( $new_instance['icons'] ) ? $new_instance['icons'] : array();
+		$instance['nofollow']         = ci_sanitize_checkbox( $new_instance['nofollow'] );
+		$instance['icons']            = $this->sanitize_repeating_icons( $new_instance );
 
 		return $instance;
 	} // save
 
 	function form($instance){
-
 		$cisiw = get_option('cisiw_settings');
 		$cisiw = $cisiw !== false ? $cisiw : array();
 
@@ -77,6 +79,7 @@ class Socials_Ignited_Widget extends WP_Widget {
 			'background_size'  => isset( $cisiw['f_background_size'] ) ? $cisiw['f_background_size'] : 30,
 			'opacity'          => isset( $cisiw['f_opacity'] ) ? $cisiw['f_opacity'] : 1,
 			'new_win'          => '',
+			'nofollow'         => '',
 			'icons'            => array()
 		) );
 		extract( $instance );
@@ -84,36 +87,46 @@ class Socials_Ignited_Widget extends WP_Widget {
 		?>
 		<p class="cisiw-icon-instructions"><small><?php echo sprintf(__('To add icons click on "Add Icon" at the bottom of the widget and then insert the <em>Icon code</em> and its <em>Link URL</em>. Icon codes can be found <a target="_blank" href="%s">here</a>, type them exactly as they are shown (with fa- in front), e.g. <strong>fa-facebook</strong>. You can also drag and drop the boxes to rearrange the icons.', 'cisiw'), 'http://fontawesome.io/icons/#brand'); ?></small></p>
 
-		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'cisiw'); ?></label><input id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" class="widefat" /></p>
-		<p><label for="<?php echo $this->get_field_id('color'); ?>"><?php _e('Icon Color:', 'cisiw'); ?></label><input id="<?php echo $this->get_field_id('color'); ?>" name="<?php echo $this->get_field_name('color'); ?>" type="text" value="<?php echo esc_attr($color); ?>" class="colorpckr widefat" /></p>
-		<p><label for="<?php echo $this->get_field_id('background_color'); ?>"><?php _e('Icon Background Color:', 'cisiw'); ?></label><input id="<?php echo $this->get_field_id('background_color'); ?>" name="<?php echo $this->get_field_name('background_color'); ?>" type="text" value="<?php echo esc_attr($background_color); ?>" class="colorpckr widefat" /></p>
-		<p><label for="<?php echo $this->get_field_id('size'); ?>"><?php _e('Icon Size (single integer in pixels):', 'cisiw'); ?></label><input id="<?php echo $this->get_field_id('size'); ?>" name="<?php echo $this->get_field_name('size'); ?>" type="number" value="<?php echo esc_attr($size); ?>" class="widefat" /></p>
-		<p><label for="<?php echo $this->get_field_id('background_size'); ?>"><?php _e('Background Size (single integer in pixels):', 'cisiw'); ?></label><input id="<?php echo $this->get_field_id('background_size'); ?>" name="<?php echo $this->get_field_name('background_size'); ?>" type="number" value="<?php echo esc_attr($background_size); ?>" class="widefat" /></p>
-		<p><label for="<?php echo $this->get_field_id('border_radius'); ?>"><?php _e('Border Radius (single integer in pixels):', 'cisiw'); ?></label><input id="<?php echo $this->get_field_id('border_radius'); ?>" name="<?php echo $this->get_field_name('border_radius'); ?>" type="number" value="<?php echo esc_attr($border_radius); ?>" class="widefat" /></p>
-		<p><label for="<?php echo $this->get_field_id('opacity'); ?>"><?php _e('Opacity (0.1 up to 1):', 'cisiw'); ?></label><input id="<?php echo $this->get_field_id('opacity'); ?>" name="<?php echo $this->get_field_name('opacity'); ?>" type="number" min="0.1" max="1" step="0.1" value="<?php echo esc_attr($opacity); ?>" class="widefat" /></p>
-		<p><label><input id="<?php echo $this->get_field_id('new_win'); ?>" name="<?php echo $this->get_field_name('new_win'); ?>" type="checkbox" value="on" <?php checked('on', $new_win); ?> /><?php _e('Open in new window', 'cisiw'); ?></label></p>
+		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'cisiw' ); ?></label><input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" class="widefat"/></p>
+		<p><label for="<?php echo $this->get_field_id( 'color' ); ?>"><?php _e( 'Icon Color:', 'cisiw' ); ?></label><input id="<?php echo $this->get_field_id( 'color' ); ?>" name="<?php echo $this->get_field_name( 'color' ); ?>" type="text" value="<?php echo esc_attr( $color ); ?>" class="colorpckr widefat"/></p>
+		<p><label for="<?php echo $this->get_field_id( 'background_color' ); ?>"><?php _e( 'Icon Background Color:', 'cisiw' ); ?></label><input id="<?php echo $this->get_field_id( 'background_color' ); ?>" name="<?php echo $this->get_field_name( 'background_color' ); ?>" type="text" value="<?php echo esc_attr( $background_color ); ?>" class="colorpckr widefat"/></p>
+		<p><label for="<?php echo $this->get_field_id( 'size' ); ?>"><?php _e( 'Icon Size (single integer in pixels):', 'cisiw' ); ?></label><input id="<?php echo $this->get_field_id( 'size' ); ?>" name="<?php echo $this->get_field_name( 'size' ); ?>" type="number" value="<?php echo esc_attr( $size ); ?>" class="widefat"/></p>
+		<p><label for="<?php echo $this->get_field_id( 'background_size' ); ?>"><?php _e( 'Background Size (single integer in pixels):', 'cisiw' ); ?></label><input id="<?php echo $this->get_field_id( 'background_size' ); ?>" name="<?php echo $this->get_field_name( 'background_size' ); ?>" type="number" value="<?php echo esc_attr( $background_size ); ?>" class="widefat"/></p>
+		<p><label for="<?php echo $this->get_field_id( 'border_radius' ); ?>"><?php _e( 'Border Radius (single integer in pixels):', 'cisiw' ); ?></label><input id="<?php echo $this->get_field_id( 'border_radius' ); ?>" name="<?php echo $this->get_field_name( 'border_radius' ); ?>" type="number" value="<?php echo esc_attr( $border_radius ); ?>" class="widefat"/></p>
+		<p><label for="<?php echo $this->get_field_id( 'opacity' ); ?>"><?php _e( 'Opacity (0.1 up to 1):', 'cisiw' ); ?></label><input id="<?php echo $this->get_field_id( 'opacity' ); ?>" name="<?php echo $this->get_field_name( 'opacity' ); ?>" type="number" min="0.1" max="1" step="0.1" value="<?php echo esc_attr( $opacity ); ?>" class="widefat"/></p>
+		<p><label><input id="<?php echo $this->get_field_id( 'new_win' ); ?>" name="<?php echo $this->get_field_name( 'new_win' ); ?>" type="checkbox" value="on" <?php checked( 'on', $new_win ); ?> /> <?php _e( 'Open in new window.', 'cisiw' ); ?></label></p>
+		<p><label><input id="<?php echo $this->get_field_id( 'nofollow' ); ?>" name="<?php echo $this->get_field_name( 'nofollow' ); ?>" type="checkbox" value="on" <?php checked( 'on', $nofollow ); ?> /> <?php _e( 'Add <code>rel="nofollow"</code> to links.', 'cisiw' ); ?></label></p>
 
 		<span class="hid_id" data-hidden-name="<?php echo $this->get_field_name('icons'); ?>"></span><?php
 
-		echo '<div class="icons ci-socials-ignited-fonticons">';
-		if (!empty($icons) and (count($icons) > 0))	{
-			for( $i = 0; $i < count($icons); $i+=4 ) {
-				?>
-				<div class="cisiw-icon">
-					<label><?php _e('Icon code:', 'cisiw'); ?> <input type="text" class="widefat" name="<?php echo $this->get_field_name('icons'); ?>[]" value="<?php echo esc_attr($icons[$i]); ?>" /></label>
-					<label><?php _e('Link URL:', 'cisiw'); ?> <input type="text" class="widefat" name="<?php echo $this->get_field_name('icons'); ?>[]" value="<?php echo esc_attr($icons[$i+1]); ?>" /></label>
-					<label><?php _e('Title text (optional):', 'cisiw'); ?> <input type="text" class="widefat" name="<?php echo $this->get_field_name('icons'); ?>[]" value="<?php echo esc_attr($icons[$i+2]); ?>" /></label>
-					<!-- Fourth field reserved for future use -->
-					<input type="hidden" name="<?php echo $this->get_field_name('icons'); ?>[]" value="<?php echo esc_attr($icons[$i+3]); ?>" />
-					<a class="ci-icon-remove button" href="#"><?php _e('Remove Icon', 'cisiw'); ?></a>
-				</div>
+		?>
+		<fieldset class="cisiw-repeating-fields">
+			<div class="inner">
 				<?php
-			}
-		}
-		echo '</div>';
-
-		?><a class="button add-icon" href="#"><?php _e('Add Icon', 'cisiw'); ?></a><?php
-
+					$icons = $this->convert_repeating_icons_from_unnamed( $icons );
+					if ( ! empty( $icons ) ) {
+						foreach ( $icons as $field ) {
+							?>
+							<div class="post-field">
+								<label><?php _e( 'Icon Code:', 'cisiw' ); ?> <input type="text" name="<?php echo $this->get_field_name( 'icon_code' ); ?>[]" value="<?php echo esc_attr( $field['icon'] ); ?>" class="widefat"/></label>
+								<label><?php _e( 'Link URL:', 'cisiw' ); ?> <input type="text" name="<?php echo $this->get_field_name( 'icon_url' ); ?>[]" value="<?php echo esc_url( $field['url'] ); ?>" class="widefat"/></label>
+								<label><?php _e( 'Title text (optional):', 'cisiw' ); ?> <input type="text" name="<?php echo $this->get_field_name( 'icon_title' ); ?>[]" value="<?php echo esc_attr( $field['title'] ); ?>" class="widefat"/></label>
+								<p class="cisiw-repeating-remove-action"><a href="#" class="button cisiw-repeating-remove-field"><i class="dashicons dashicons-dismiss"></i><?php _e( 'Remove me', 'ci_theme' ); ?></a></p>
+							</div>
+							<?php
+						}
+					}
+				?>
+				<div class="post-field field-prototype" style="display: none;">
+					<label><?php _e( 'Icon Code:', 'cisiw' ); ?> <input type="text" name="<?php echo $this->get_field_name( 'icon_code' ); ?>[]" value="" class="widefat"/></label>
+					<label><?php _e( 'Link URL:', 'cisiw' ); ?> <input type="text" name="<?php echo $this->get_field_name( 'icon_url' ); ?>[]" value="" class="widefat"/></label>
+					<label><?php _e( 'Title text (optional):', 'cisiw' ); ?> <input type="text" name="<?php echo $this->get_field_name( 'icon_title' ); ?>[]" value="" class="widefat"/></label>
+					<p class="cisiw-repeating-remove-action"><a href="#" class="button cisiw-repeating-remove-field"><i class="dashicons dashicons-dismiss"></i><?php _e( 'Remove me', 'ci_theme' ); ?></a></p>
+				</div>
+			</div>
+			<a href="#" class="cisiw-repeating-add-field button"><i class="dashicons dashicons-plus-alt"></i><?php _e('Add Field', 'ci_theme'); ?></a>
+		</fieldset>
+		<?php
 	} // form
 
 	function enqueue_css() {
@@ -174,6 +187,71 @@ class Socials_Ignited_Widget extends WP_Widget {
 		}
 
 	}
+
+	function sanitize_repeating_icons( $POST_array ) {
+		if ( empty( $POST_array ) || !is_array( $POST_array ) ) {
+			return array();
+		}
+
+		$codes     = $POST_array['icon_code'];
+		$urls      = $POST_array['icon_url'];
+		$titles    = $POST_array['icon_title'];
+
+		$count = max(
+			count( $codes ),
+			count( $urls ),
+			count( $titles )
+		);
+
+		$new_fields = array();
+
+		$records_count = 0;
+
+		for ( $i = 0; $i < $count; $i ++ ) {
+			if ( empty( $codes[ $i ] ) && empty( $urls[ $i ] ) ) {
+				continue;
+			}
+
+			$new_fields[ $records_count ]['icon']     = sanitize_key( $codes[ $i ] );
+			$new_fields[ $records_count ]['url']      = esc_url_raw( $urls[ $i ] );
+			$new_fields[ $records_count ]['title']    = sanitize_text_field( $titles[ $i ] );
+
+			$records_count++;
+		}
+		return $new_fields;
+	}
+
+	function convert_repeating_icons_from_unnamed( $fields ) {
+
+		// This array must match the order of the old numeric parameters, e.g. [0] will map to 'title', etc.
+		$names = array( 'icon', 'url', 'title', 'reserved_field' );
+
+		if( ! is_array( $fields ) ) {
+			return $fields;
+		}
+
+		$first_value = reset( $fields );
+
+		if( ! is_array( $first_value ) && !empty( $fields ) ) {
+			$new_fields = array();
+
+			for( $t = 0; $t < count( $fields ); $t += count( $names ) ) {
+				$new_icon = array();
+
+				for( $tf = 0; $tf < count( $names ); $tf++ ) {
+					if( isset( $fields[ $t + $tf ] ) ) {
+						$new_icon[ $names[ $tf ] ] = $fields[ $t + $tf ];
+					}
+				}
+				unset( $new_icon['reserved_field'] );
+				$new_fields[] = $new_icon;
+			}
+			$fields = $new_fields;
+		}
+
+		return $fields;
+	}
+
 } // class
 
 function CI_SocialsIgnited_FontAwesome_Action() {
@@ -364,7 +442,7 @@ add_action('wp_enqueue_scripts', 'cisiw_widget_scripts');
 function cisiw_widget_scripts() {
 	if ( is_active_widget( '', '', 'socials-ignited' ) ) {
 		wp_deregister_style( 'font-awesome' );
-		wp_enqueue_style( 'font-awesome', CISIW_PLUGIN_URL . 'css/font-awesome.css', array(), '4.2.0' );
+		wp_enqueue_style( 'font-awesome', CISIW_PLUGIN_URL . 'css/font-awesome.css', array(), '4.3.0' );
 	}
 
 	wp_enqueue_style( 'socials-ignited', CISIW_PLUGIN_URL . 'css/style.css' );
@@ -384,13 +462,8 @@ function cisiw_widget_admin_scripts() {
 		wp_enqueue_script( 'wp-color-picker' );
 		wp_enqueue_script( 'jquery-chained', CISIW_PLUGIN_URL . 'js/jquery.chained.js', array( 'jquery' ), '0.9.10' );
 		wp_enqueue_script( 'cisiw-widget-admin', CISIW_PLUGIN_URL . 'js/admin_widget.js', array( 'jquery-chained' ) );
+		wp_enqueue_style( 'cisiw-repeating-fields', CISIW_PLUGIN_URL . 'css/repeating-fields.css' );
 		wp_enqueue_style( 'cisiw-widget-admin', CISIW_PLUGIN_URL . 'css/admin_widget.css' );
-
-		$params['icon_code']   = __( 'Icon code:', 'cisiw' );
-		$params['icon_title']  = __( 'Title text (optional):', 'cisiw' );
-		$params['icon_url']    = __( 'Link URL:', 'cisiw' );
-		$params['icon_remove'] = __( 'Remove Icon', 'cisiw' );
-		wp_localize_script( 'cisiw-widget-admin', 'cisiwWidget', $params );
 	}
 }
 ?>

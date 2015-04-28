@@ -16,41 +16,30 @@ jQuery(document).ready(function($){
 	});
 
 
+	_sortable();
 
-	//Repeating icon fields
-	if($('div[id*="socials-ignited"]').length > 0) {
-
-		$('div[id*="socials-ignited"] .ci-socials-ignited-fonticons').sortable();
-
-		$('#wpbody').on('click', 'div[id*="socials-ignited"] .add-icon', function(e) {
-
-			var fieldname = $(this).siblings('.hid_id').data('hidden-name');
-			fieldname = fieldname + '[]';
-			var field_icon = '<label>'+ cisiwWidget.icon_code +' <input type="text" class="widefat" name="' + fieldname + '" /></label>';
-			var field_url = '<label>'+ cisiwWidget.icon_url +' <input type="text" class="widefat" value="http://" name="' + fieldname + '" /></label>';
-			var field_title = '<label>'+ cisiwWidget.icon_title +' <input type="text" class="widefat" name="' + fieldname + '" /></label>';
-			var field_hidden = '<input type="hidden" name="' + fieldname + '" />';
-			var remove_btn = '<a class="ci-icon-remove button" href="#">' + cisiwWidget.icon_remove + '</a>';
-
-			var html = '<div class="cisiw-icon">' + field_icon + field_url + field_title + field_hidden + remove_btn + '</div>';
-
-			$(html).hide().appendTo( $(this).prev('.ci-socials-ignited-fonticons') ).fadeIn();
-
-			$('div[id*="socials-ignited"] .ci-socials-ignited-fonticons').sortable({
-				//callback
-			});
-
-			e.preventDefault();
+	var repeating_fields = $('.cisiw-repeating-fields');
+	repeating_fields.each(function(){
+		var add_field = $(this).find('.cisiw-repeating-add-field');
+		add_field.click(function(){
+			var repeatable_area = $(this).siblings('.inner');
+			var fields = repeatable_area.children('.field-prototype').clone(true).removeClass('field-prototype').removeAttr('style').appendTo(repeatable_area);
+			return false;
 		});
-		$('#wpbody').on('click', 'div[id*="socials-ignited"] .ci-icon-remove', function(e) {
-			$(this).parent('div.cisiw-icon').fadeOut(300, function() {
-				$(this).remove();
-			});
+	});
 
-			e.preventDefault();
-		});
-	}
+	$('body').on('click', '.cisiw-repeating-remove-field', function() {
+		var field = $(this).parents('.post-field');
+		field.remove();
+		return false;
+	});
 
 });
 
-
+_sortable = function( selector ) {
+	if( selector === undefined ) {
+		jQuery('.cisiw-repeating-fields .inner').sortable({ placeholder: 'ui-state-highlight' });
+	} else {
+		jQuery('.cisiw-repeating-fields .inner', selector).sortable({ placeholder: 'ui-state-highlight' });
+	}
+}
