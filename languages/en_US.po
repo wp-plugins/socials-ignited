@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Socials Ignited\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-18 03:45+0200\n"
-"PO-Revision-Date: 2014-11-18 03:45+0200\n"
+"POT-Creation-Date: 2015-04-29 14:17+0200\n"
+"PO-Revision-Date: 2015-04-29 14:17+0200\n"
 "Last-Translator: Anastis Sourgoutsidis <anastis@cssigniter.com>\n"
 "Language-Team: CSSIgniter LLC <info@cssigniter.com>\n"
 "Language: en_US\n"
@@ -16,7 +16,7 @@ msgstr ""
 "esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-Basepath: .\n"
 "X-Textdomain-Support: yes\n"
-"X-Generator: Poedit 1.6.10\n"
+"X-Generator: Poedit 1.7.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
@@ -30,27 +30,27 @@ msgstr ""
 msgid "Default font widget settings"
 msgstr ""
 
-#: ../includes/admin-page.php:58 ../includes/widget.php:88
+#: ../includes/admin-page.php:58 ../includes/widget.php:91
 msgid "Icon Color:"
 msgstr ""
 
-#: ../includes/admin-page.php:64 ../includes/widget.php:89
+#: ../includes/admin-page.php:64 ../includes/widget.php:92
 msgid "Icon Background Color:"
 msgstr ""
 
-#: ../includes/admin-page.php:70 ../includes/widget.php:90
+#: ../includes/admin-page.php:70 ../includes/widget.php:93
 msgid "Icon Size (single integer in pixels):"
 msgstr ""
 
-#: ../includes/admin-page.php:76 ../includes/widget.php:91
+#: ../includes/admin-page.php:76 ../includes/widget.php:94
 msgid "Background Size (single integer in pixels):"
 msgstr ""
 
-#: ../includes/admin-page.php:82 ../includes/widget.php:92
+#: ../includes/admin-page.php:82 ../includes/widget.php:95
 msgid "Border Radius (single integer in pixels):"
 msgstr ""
 
-#: ../includes/admin-page.php:88 ../includes/widget.php:93
+#: ../includes/admin-page.php:88 ../includes/widget.php:96
 msgid "Opacity (0.1 up to 1):"
 msgstr ""
 
@@ -131,7 +131,7 @@ msgstr ""
 msgid "Social Icons widget, FontAwesome edition"
 msgstr ""
 
-#: ../includes/widget.php:85
+#: ../includes/widget.php:88
 #, php-format
 msgid ""
 "To add icons click on \"Add Icon\" at the bottom of the widget and then "
@@ -141,65 +141,69 @@ msgid ""
 "also drag and drop the boxes to rearrange the icons."
 msgstr ""
 
-#: ../includes/widget.php:87 ../includes/widget.php:278
+#: ../includes/widget.php:90 ../includes/widget.php:356
 msgid "Title:"
 msgstr ""
 
-#: ../includes/widget.php:94
-msgid "Open in new window"
+#: ../includes/widget.php:97
+msgid "Open in new window."
 msgstr ""
 
-#: ../includes/widget.php:103 ../includes/widget.php:389
-msgid "Icon code:"
+#: ../includes/widget.php:98
+msgid "Add <code>rel=\"nofollow\"</code> to links."
 msgstr ""
 
-#: ../includes/widget.php:104 ../includes/widget.php:391
+#: ../includes/widget.php:111 ../includes/widget.php:121
+msgid "Icon Code:"
+msgstr ""
+
+#: ../includes/widget.php:112 ../includes/widget.php:122
 msgid "Link URL:"
 msgstr ""
 
-#: ../includes/widget.php:105 ../includes/widget.php:390
+#: ../includes/widget.php:113 ../includes/widget.php:123
 msgid "Title text (optional):"
 msgstr ""
 
-#: ../includes/widget.php:108 ../includes/widget.php:392
-msgid "Remove Icon"
+#: ../includes/widget.php:114 ../includes/widget.php:124
+msgid "Remove me"
 msgstr ""
 
-#: ../includes/widget.php:115
-msgid "Add Icon"
-msgstr ""
-
-#: ../includes/widget.php:198
-msgid "Social Icons widget placeholder (deprecated)"
+#: ../includes/widget.php:127
+msgid "Add Field"
 msgstr ""
 
 #: ../includes/widget.php:276
+msgid "Social Icons widget placeholder (deprecated)"
+msgstr ""
+
+#: ../includes/widget.php:354
 msgid ""
 "This widget is now deprecated and it will be removed in a future plugin "
 "update (v2.0). Please use the <strong>-= CI Socials Ignited =-</strong> "
 "widget instead."
 msgstr ""
 
-#: ../includes/widget.php:277
+#: ../includes/widget.php:355
 msgid ""
 "This widget is a placeholder for Social Media icons. You may configure those "
 "icons from <strong>Settings</strong> menu, <strong>Socials Ignited</strong> "
 "sub-menu."
 msgstr ""
 
-#: ../includes/widget.php:291
+#: ../includes/widget.php:369
 msgid "Icon set:"
 msgstr ""
 
-#: ../includes/widget.php:301
+#: ../includes/widget.php:379
 msgid "Color Variation:"
 msgstr ""
 
-#: ../includes/widget.php:312
+#: ../includes/widget.php:390
 msgid "Icon Size:"
 msgstr ""
 
-#: ../includes/widget.php:324
+#: ../includes/widget.php:402
 msgid ""
 "Please save the widget first, in order to be able to choose more options."
 msgstr ""

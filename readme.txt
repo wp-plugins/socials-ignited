@@ -5,8 +5,8 @@ Author URI: http://www.cssigniter.com/
 Author: The CSSigniter Team
 Contributors: anastis, tsiger, silencerius
 Tags: social, widget, icons, round, square, light, dark, fontawesome
-Requires at least: 3.8
-Tested up to: 4.0
+Requires at least: 4.0
+Tested up to: 4.2.1
 Stable tag: 1.7.5
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -45,6 +45,11 @@ For in-depth details, tips and tricks, visit [the plugin's homepage](http://www.
 3. Actual output
 
 == Changelog ==
+
+= 1.8 =
+* Updated FontAwesome to v4.3.0
+* Changed Socials_Ignited_Widget widget’s repeating fields structure from plain array to discreet, associative entries. While back-compatibility is provided, users are advised to re-save their Socials Ignited widgets.
+* Updated language files.
 
 = 1.7.5 =
 * Added ‘skype’ in the list of kses allowed protocols. Links of type skype:username?call are now possible throughout WordPress.
