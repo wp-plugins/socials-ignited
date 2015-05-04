@@ -18,20 +18,31 @@ jQuery(document).ready(function($){
 
 	_sortable();
 
-	var repeating_fields = $('.cisiw-repeating-fields');
-	repeating_fields.each(function(){
-		var add_field = $(this).find('.cisiw-repeating-add-field');
-		add_field.click(function(){
-			var repeatable_area = $(this).siblings('.inner');
-			var fields = repeatable_area.children('.field-prototype').clone(true).removeClass('field-prototype').removeAttr('style').appendTo(repeatable_area);
-			return false;
-		});
+	$('body').on('click', '.cisiw-repeating-add-field', function() {
+		var repeatable_area = $(this).siblings('.inner');
+		var fields = repeatable_area.children('.field-prototype').clone(true).removeClass('field-prototype').removeAttr('style').appendTo(repeatable_area);
+		_sortable();
+		return false;
 	});
 
 	$('body').on('click', '.cisiw-repeating-remove-field', function() {
 		var field = $(this).parents('.post-field');
 		field.remove();
 		return false;
+	});
+
+	// Widget Actions on Save
+	$(document).ajaxSuccess(function(e, xhr, options){
+		if( options.data.search( 'action=save-widget' ) != -1 ) {
+			var widget_id;
+
+			if( ( widget_id = options.data.match( /widget-id=(socials-ignited-\d+)/ ) ) !== null ) {
+				var widget = $("input[name='widget-id'][value='" + widget_id[1] + "']").parent();
+				_sortable( widget );
+			}
+
+		}
+
 	});
 
 });

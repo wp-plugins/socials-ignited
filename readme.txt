@@ -46,6 +46,9 @@ For in-depth details, tips and tricks, visit [the plugin's homepage](http://www.
 
 == Changelog ==
 
+= 1.8.1 =
+* Fixed an issue where no repeating fields could be created on newly dragged widgets.
+
 = 1.8 =
 * Updated FontAwesome to v4.3.0
 * Changed Socials_Ignited_Widget widget’s repeating fields structure from plain array to discreet, associative entries. While back-compatibility is provided, users are advised to re-save their Socials Ignited widgets.
