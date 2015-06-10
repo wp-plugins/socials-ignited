@@ -216,7 +216,7 @@ function cisiw_plugin_update_message($plugin_data, $r) {
 endif;
 
 
-if ( !function_exists('ci_sanitize_hex_color') ):
+if ( !function_exists('cisiw_sanitize_hex_color') ):
 /**
  * Returns a sanitized hex color code.
  *
@@ -225,7 +225,7 @@ if ( !function_exists('ci_sanitize_hex_color') ):
  * @param string $return_fail The value to return on failure.
  * @return string A valid hex color code on success, an empty string on failure.
  */
-function ci_sanitize_hex_color($str, $return_hash = true, $return_fail = '')
+function cisiw_sanitize_hex_color($str, $return_hash = true, $return_fail = '')
 {
 
 	// Include the hash if not there.
@@ -261,7 +261,7 @@ function ci_sanitize_hex_color($str, $return_hash = true, $return_fail = '')
 }
 endif;
 
-if( !function_exists('absint_or_empty')):
+if( !function_exists('cisiw_absint_or_empty')):
 /**
  * Return a positive integer value, or an empty string instead of zero.
  *
@@ -270,7 +270,7 @@ if( !function_exists('absint_or_empty')):
  * @param mixed $value A value to convert to integer.
  * @return Empty string on zero, or a positive integer.
  */
-function absint_or_empty($value)
+function cisiw_absint_or_empty($value)
 {
 	$value = absint($value);
 	if($value == 0)
@@ -280,7 +280,7 @@ function absint_or_empty($value)
 }
 endif;
 
-if( !function_exists('ci_sanitize_checkbox')):
+if( !function_exists('cisiw_sanitize_checkbox')):
 /**
  * Sanitizes a checkbox value, by comparing $input with $allowed_value
  *
@@ -288,7 +288,7 @@ if( !function_exists('ci_sanitize_checkbox')):
  * @param string $allowed_value The only value that the checkbox can have (default 'on').
  * @return string The $allowed_value on success, or an empty string on failure.
  */
-function ci_sanitize_checkbox(&$input, $allowed_value = 'on')
+function cisiw_sanitize_checkbox(&$input, $allowed_value = 'on')
 {
 	if(isset($input) and $input == $allowed_value)
 		return $allowed_value;
@@ -296,5 +296,3 @@ function ci_sanitize_checkbox(&$input, $allowed_value = 'on')
 		return '';
 }
 endif;
-
-?>

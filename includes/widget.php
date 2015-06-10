@@ -53,14 +53,14 @@ class Socials_Ignited_Widget extends WP_Widget {
 		$instance = $old_instance;
 
 		$instance['title']            = sanitize_text_field( $new_instance['title'] );
-		$instance['color']            = ci_sanitize_hex_color( $new_instance['color'] );
-		$instance['background_color'] = ci_sanitize_hex_color( $new_instance['background_color'] );
-		$instance['size']             = absint_or_empty( $new_instance['size'] );
-		$instance['background_size']  = absint_or_empty( $new_instance['background_size'] );
-		$instance['border_radius']    = absint_or_empty( $new_instance['border_radius'] );
+		$instance['color']            = cisiw_sanitize_hex_color( $new_instance['color'] );
+		$instance['background_color'] = cisiw_sanitize_hex_color( $new_instance['background_color'] );
+		$instance['size']             = cisiw_absint_or_empty( $new_instance['size'] );
+		$instance['background_size']  = cisiw_absint_or_empty( $new_instance['background_size'] );
+		$instance['border_radius']    = cisiw_absint_or_empty( $new_instance['border_radius'] );
 		$instance['opacity']          = round( floatval( $new_instance['opacity'] ), 1 );
-		$instance['new_win']          = ci_sanitize_checkbox( $new_instance['new_win'] );
-		$instance['nofollow']         = ci_sanitize_checkbox( $new_instance['nofollow'] );
+		$instance['new_win']          = cisiw_sanitize_checkbox( $new_instance['new_win'] );
+		$instance['nofollow']         = cisiw_sanitize_checkbox( $new_instance['nofollow'] );
 		$instance['icons']            = $this->sanitize_repeating_icons( $new_instance );
 
 		return $instance;

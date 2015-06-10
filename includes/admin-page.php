@@ -261,10 +261,10 @@ function cisiw_validate_settings($input) {
 	}
 
 	if ( isset( $input['f_color'] ) ) {
-		$input['f_color'] = ci_sanitize_hex_color( $input['f_color'] );
+		$input['f_color'] = cisiw_sanitize_hex_color( $input['f_color'] );
 	}
 	if ( isset( $input['f_background_color'] ) ) {
-		$input['f_background_color'] = ci_sanitize_hex_color( $input['f_background_color'] );
+		$input['f_background_color'] = cisiw_sanitize_hex_color( $input['f_background_color'] );
 	}
 	if ( isset( $input['f_size'] ) ) {
 		$input['f_size'] = intval( $input['f_size'] );
