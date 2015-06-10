@@ -6,7 +6,7 @@ Author: The CSSigniter Team
 Contributors: anastis, tsiger, silencerius
 Tags: social, widget, icons, round, square, light, dark, fontawesome
 Requires at least: 4.0
-Tested up to: 4.2.1
+Tested up to: 4.2.2
 Stable tag: 1.8.1
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -45,6 +45,9 @@ For in-depth details, tips and tricks, visit [the plugin's homepage](http://www.
 3. Actual output
 
 == Changelog ==
+
+= 1.8.2 =
+* Renamed a few functions as they could cause collisions if specific themes were enabled.
 
 = 1.8.1 =
 * Fixed an issue where no repeating fields could be created on newly dragged widgets.

@@ -2,7 +2,7 @@
 /*
 Plugin Name: Socials Ignited
 Description: The Socials Ignited plugin gives you a widget, allowing you to display and link icons on your website of more than 50 social networks. Once activated go to Settings > Socials Ignited to add your social profiles and then to Appearance > Widgets to use the widget :)
-Version: 1.8.1
+Version: 1.8.2
 License: GPL
 Plugin URI: http://www.cssigniter.com/ignite/socials-ignited
 Author: The CSSIgniter Team
@@ -268,7 +268,7 @@ if( !function_exists('cisiw_absint_or_empty')):
  * @uses absint()
  *
  * @param mixed $value A value to convert to integer.
- * @return Empty string on zero, or a positive integer.
+ * @return mixed Empty string on zero, or a positive integer.
  */
 function cisiw_absint_or_empty($value)
 {
