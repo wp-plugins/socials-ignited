@@ -46,6 +46,9 @@ For in-depth details, tips and tricks, visit [the plugin's homepage](http://www.
 
 == Changelog ==
 
+= 1.8.3 =
+* Fixed an issue where a warning would get thrown in existing widgets due to a potentially undefined index.
+
 = 1.8.2 =
 * Renamed a few functions as they could cause collisions if specific themes were enabled.
 

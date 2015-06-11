@@ -19,10 +19,13 @@ class Socials_Ignited_Widget extends WP_Widget {
 		extract($args);
 		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
 
-		$new_win  = $instance['new_win'] == 'on' ? 'target="_blank"' : '';
-		$nofollow = $instance['nofollow'] == 'on' ? 'rel="nofollow"' : '';
-		$icons    = ! empty( $instance['icons'] ) ? $instance['icons'] : array();
-		$icons    = $this->convert_repeating_icons_from_unnamed( $icons );
+		$nofollow = '';
+		if ( isset( $instance['nofollow'] ) && $instance['nofollow'] == 'on' ) {
+			$nofollow = 'rel="nofollow"';
+		}
+		$new_win = $instance['new_win'] == 'on' ? 'target="_blank"' : '';
+		$icons   = ! empty( $instance['icons'] ) ? $instance['icons'] : array();
+		$icons   = $this->convert_repeating_icons_from_unnamed( $icons );
 
 		echo $before_widget;
 		if ( $title ) {
