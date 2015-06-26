@@ -43,6 +43,8 @@ function cisiw_options_page() {
 	$cisiw_options['f_size']             = ! empty( $cisiw_options['f_size'] ) ? $cisiw_options['f_size'] : 17;
 	$cisiw_options['f_background_size']  = ! empty( $cisiw_options['f_background_size'] ) ? $cisiw_options['f_background_size'] : 30;
 	$cisiw_options['f_border_radius']    = ! empty( $cisiw_options['f_border_radius'] ) ? $cisiw_options['f_border_radius'] : 50;
+	$cisiw_options['f_border_color']     = ! empty( $cisiw_options['f_border_color'] ) ? $cisiw_options['f_border_color'] : '';
+	$cisiw_options['f_border_width']     = ! empty( $cisiw_options['f_border_width'] ) ? $cisiw_options['f_border_width'] : 0;
 	$cisiw_options['f_opacity']          = ! empty( $cisiw_options['f_opacity'] ) ? $cisiw_options['f_opacity'] : 1;
 
 	?>
@@ -82,6 +84,18 @@ function cisiw_options_page() {
 						<th scope="row"><label for="cisiw_settings[f_border_radius]"><?php _e('Border Radius (single integer in pixels):', 'cisiw'); ?></label></th>
 						<td colspan="2">
 							<input id="cisiw_settings[f_border_radius]" type="number" name="cisiw_settings[f_border_radius]" value="<?php echo esc_attr($cisiw_options['f_border_radius']); ?>" />
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"><label for="cisiw_settings[f_border_color]"><?php _e('Border Color:', 'cisiw'); ?></label></th>
+						<td colspan="2">
+							<input id="cisiw_settings[f_border_color]" type="text" name="cisiw_settings[f_border_color]" value="<?php echo esc_attr($cisiw_options['f_border_color']); ?>" class="colorpckr" />
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"><label for="cisiw_settings[f_border_width]"><?php _e('Border Width (single integer in pixels):', 'cisiw'); ?></label></th>
+						<td colspan="2">
+							<input id="cisiw_settings[f_border_width]" type="number" min="0" name="cisiw_settings[f_border_width]" value="<?php echo esc_attr($cisiw_options['f_border_width']); ?>" />
 						</td>
 					</tr>
 					<tr>
@@ -274,6 +288,12 @@ function cisiw_validate_settings($input) {
 	}
 	if ( isset( $input['f_border_radius'] ) ) {
 		$input['f_border_radius'] = intval( $input['f_border_radius'] );
+	}
+	if ( isset( $input['f_border_color'] ) ) {
+		$input['f_border_color'] = cisiw_sanitize_hex_color( $input['f_border_color'] );
+	}
+	if ( isset( $input['f_border_width'] ) ) {
+		$input['f_border_width'] = intval( $input['f_border_width'] );
 	}
 	if ( isset( $input['f_opacity'] ) ) {
 		$val = floatval( $input['f_opacity'] );

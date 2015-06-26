@@ -61,6 +61,8 @@ class Socials_Ignited_Widget extends WP_Widget {
 		$instance['size']             = cisiw_absint_or_empty( $new_instance['size'] );
 		$instance['background_size']  = cisiw_absint_or_empty( $new_instance['background_size'] );
 		$instance['border_radius']    = cisiw_absint_or_empty( $new_instance['border_radius'] );
+		$instance['border_color']     = cisiw_sanitize_hex_color( $new_instance['border_color'] );
+		$instance['border_width']     = absint( $new_instance['border_width'] );
 		$instance['opacity']          = round( floatval( $new_instance['opacity'] ), 1 );
 		$instance['new_win']          = cisiw_sanitize_checkbox( $new_instance['new_win'] );
 		$instance['nofollow']         = cisiw_sanitize_checkbox( $new_instance['nofollow'] );
@@ -78,6 +80,8 @@ class Socials_Ignited_Widget extends WP_Widget {
 			'color'            => isset( $cisiw['f_color'] ) ? $cisiw['f_color'] : '',
 			'background_color' => isset( $cisiw['f_background_color'] ) ? $cisiw['f_background_color'] : '',
 			'border_radius'    => isset( $cisiw['f_border_radius'] ) ? $cisiw['f_border_radius'] : 50,
+			'border_color'     => isset( $cisiw['f_border_color'] ) ? $cisiw['f_border_color'] : '',
+			'border_width'     => isset( $cisiw['f_border_width'] ) ? $cisiw['f_border_width'] : 0,
 			'size'             => isset( $cisiw['f_size'] ) ? $cisiw['f_size'] : 17,
 			'background_size'  => isset( $cisiw['f_background_size'] ) ? $cisiw['f_background_size'] : 30,
 			'opacity'          => isset( $cisiw['f_opacity'] ) ? $cisiw['f_opacity'] : 1,
@@ -96,6 +100,8 @@ class Socials_Ignited_Widget extends WP_Widget {
 		<p><label for="<?php echo $this->get_field_id( 'size' ); ?>"><?php _e( 'Icon Size (single integer in pixels):', 'cisiw' ); ?></label><input id="<?php echo $this->get_field_id( 'size' ); ?>" name="<?php echo $this->get_field_name( 'size' ); ?>" type="number" value="<?php echo esc_attr( $size ); ?>" class="widefat"/></p>
 		<p><label for="<?php echo $this->get_field_id( 'background_size' ); ?>"><?php _e( 'Background Size (single integer in pixels):', 'cisiw' ); ?></label><input id="<?php echo $this->get_field_id( 'background_size' ); ?>" name="<?php echo $this->get_field_name( 'background_size' ); ?>" type="number" value="<?php echo esc_attr( $background_size ); ?>" class="widefat"/></p>
 		<p><label for="<?php echo $this->get_field_id( 'border_radius' ); ?>"><?php _e( 'Border Radius (single integer in pixels):', 'cisiw' ); ?></label><input id="<?php echo $this->get_field_id( 'border_radius' ); ?>" name="<?php echo $this->get_field_name( 'border_radius' ); ?>" type="number" value="<?php echo esc_attr( $border_radius ); ?>" class="widefat"/></p>
+		<p><label for="<?php echo $this->get_field_id( 'border_color' ); ?>"><?php _e( 'Border Color:', 'cisiw' ); ?></label><input id="<?php echo $this->get_field_id( 'border_color' ); ?>" name="<?php echo $this->get_field_name( 'border_color' ); ?>" type="text" value="<?php echo esc_attr( $border_color ); ?>" class="colorpckr widefat"/></p>
+		<p><label for="<?php echo $this->get_field_id( 'border_width' ); ?>"><?php _e( 'Border Width (single integer in pixels):', 'cisiw' ); ?></label><input id="<?php echo $this->get_field_id( 'border_width' ); ?>" name="<?php echo $this->get_field_name( 'border_width' ); ?>" type="number" min="0" value="<?php echo esc_attr( $border_width ); ?>" class="widefat"/></p>
 		<p><label for="<?php echo $this->get_field_id( 'opacity' ); ?>"><?php _e( 'Opacity (0.1 up to 1):', 'cisiw' ); ?></label><input id="<?php echo $this->get_field_id( 'opacity' ); ?>" name="<?php echo $this->get_field_name( 'opacity' ); ?>" type="number" min="0.1" max="1" step="0.1" value="<?php echo esc_attr( $opacity ); ?>" class="widefat"/></p>
 		<p><label><input id="<?php echo $this->get_field_id( 'new_win' ); ?>" name="<?php echo $this->get_field_name( 'new_win' ); ?>" type="checkbox" value="on" <?php checked( 'on', $new_win ); ?> /> <?php _e( 'Open in new window.', 'cisiw' ); ?></label></p>
 		<p><label><input id="<?php echo $this->get_field_id( 'nofollow' ); ?>" name="<?php echo $this->get_field_name( 'nofollow' ); ?>" type="checkbox" value="on" <?php checked( 'on', $nofollow ); ?> /> <?php _e( 'Add <code>rel="nofollow"</code> to links.', 'cisiw' ); ?></label></p>
@@ -151,6 +157,8 @@ class Socials_Ignited_Widget extends WP_Widget {
 			$size             = $instance['size'];
 			$background_size  = $instance['background_size'];
 			$border_radius    = $instance['border_radius'];
+			$border_color     = ! empty( $instance['border_color'] ) ? $instance['border_color'] : '';
+			$border_width     = ! empty( $instance['border_width'] ) ? $instance['border_width'] : '';
 			$opacity          = $instance['opacity'];
 
 			$css          = '';
@@ -173,6 +181,13 @@ class Socials_Ignited_Widget extends WP_Widget {
 			}
 			if ( ! empty( $border_radius ) ) {
 				$css .= 'border-radius: ' . $border_radius . 'px; ';
+			}
+			if ( ! empty( $border_color ) ) {
+				$css .= 'border-color: ' . $border_color . '; ';
+			}
+			if ( ! empty( $border_width ) ) {
+				$css .= 'border-style: solid; ';
+				$css .= 'border-width: ' . $border_width . 'px; ';
 			}
 			if ( ! empty( $opacity ) ) {
 				$css .= 'opacity: ' . $opacity . '; ';
