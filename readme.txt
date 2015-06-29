@@ -46,6 +46,9 @@ For in-depth details, tips and tricks, visit [the plugin's homepage](http://www.
 
 == Changelog ==
 
+= 1.8.4 =
+* Added border color and border width options.
+
 = 1.8.3 =
 * Fixed an issue where a warning would get thrown in existing widgets due to a potentially undefined index.
 
