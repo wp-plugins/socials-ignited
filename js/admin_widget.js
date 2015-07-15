@@ -1,27 +1,36 @@
 // Font widget
 jQuery(document).ready(function($){
-	function ciPicker(){
-		var ciColorPicker = $('#widgets-right .colorpckr, #wp_inactive_widgets .colorpckr');
+	function cisiwColorPickerInit(){
+		var ciColorPicker = $('#widgets-right .cisiw-colorpckr, #wp_inactive_widgets .cisiw-colorpckr');
 		ciColorPicker.each(function(){
 			$(this).wpColorPicker();
 		});
 	}
 
-	ciPicker();
+	function cisiwSortableInit( selector ) {
+		if( selector === undefined ) {
+			jQuery('.cisiw-repeating-fields .inner').sortable({ placeholder: 'ui-state-highlight' });
+		} else {
+			jQuery('.cisiw-repeating-fields .inner', selector).sortable({ placeholder: 'ui-state-highlight' });
+		}
+	}
+
+
+	cisiwColorPickerInit();
 
 	$(document).ajaxSuccess(function(e, xhr, settings) {
 		if(settings.data.search('action=save-widget') != -1 ) {
-			ciPicker();
+			cisiwColorPickerInit();
 		}
 	});
 
 
-	_sortable();
+	cisiwSortableInit();
 
 	$('body').on('click', '.cisiw-repeating-add-field', function() {
 		var repeatable_area = $(this).siblings('.inner');
 		var fields = repeatable_area.children('.field-prototype').clone(true).removeClass('field-prototype').removeAttr('style').appendTo(repeatable_area);
-		_sortable();
+		cisiwSortableInit();
 		return false;
 	});
 
@@ -38,7 +47,7 @@ jQuery(document).ready(function($){
 
 			if( ( widget_id = options.data.match( /widget-id=(socials-ignited-\d+)/ ) ) !== null ) {
 				var widget = $("input[name='widget-id'][value='" + widget_id[1] + "']").parent();
-				_sortable( widget );
+				cisiwSortableInit( widget );
 			}
 
 		}
@@ -46,11 +55,3 @@ jQuery(document).ready(function($){
 	});
 
 });
-
-_sortable = function( selector ) {
-	if( selector === undefined ) {
-		jQuery('.cisiw-repeating-fields .inner').sortable({ placeholder: 'ui-state-highlight' });
-	} else {
-		jQuery('.cisiw-repeating-fields .inner', selector).sortable({ placeholder: 'ui-state-highlight' });
-	}
-}

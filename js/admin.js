@@ -18,7 +18,7 @@ jQuery(document).ready(function($) {
 	// ColorPickers
 	//
 	if( typeof($.fn.ColorPicker) === 'function' ){
-		$('.colorpckr').ColorPicker({
+		$('.cisiw-colorpckr').ColorPicker({
 			onSubmit: function(hsb, hex, rgb, el) {
 				$(el).val('#'+hex);
 				$(el).ColorPickerHide();
@@ -32,7 +32,7 @@ jQuery(document).ready(function($) {
 	}
 
 	if( typeof($.fn.wpColorPicker) === 'function' ){
-		$('.colorpckr').wpColorPicker();
+		$('.cisiw-colorpckr').wpColorPicker();
 	}
 
 });

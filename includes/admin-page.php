@@ -59,13 +59,13 @@ function cisiw_options_page() {
 					<tr>
 						<th scope="row"><label for="cisiw_settings[f_color]"><?php _e('Icon Color:', 'cisiw'); ?></label></th>
 						<td colspan="2">
-							<input id="cisiw_settings[f_color]" type="text" name="cisiw_settings[f_color]" value="<?php echo esc_attr($cisiw_options['f_color']); ?>" class="colorpckr" />
+							<input id="cisiw_settings[f_color]" type="text" name="cisiw_settings[f_color]" value="<?php echo esc_attr($cisiw_options['f_color']); ?>" class="cisiw-colorpckr" />
 						</td>
 					</tr>
 					<tr>
 						<th scope="row"><label for="cisiw_settings[f_background_color]"><?php _e('Icon Background Color:', 'cisiw'); ?></label></th>
 						<td colspan="2">
-							<input id="cisiw_settings[f_background_color]" type="text" name="cisiw_settings[f_background_color]" value="<?php echo esc_attr($cisiw_options['f_background_color']); ?>" class="colorpckr" />
+							<input id="cisiw_settings[f_background_color]" type="text" name="cisiw_settings[f_background_color]" value="<?php echo esc_attr($cisiw_options['f_background_color']); ?>" class="cisiw-colorpckr" />
 						</td>
 					</tr>
 					<tr>
@@ -89,7 +89,7 @@ function cisiw_options_page() {
 					<tr>
 						<th scope="row"><label for="cisiw_settings[f_border_color]"><?php _e('Border Color:', 'cisiw'); ?></label></th>
 						<td colspan="2">
-							<input id="cisiw_settings[f_border_color]" type="text" name="cisiw_settings[f_border_color]" value="<?php echo esc_attr($cisiw_options['f_border_color']); ?>" class="colorpckr" />
+							<input id="cisiw_settings[f_border_color]" type="text" name="cisiw_settings[f_border_color]" value="<?php echo esc_attr($cisiw_options['f_border_color']); ?>" class="cisiw-colorpckr" />
 						</td>
 					</tr>
 					<tr>
