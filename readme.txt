@@ -46,6 +46,10 @@ For in-depth details, tips and tricks, visit [the plugin's homepage](http://www.
 
 == Changelog ==
 
+= 1.9 =
+* Prefixed some classes and JS functions. This fixes unexpected behavior caused in some CSSIgniter themes.
+* The old widget (image icons) is now unavailable for new installations. Existing installations that have the widget assigned will remain unaffected (until v2.0 where it will be completely removed).
+
 = 1.8.4 =
 * Added border color and border width options.
 
