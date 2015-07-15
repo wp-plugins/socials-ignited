@@ -58,54 +58,54 @@ function cisiw_options_page() {
 				<tbody>
 					<tr>
 						<th scope="row"><label for="cisiw_settings[f_color]"><?php _e('Icon Color:', 'cisiw'); ?></label></th>
-						<td colspan="2">
+						<td>
 							<input id="cisiw_settings[f_color]" type="text" name="cisiw_settings[f_color]" value="<?php echo esc_attr($cisiw_options['f_color']); ?>" class="cisiw-colorpckr" />
 						</td>
 					</tr>
 					<tr>
 						<th scope="row"><label for="cisiw_settings[f_background_color]"><?php _e('Icon Background Color:', 'cisiw'); ?></label></th>
-						<td colspan="2">
+						<td>
 							<input id="cisiw_settings[f_background_color]" type="text" name="cisiw_settings[f_background_color]" value="<?php echo esc_attr($cisiw_options['f_background_color']); ?>" class="cisiw-colorpckr" />
 						</td>
 					</tr>
 					<tr>
 						<th scope="row"><label for="cisiw_settings[f_size]"><?php _e('Icon Size (single integer in pixels):', 'cisiw'); ?></label></th>
-						<td colspan="2">
+						<td>
 							<input id="cisiw_settings[f_size]" type="number" name="cisiw_settings[f_size]" value="<?php echo esc_attr($cisiw_options['f_size']); ?>" />
 						</td>
 					</tr>
 					<tr>
 						<th scope="row"><label for="cisiw_settings[f_background_size]"><?php _e('Background Size (single integer in pixels):', 'cisiw'); ?></label></th>
-						<td colspan="2">
+						<td>
 							<input id="cisiw_settings[f_background_size]" type="number" name="cisiw_settings[f_background_size]" value="<?php echo esc_attr($cisiw_options['f_background_size']); ?>" />
 						</td>
 					</tr>
 					<tr>
 						<th scope="row"><label for="cisiw_settings[f_border_radius]"><?php _e('Border Radius (single integer in pixels):', 'cisiw'); ?></label></th>
-						<td colspan="2">
+						<td>
 							<input id="cisiw_settings[f_border_radius]" type="number" name="cisiw_settings[f_border_radius]" value="<?php echo esc_attr($cisiw_options['f_border_radius']); ?>" />
 						</td>
 					</tr>
 					<tr>
 						<th scope="row"><label for="cisiw_settings[f_border_color]"><?php _e('Border Color:', 'cisiw'); ?></label></th>
-						<td colspan="2">
+						<td>
 							<input id="cisiw_settings[f_border_color]" type="text" name="cisiw_settings[f_border_color]" value="<?php echo esc_attr($cisiw_options['f_border_color']); ?>" class="cisiw-colorpckr" />
 						</td>
 					</tr>
 					<tr>
 						<th scope="row"><label for="cisiw_settings[f_border_width]"><?php _e('Border Width (single integer in pixels):', 'cisiw'); ?></label></th>
-						<td colspan="2">
+						<td>
 							<input id="cisiw_settings[f_border_width]" type="number" min="0" name="cisiw_settings[f_border_width]" value="<?php echo esc_attr($cisiw_options['f_border_width']); ?>" />
 						</td>
 					</tr>
 					<tr>
 						<th scope="row"><label for="cisiw_settings[f_opacity]"><?php _e('Opacity (0.1 up to 1):', 'cisiw'); ?></label></th>
-						<td colspan="2">
+						<td>
 							<input id="cisiw_settings[f_opacity]" type="number" min="0.1" max="1" step="0.1" name="cisiw_settings[f_opacity]" value="<?php echo esc_attr($cisiw_options['f_opacity']); ?>" />
 						</td>
 					</tr>
 					<tr>
-						<td colspan="4">
+						<td colspan="2">
 							<p class="submit">
 								<input type="submit" class="button-primary" value="<?php _e('Save Options', 'cisiw'); ?>" />
 							</p>
@@ -115,6 +115,19 @@ function cisiw_options_page() {
 			</table>
 			<p></p>
 
+			<?php
+				$deprecated_widget_assigned = false;
+				foreach( wp_get_sidebars_widgets() as $sidebar ) {
+					foreach( $sidebar as $widget ) {
+						if( strpos( $widget, 'ci_socials_ignited' ) === 0 ) {
+							$deprecated_widget_assigned = true;
+						}
+					}
+				}
+			?>
+			<?php if( $deprecated_widget_assigned === false ): ?>
+				<div style="display: none;">
+			<?php endif; ?>
 			<h3><?php _e('Image widget settings (deprecated)', 'cisiw'); ?></h3>
 			<p><?php _e('The image icons of Socials Ignited are now deprecated. Icons and functionality will no longer be updated, and you are encouraged to change all your current image-based widgets to the new font-based one.', 'cisiw'); ?></p>
 			<table class="form-table" id="cisiw-admin-options">
@@ -230,6 +243,9 @@ function cisiw_options_page() {
 					
 				</tbody>
 			</table>
+			<?php if( $deprecated_widget_assigned === false ): ?>
+				</div>
+			<?php endif; ?>
 
  		</form>
 	</div>
