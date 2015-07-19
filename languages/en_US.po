@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Socials Ignited\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-15 19:56+0300\n"
-"PO-Revision-Date: 2015-07-15 19:56+0300\n"
+"POT-Creation-Date: 2015-07-19 16:56+0300\n"
+"PO-Revision-Date: 2015-07-19 16:56+0300\n"
 "Last-Translator: Anastis Sourgoutsidis <anastis@cssigniter.com>\n"
 "Language-Team: CSSIgniter LLC <info@cssigniter.com>\n"
 "Language: en_US\n"
@@ -62,34 +62,34 @@ msgstr ""
 msgid "Opacity (0.1 up to 1):"
 msgstr ""
 
-#: ../includes/admin-page.php:110 ../includes/admin-page.php:238
+#: ../includes/admin-page.php:110 ../includes/admin-page.php:228
 msgid "Save Options"
 msgstr ""
 
-#: ../includes/admin-page.php:131
+#: ../includes/admin-page.php:121
 msgid "Image widget settings (deprecated)"
 msgstr ""
 
-#: ../includes/admin-page.php:132
+#: ../includes/admin-page.php:122
 msgid ""
 "The image icons of Socials Ignited are now deprecated. Icons and "
 "functionality will no longer be updated, and you are encouraged to change "
 "all your current image-based widgets to the new font-based one."
 msgstr ""
 
-#: ../includes/admin-page.php:136
+#: ../includes/admin-page.php:126
 msgid "Open links in a new window?"
 msgstr ""
 
-#: ../includes/admin-page.php:142
+#: ../includes/admin-page.php:132
 msgid "Custom CSS"
 msgstr ""
 
-#: ../includes/admin-page.php:150
+#: ../includes/admin-page.php:140
 msgid "Sample widget HTML output:"
 msgstr ""
 
-#: ../includes/admin-page.php:159
+#: ../includes/admin-page.php:149
 msgid ""
 "Just enter the URL for each social service you want to display. Then go to "
 "Widgets and drag the Socials Ignited widget to the sidebar(s) that you want. "
@@ -97,40 +97,40 @@ msgid ""
 "note that not all icons are available in each set."
 msgstr ""
 
-#: ../includes/admin-page.php:160
+#: ../includes/admin-page.php:150
 msgid ""
 "You may rearrange the services by grabbing a row from its empty area and "
 "dragging it to the desired position. Services without a URL will not be "
 "displayed."
 msgstr ""
 
-#: ../includes/admin-page.php:175
+#: ../includes/admin-page.php:165
 msgctxt "social service name"
 msgid "Service name"
 msgstr ""
 
-#: ../includes/admin-page.php:176
+#: ../includes/admin-page.php:166
 msgctxt "social service url value"
 msgid "Value"
 msgstr ""
 
-#: ../includes/admin-page.php:219
+#: ../includes/admin-page.php:209
 msgid "Enter your URL <em>(Include http://</em>)"
 msgstr ""
 
-#: ../includes/admin-page.php:224 ../includes/admin-page.php:226
+#: ../includes/admin-page.php:214 ../includes/admin-page.php:216
 msgid "Recommended value:"
 msgstr ""
 
-#: ../includes/admin-page.php:239
+#: ../includes/admin-page.php:229
 msgid "Reset custom order"
 msgstr ""
 
-#: ../includes/admin-page.php:259
+#: ../includes/admin-page.php:249
 msgid "Socials Ignited Widget Options"
 msgstr ""
 
-#: ../includes/admin-page.php:259
+#: ../includes/admin-page.php:249
 msgctxt "plugin name"
 msgid "Socials Ignited"
 msgstr ""
@@ -149,7 +149,7 @@ msgid ""
 "also drag and drop the boxes to rearrange the icons."
 msgstr ""
 
-#: ../includes/widget.php:97 ../includes/widget.php:383
+#: ../includes/widget.php:97 ../includes/widget.php:372
 msgid "Title:"
 msgstr ""
 
@@ -181,37 +181,37 @@ msgstr ""
 msgid "Add Field"
 msgstr ""
 
-#: ../includes/widget.php:303
+#: ../includes/widget.php:292
 msgid "Social Icons widget placeholder (deprecated)"
 msgstr ""
 
-#: ../includes/widget.php:381
+#: ../includes/widget.php:370
 msgid ""
 "This widget is now deprecated and it will be removed in a future plugin "
 "update (v2.0). Please use the <strong>-= CI Socials Ignited =-</strong> "
 "widget instead."
 msgstr ""
 
-#: ../includes/widget.php:382
+#: ../includes/widget.php:371
 msgid ""
 "This widget is a placeholder for Social Media icons. You may configure those "
 "icons from <strong>Settings</strong> menu, <strong>Socials Ignited</strong> "
 "sub-menu."
 msgstr ""
 
-#: ../includes/widget.php:396
+#: ../includes/widget.php:385
 msgid "Icon set:"
 msgstr ""
 
-#: ../includes/widget.php:406
+#: ../includes/widget.php:395
 msgid "Color Variation:"
 msgstr ""
 
-#: ../includes/widget.php:417
+#: ../includes/widget.php:406
 msgid "Icon Size:"
 msgstr ""
 
-#: ../includes/widget.php:429
+#: ../includes/widget.php:418
 msgid ""
 "Please save the widget first, in order to be able to choose more options."
 msgstr ""

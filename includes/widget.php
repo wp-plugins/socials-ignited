@@ -281,18 +281,7 @@ add_action( 'widgets_init', 'CI_SocialsIgnited_FontAwesome_Action' );
 endif; //class_exists
 
 
-
-
-$deprecated_widget_assigned = false;
-foreach( wp_get_sidebars_widgets() as $sidebar ) {
-	foreach( $sidebar as $widget ) {
-		if( strpos( $widget, 'ci_socials_ignited' ) === 0 ) {
-			$deprecated_widget_assigned = true;
-		}
-	}
-}
-
-if( $deprecated_widget_assigned === true ) {
+if( _cisiw_deprecated_widget_is_assigned() === true ) {
 	//
 	// Image widget
 	//

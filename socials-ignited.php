@@ -2,7 +2,7 @@
 /*
 Plugin Name: Socials Ignited
 Description: The Socials Ignited plugin gives you a widget, allowing you to display and link icons on your website of more than 50 social networks. Once activated go to Settings > Socials Ignited to add your social profiles and then to Appearance > Widgets to use the widget :)
-Version: 1.9
+Version: 1.9.1
 License: GPL
 Plugin URI: http://www.cssigniter.com/ignite/socials-ignited
 Author: The CSSIgniter Team
@@ -215,6 +215,24 @@ function cisiw_plugin_update_message($plugin_data, $r) {
 }
 endif;
 
+
+
+function _cisiw_deprecated_widget_is_assigned() {
+	$deprecated_widget_assigned = false;
+	$sidebars_widgets = wp_get_sidebars_widgets();
+	if ( ! empty( $sidebars_widgets ) ) {
+		foreach ( $sidebars_widgets as $sidebar ) {
+			if ( ! empty( $sidebar ) ) {
+				foreach ( $sidebar as $widget ) {
+					if ( strpos( $widget, 'ci_socials_ignited' ) === 0 ) {
+						$deprecated_widget_assigned = true;
+					}
+				}
+			}
+		}
+	}
+	return $deprecated_widget_assigned;
+}
 
 if ( !function_exists('cisiw_sanitize_hex_color') ):
 /**

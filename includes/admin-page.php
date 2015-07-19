@@ -115,17 +115,7 @@ function cisiw_options_page() {
 			</table>
 			<p></p>
 
-			<?php
-				$deprecated_widget_assigned = false;
-				foreach( wp_get_sidebars_widgets() as $sidebar ) {
-					foreach( $sidebar as $widget ) {
-						if( strpos( $widget, 'ci_socials_ignited' ) === 0 ) {
-							$deprecated_widget_assigned = true;
-						}
-					}
-				}
-			?>
-			<?php if( $deprecated_widget_assigned === false ): ?>
+			<?php if( _cisiw_deprecated_widget_is_assigned() === false ): ?>
 				<div style="display: none;">
 			<?php endif; ?>
 			<h3><?php _e('Image widget settings (deprecated)', 'cisiw'); ?></h3>
@@ -243,7 +233,7 @@ function cisiw_options_page() {
 					
 				</tbody>
 			</table>
-			<?php if( $deprecated_widget_assigned === false ): ?>
+			<?php if( _cisiw_deprecated_widget_is_assigned() === false ): ?>
 				</div>
 			<?php endif; ?>
 
