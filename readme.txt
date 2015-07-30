@@ -46,6 +46,9 @@ For in-depth details, tips and tricks, visit [the plugin's homepage](http://www.
 
 == Changelog ==
 
+= 1.9.2 =
+* Updated font-awesome to v4.4.0
+
 = 1.9.1 =
 * Fixed an issue where some installations with no widgets assigned would throw a warning.
 
