@@ -6,7 +6,7 @@ Author: The CSSigniter Team
 Contributors: anastis, tsiger, silencerius
 Tags: social, widget, icons, round, square, light, dark, fontawesome
 Requires at least: 4.0
-Tested up to: 4.2.2
+Tested up to: 4.3
 Stable tag: 1.9.2
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -45,6 +45,9 @@ For in-depth details, tips and tricks, visit [the plugin's homepage](http://www.
 3. Actual output
 
 == Changelog ==
+
+= 1.9.3 =
+* Fixed widgets to use PHP5-style constructors, in preparation for WP v4.3 and PHP 7.
 
 = 1.9.2 =
 * Updated font-awesome to v4.4.0

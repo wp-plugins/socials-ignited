@@ -5,13 +5,13 @@
 if( !class_exists('Socials_Ignited_Widget') ):
 class Socials_Ignited_Widget extends WP_Widget {
 
-	function Socials_Ignited_Widget() {
+	function __construct() {
 		$widget_ops = array(
 			'description' => __( 'Social Icons widget, FontAwesome edition', 'cisiw' ),
 			'classname'   => 'widget_socials_ignited'
 		);
 		$control_ops = array(/*'width' => 300, 'height' => 400*/);
-		parent::WP_Widget('socials-ignited', $name='-= CI Socials Ignited =-', $widget_ops, $control_ops);
+		parent::__construct('socials-ignited', $name='-= CI Socials Ignited =-', $widget_ops, $control_ops);
 		add_action('wp_enqueue_scripts', array(&$this, 'enqueue_css'));
 	}
 
@@ -288,10 +288,10 @@ if( _cisiw_deprecated_widget_is_assigned() === true ) {
 	if ( ! class_exists( 'CI_Socials_Ignited' ) ):
 		class CI_Socials_Ignited extends WP_Widget {
 
-			function CI_Socials_Ignited() {
+			function __construct() {
 				$widget_ops  = array( 'description' => __( 'Social Icons widget placeholder (deprecated)', 'cisiw' ) );
 				$control_ops = array(/*'width' => 300, 'height' => 400*/ );
-				parent::WP_Widget( 'ci_socials_ignited', $name = 'Socials Ignited (deprecated)', $widget_ops, $control_ops );
+				parent::__construct( 'ci_socials_ignited', $name = 'Socials Ignited (deprecated)', $widget_ops, $control_ops );
 			}
 
 			function widget( $args, $instance ) {
